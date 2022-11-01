@@ -1,0 +1,32 @@
+﻿  Light.cpp
+  main.cpp
+C:\Users\lycoris\source\repos\OpenGL Project\OpenGL Project\include\FreeImage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  Material.cpp
+  Sphere.cpp
+  texture.cpp
+C:\Users\lycoris\source\repos\OpenGL Project\OpenGL Project\include\FreeImage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  코드를 생성하고 있습니다...
+main.obj : error LNK2019: __imp___glutInitWithExitglutInit_ATEXIT_HACK 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutInitDisplayModemain 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutInitWindowPositionmain 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutInitWindowSizemain 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutMainLoopmain 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp___glutCreateWindowWithExitglutCreateWindow_ATEXIT_HACK 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutPostRedisplay"void __cdecl idle(void)" (?idle@@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutSwapBuffers"void __cdecl display(void)" (?display@@YAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutDisplayFuncmain 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutIdleFuncmain 함수에서 참조되는 확인할 수 없는 외부 기호
+main.obj : error LNK2019: __imp_glutBitmapCharacter"void __cdecl displayCharacters(void *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,float,float)" (?displayCharacters@@YAXPEAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@MM@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+Sphere.obj : error LNK2019: __imp_glutSolidSphere"public: void __cdecl Sphere::draw(void)const " (?draw@Sphere@@QEBAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_Load"public: struct FIBITMAP * __cdecl Texture::createBitMap(char const *)" (?createBitMap@Texture@@QEAAPEAUFIBITMAP@@PEBD@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_GetFIFFromFilename"public: struct FIBITMAP * __cdecl Texture::createBitMap(char const *)" (?createBitMap@Texture@@QEAAPEAUFIBITMAP@@PEBD@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_FIFSupportsReading"public: struct FIBITMAP * __cdecl Texture::createBitMap(char const *)" (?createBitMap@Texture@@QEAAPEAUFIBITMAP@@PEBD@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_GetFileType"public: struct FIBITMAP * __cdecl Texture::createBitMap(char const *)" (?createBitMap@Texture@@QEAAPEAUFIBITMAP@@PEBD@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_GetBits"public: void __cdecl Texture::initTexture(void)" (?initTexture@Texture@@QEAAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_GetBPP"public: struct FIBITMAP * __cdecl Texture::createBitMap(char const *)" (?createBitMap@Texture@@QEAAPEAUFIBITMAP@@PEBD@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_GetWidth"public: void __cdecl Texture::initTexture(void)" (?initTexture@Texture@@QEAAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_GetHeight"public: void __cdecl Texture::initTexture(void)" (?initTexture@Texture@@QEAAXXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
+texture.obj : error LNK2019: __imp_FreeImage_ConvertTo32Bits"public: struct FIBITMAP * __cdecl Texture::createBitMap(char const *)" (?createBitMap@Texture@@QEAAPEAUFIBITMAP@@PEBD@Z) 함수에서 참조되는 확인할 수 없는 외부 기호
+lib\FreeImage.lib : warning LNK4272: 'x86' 라이브러리 컴퓨터 종류가 'x64' 대상 컴퓨터 종류와 충돌합니다.
+lib\glut32.lib : warning LNK4272: 'x86' 라이브러리 컴퓨터 종류가 'x64' 대상 컴퓨터 종류와 충돌합니다.
+C:\Users\lycoris\source\repos\OpenGL Project\x64\Debug\OpenGL Project.exe : fatal error LNK1120: 21개의 확인할 수 없는 외부 참조입니다.

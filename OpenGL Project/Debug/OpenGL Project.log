@@ -1,0 +1,10 @@
+﻿  Light.cpp
+  main.cpp
+C:\Users\lycoris\source\repos\OpenGL Project\OpenGL Project\include\FreeImage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\lycoris\source\repos\OpenGL Project\OpenGL Project\main.cpp(85,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Material.cpp
+  Sphere.cpp
+  texture.cpp
+C:\Users\lycoris\source\repos\OpenGL Project\OpenGL Project\include\FreeImage.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  코드를 생성하고 있습니다...
+  OpenGL Project.vcxproj -> C:\Users\lycoris\source\repos\OpenGL Project\Debug\OpenGL Project.exe

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <iostream>
 #include <GL/glut.h>
 #include <FreeImage.h>
@@ -12,7 +13,7 @@ public:
 	void setFilename(char const* filename);
 	void generateTexture();
 	void initTexture();
-	void drawSquareWithTexture();
+	void drawSquareWithTexture(float ld, float ru);
 
 private:
 	GLuint textureID;

@@ -52,15 +52,15 @@ void Texture::initTexture() {
 	generateTexture();
 }
 
-void Texture::drawSquareWithTexture() {
+void Texture::drawSquareWithTexture(float width, float height) {
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f); glVertex2f(-0.5f, -0.5f);
-	glTexCoord2f(0.0f, 1.0f); glVertex2f(-0.5f, 0.5f);
-	glTexCoord2f(1.0f, 1.0f); glVertex2f(0.5f, 0.5f);
-	glTexCoord2f(1.0f, 0.0f); glVertex2f(0.5f, -0.5f);
+	glTexCoord2f(0.0f, 0.0f); glVertex2f(-width / 2, -height / 2);
+	glTexCoord2f(0.0f, 1.0f); glVertex2f(-width / 2, height / 2);
+	glTexCoord2f(1.0f, 1.0f); glVertex2f(width / 2, height / 2);
+	glTexCoord2f(1.0f, 0.0f); glVertex2f(width / 2, -height / 2);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 }

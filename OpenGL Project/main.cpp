@@ -24,7 +24,7 @@ vector<Sphere> spheres;
 vector<Sphere> cannon;
 vector<Material> materials;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture texture;
+Texture background,canon;
 float angle;
 
 void initialize() {
@@ -75,9 +75,13 @@ void initialize() {
 	spheres.push_back(sphere3);
 
 	/* Implement: initialize texture*/
-	texture.setFilename("snu.png");
-	texture.settextureID(0);
-	texture.initTexture();
+	background.setFilename("background_snu.png");
+	background.settextureID(0);
+	background.initTexture();
+
+	canon.setFilename("snu.png");
+	canon.settextureID(0);
+	canon.initTexture();
 }
 
 void idle() {
@@ -105,7 +109,7 @@ void displayCharacters(void* font, string str, float x, float y) {
 }
 
 void display() {
-	glClearColor(.3f, .3f, .3f, 0.0f);
+	glClearColor(.0f, .0f, .0f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_PROJECTION);
@@ -117,9 +121,13 @@ void display() {
 
 	/* Implement: Draw 2D (texture, ID and name)*/
 	glPushMatrix();
-	glScalef(150, 150, 150);
-	glRotatef(angle, 0.0f, 0.0f, 1.0f);
-	texture.drawSquareWithTexture();
+	background.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+	glPopMatrix();
+
+	/* Implement: Draw 2D (texture, ID and name)*/
+	glPushMatrix();
+	glRotatef(angle, 0.0f, 0.0f, -1.0f);
+	canon.drawSquareWithTexture(150,150);
 
 	glPopMatrix();
 	/* Implement: Draw 3D (light and spheres)*/
@@ -138,14 +146,18 @@ void keyboardDown(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
 	switch (key) {
 	case 'q':
-		angle += 3;
+		angle -= 3;
 		break;
 	case 'w':
-		angle -= 3;
+		angle += 3;
 		break;
 	default:
 		break;
 	}
+	if (angle > 360)
+		angle -= 360;
+	if (angle < 0)
+		angle += 360;
 }
 void MyReshape(int NewWidth, int NewHeight) {
 	bool W;

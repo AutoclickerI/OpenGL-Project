@@ -1,4 +1,6 @@
+#include <ctime>
 #include <vector>
+#include <cstdlib>
 #include "Light.h"
 #include "Sphere.h"
 #include "Texture.h"
@@ -19,12 +21,15 @@ clock_t start_t = clock();
 clock_t end_t;
 
 vector<Sphere> spheres;
+vector<Sphere> cannon;
+vector<Material> materials;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
 Texture texture;
 float angle;
 
 void initialize() {
 	angle = 0;
+	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
 	light.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);
 	light.setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
@@ -36,26 +41,37 @@ void initialize() {
 	mtl1.setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
 	mtl1.setShininess(10.0f);
 
-	Material mtl2(mtl1), mtl3(mtl1);
+	Material mtl2(mtl1), mtl3(mtl1), mtl4(mtl1), mtl5(mtl1), mtl6(mtl1), mtl7(mtl1);
 	mtl2.setAmbient(0.1f, 0.4f, 0.4f, 1.0f);
 	mtl3.setAmbient(0.4f, 0.1f, 0.4f, 1.0f);
+	mtl4.setAmbient(0.4f, 0.4f, 0.4f, 1.0f);
+	mtl5.setAmbient(0.4f, 0.1f, 0.1f, 1.0f);
+	mtl6.setAmbient(0.1f, 0.4f, 0.1f, 1.0f);
+	mtl7.setAmbient(0.1f, 0.1f, 0.4f, 1.0f);
+	materials.push_back(mtl1);
+	materials.push_back(mtl2);
+	materials.push_back(mtl3);
+	materials.push_back(mtl4);
+	materials.push_back(mtl5);
+	materials.push_back(mtl6);
+	materials.push_back(mtl7);
 
 	Sphere sphere1(30, 20, 20);
 	sphere1.setCenter(0.0f, -200.0f, 0.0f);
 	sphere1.setVelocity(0.3f, 0.6f, 0.0f);
-	sphere1.setMTL(mtl1);
+	sphere1.setMTL(materials[rand()%7]);
 	spheres.push_back(sphere1);
 
 	Sphere sphere2(sphere1);
 	sphere2.setCenter(100.0f, 200.0f, 0.0f);
 	sphere2.setVelocity(-0.6f, -0.5f, 0.0f);
-	sphere2.setMTL(mtl2);
+	sphere2.setMTL(materials[rand() % 7]);
 	spheres.push_back(sphere2);
 
 	Sphere sphere3(sphere1);
 	sphere3.setCenter(-100.0f, 0.0f, 0.0f);
 	sphere3.setVelocity(-2.0f, 2.0f, 0.0f);
-	sphere3.setMTL(mtl3);
+	sphere3.setMTL(materials[rand() % 7]);
 	spheres.push_back(sphere3);
 
 	/* Implement: initialize texture*/
@@ -159,7 +175,7 @@ int main(int argc, char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowPosition(WINDOW_X, WINDOW_Y);
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	glutCreateWindow("Draw three spheres");
+	glutCreateWindow("PUZZ LOOP");
 	initialize();
 	// register callbacks
 	glutDisplayFunc(display);

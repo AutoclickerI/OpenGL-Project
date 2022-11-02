@@ -1,16 +1,15 @@
 #include <vector>
-#include <windows.h>
 #include "Light.h"
 #include "Sphere.h"
 #include "Texture.h"
 
 using namespace std;
 
-#define WINDOW_X 200
-#define WINDOW_Y 200
+#define WINDOW_X 0
+#define WINDOW_Y 0
 
-#define WINDOW_WIDTH 640		// window's width
-#define WINDOW_HEIGHT 640		// window's height
+#define WINDOW_WIDTH 1280		// window's width
+#define WINDOW_HEIGHT 720		// window's height
 
 #define boundaryX (WINDOW_WIDTH)/2
 #define boundaryY (WINDOW_HEIGHT)/2
@@ -20,10 +19,12 @@ clock_t start_t = clock();
 clock_t end_t;
 
 vector<Sphere> spheres;
-Light light(boundaryX, boundaryY, boundaryX / 2, GL_LIGHT0);
+Light light(0, 0, boundaryX / 2, GL_LIGHT0);
 Texture texture;
+float angle;
 
 void initialize() {
+	angle = 0;
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
 	light.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);
 	light.setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
@@ -39,7 +40,7 @@ void initialize() {
 	mtl2.setAmbient(0.1f, 0.4f, 0.4f, 1.0f);
 	mtl3.setAmbient(0.4f, 0.1f, 0.4f, 1.0f);
 
-	Sphere sphere1(50, 20, 20);
+	Sphere sphere1(30, 20, 20);
 	sphere1.setCenter(0.0f, -200.0f, 0.0f);
 	sphere1.setVelocity(0.3f, 0.6f, 0.0f);
 	sphere1.setMTL(mtl1);
@@ -71,9 +72,10 @@ void idle() {
 	if (end_t - start_t > 1000 / 60) {
 		for (vector<Sphere>::size_type i = 0; i < spheres.size(); i++) {
 			spheres[i].move();
-			for (int j = 0; j < 3; j++)
-				if (spheres[i].getCenter()[j] - spheres[i].getRadius() < -boundaryX || spheres[i].getCenter()[j] + spheres[i].getRadius() > boundaryX)
-					spheres[i].getVelocity()[j] *= -1;
+			if (spheres[i].getCenter()[0] - spheres[i].getRadius() < -boundaryX || spheres[i].getCenter()[0] + spheres[i].getRadius() > boundaryX)
+				spheres[i].getVelocity()[0] *= -1;
+			if (spheres[i].getCenter()[1] - spheres[i].getRadius() < -boundaryY || spheres[i].getCenter()[1] + spheres[i].getRadius() > boundaryY)
+				spheres[i].getVelocity()[1] *= -1;
 		}
 		start_t = end_t;
 		glutPostRedisplay();
@@ -87,7 +89,7 @@ void displayCharacters(void* font, string str, float x, float y) {
 }
 
 void display() {
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClearColor(.3f, .3f, .3f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_PROJECTION);
@@ -96,13 +98,12 @@ void display() {
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
+
 	/* Implement: Draw 2D (texture, ID and name)*/
 	glPushMatrix();
-	glScalef(350, 350, 350);
+	glScalef(150, 150, 150);
+	glRotatef(angle, 0.0f, 0.0f, 1.0f);
 	texture.drawSquareWithTexture();
-	glColor3f(1.0f, 1.0f, 1.0f);
-	displayCharacters(GLUT_BITMAP_TIMES_ROMAN_24, "2021-13314 Jihoon Kim", -0.8f, -0.8f);
 
 	glPopMatrix();
 	/* Implement: Draw 3D (light and spheres)*/
@@ -117,10 +118,41 @@ void display() {
 	glutSwapBuffers();
 }
 
+void keyboardDown(unsigned char key, int x, int y) {
+	/* Implement: turn on/off lights */
+	switch (key) {
+	case 'q':
+		angle += 3;
+		break;
+	case 'w':
+		angle -= 3;
+		break;
+	default:
+		break;
+	}
+}
+void MyReshape(int NewWidth, int NewHeight) {
+	bool W;
+	GLfloat WidthFactor = (GLfloat)NewWidth / (GLfloat)WINDOW_WIDTH;
+	GLfloat HeightFactor = (GLfloat)NewHeight / (GLfloat)WINDOW_HEIGHT;
+	if (WidthFactor > HeightFactor) {
+		WidthFactor = HeightFactor;
+		W = 0;
+	}
+	else {
+		HeightFactor = WidthFactor;
+		W = 1;
+	}
+	if (W)
+		glViewport(0, (NewHeight - WINDOW_HEIGHT * HeightFactor) / 2, WINDOW_WIDTH * WidthFactor, WINDOW_HEIGHT * HeightFactor);
+	else
+		glViewport((NewWidth - WINDOW_WIDTH * WidthFactor) / 2, 0, WINDOW_WIDTH * WidthFactor, WINDOW_HEIGHT * HeightFactor);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(-1.0 * WidthFactor, 1.0 * WidthFactor, -1.0 * HeightFactor, 1.0 * HeightFactor, -1.0, 1.0);
+
+}
 int main(int argc, char** argv) {
-	// hide Window Console
-	HWND hConsole = GetConsoleWindow();
-	ShowWindow(hConsole, SW_HIDE);
 
 	// init GLUT and create Window
 	glutInit(&argc, argv);
@@ -131,6 +163,8 @@ int main(int argc, char** argv) {
 	initialize();
 	// register callbacks
 	glutDisplayFunc(display);
+	glutReshapeFunc(MyReshape);
+	glutKeyboardFunc(keyboardDown);
 	glutIdleFunc(idle);
 
 	// enter GLUT event processing cycle

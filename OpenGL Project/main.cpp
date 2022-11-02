@@ -1,4 +1,5 @@
 #include <ctime>
+#include <cmath>
 #include <vector>
 #include <cstdlib>
 #include "Light.h"
@@ -15,17 +16,18 @@ using namespace std;
 
 #define boundaryX (WINDOW_WIDTH)/2
 #define boundaryY (WINDOW_HEIGHT)/2
-
+const double PI = 3.141592653589793;
 
 clock_t start_t = clock();
 clock_t end_t;
 
-vector<Sphere> spheres;
+vector<Sphere> shootings;
 vector<Sphere> cannon;
 vector<Material> materials;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
 Texture background,canon;
 float angle;
+float speed = 10;
 
 void initialize() {
 	angle = 0;
@@ -57,22 +59,16 @@ void initialize() {
 	materials.push_back(mtl7);
 
 	Sphere sphere1(30, 20, 20);
-	sphere1.setCenter(0.0f, -200.0f, 0.0f);
-	sphere1.setVelocity(0.3f, 0.6f, 0.0f);
+	sphere1.setCenter(0.0f, 50.0f, 0.0f);
+	sphere1.setVelocity(0.0f, 0.0f, 0.0f);
 	sphere1.setMTL(materials[rand()%7]);
-	spheres.push_back(sphere1);
+	cannon.push_back(sphere1);
 
 	Sphere sphere2(sphere1);
-	sphere2.setCenter(100.0f, 200.0f, 0.0f);
-	sphere2.setVelocity(-0.6f, -0.5f, 0.0f);
+	sphere2.setCenter(0.0f, 0.0f, 0.0f);
+	sphere2.setVelocity(0.0f, 0.0f, 0.0f);
 	sphere2.setMTL(materials[rand() % 7]);
-	spheres.push_back(sphere2);
-
-	Sphere sphere3(sphere1);
-	sphere3.setCenter(-100.0f, 0.0f, 0.0f);
-	sphere3.setVelocity(-2.0f, 2.0f, 0.0f);
-	sphere3.setMTL(materials[rand() % 7]);
-	spheres.push_back(sphere3);
+	cannon.push_back(sphere2);
 
 	/* Implement: initialize texture*/
 	background.setFilename("background_snu.png");
@@ -90,12 +86,12 @@ void idle() {
 	end_t = clock();
 
 	if (end_t - start_t > 1000 / 60) {
-		for (vector<Sphere>::size_type i = 0; i < spheres.size(); i++) {
-			spheres[i].move();
-			if (spheres[i].getCenter()[0] - spheres[i].getRadius() < -boundaryX || spheres[i].getCenter()[0] + spheres[i].getRadius() > boundaryX)
-				spheres[i].getVelocity()[0] *= -1;
-			if (spheres[i].getCenter()[1] - spheres[i].getRadius() < -boundaryY || spheres[i].getCenter()[1] + spheres[i].getRadius() > boundaryY)
-				spheres[i].getVelocity()[1] *= -1;
+		for (vector<Sphere>::size_type i = 0; i < shootings.size(); i++) {
+			shootings[i].move();
+			if (shootings[i].getCenter()[0] - shootings[i].getRadius() < -boundaryX || shootings[i].getCenter()[0] + shootings[i].getRadius() > boundaryX)
+				shootings[i].getVelocity()[0] *= -1;
+			if (shootings[i].getCenter()[1] - shootings[i].getRadius() < -boundaryY || shootings[i].getCenter()[1] + shootings[i].getRadius() > boundaryY)
+				shootings[i].getVelocity()[1] *= -1;
 		}
 		start_t = end_t;
 		glutPostRedisplay();
@@ -123,20 +119,20 @@ void display() {
 	glPushMatrix();
 	background.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 	glPopMatrix();
-
-	/* Implement: Draw 2D (texture, ID and name)*/
-	glPushMatrix();
-	glRotatef(angle, 0.0f, 0.0f, -1.0f);
-	canon.drawSquareWithTexture(150,150);
-
-	glPopMatrix();
-	/* Implement: Draw 3D (light and spheres)*/
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	light.draw();
 	glShadeModel(GL_SMOOTH);
-	for (vector<Sphere>::size_type i = 0; i < spheres.size(); i++)
-		spheres[i].draw();
+	/* Implement: Draw 2D (texture, ID and name)*/
+	glPushMatrix();
+	glRotatef(angle, 0.0f, 0.0f, -1.0f);
+	canon.drawSquareWithTexture(150,150);
+	for (vector<Sphere>::size_type i = 0; i < cannon.size(); i++)
+		cannon[i].draw();
+	glPopMatrix();
+	/* Implement: Draw 3D (light and spheres)*/
+	for (vector<Sphere>::size_type i = 0; i < shootings.size(); i++)
+		shootings[i].draw();
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
 	glutSwapBuffers();
@@ -159,6 +155,24 @@ void keyboardDown(unsigned char key, int x, int y) {
 	if (angle < 0)
 		angle += 360;
 }
+
+void keyboardUp(unsigned char key, int x, int y) {
+	/* Implement: turn on/off lights */
+	switch (key) {
+	case ' ':
+		shootings.push_back(cannon.front());
+		cannon.erase(cannon.begin());
+		cannon.push_back(Sphere(cannon[0]));
+		cannon[0].setCenter(0.0f, 50.0f, 0.0f);
+		cannon[1].setMTL(materials[rand() % 7]);
+		(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
+		(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
+		cout << "TEST";
+	default:
+		break;
+	}
+}
+
 void MyReshape(int NewWidth, int NewHeight) {
 	bool W;
 	GLfloat WidthFactor = (GLfloat)NewWidth / (GLfloat)WINDOW_WIDTH;
@@ -193,6 +207,7 @@ int main(int argc, char** argv) {
 	glutDisplayFunc(display);
 	glutReshapeFunc(MyReshape);
 	glutKeyboardFunc(keyboardDown);
+	glutKeyboardUpFunc(keyboardUp);
 	glutIdleFunc(idle);
 
 	// enter GLUT event processing cycle

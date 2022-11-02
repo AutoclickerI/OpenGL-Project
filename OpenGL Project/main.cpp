@@ -38,18 +38,18 @@ void initialize() {
 
 	Material mtl1;
 	mtl1.setEmission(0.1f, 0.1f, 0.1f, 1.0f);
-	mtl1.setAmbient(0.4f, 0.4f, 0.1f, 1.0f);
+	mtl1.setAmbient(0.8f, 0.8f, 0.1f, 1.0f);
 	mtl1.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);
 	mtl1.setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
-	mtl1.setShininess(10.0f);
+	mtl1.setShininess(30.0f);
 
 	Material mtl2(mtl1), mtl3(mtl1), mtl4(mtl1), mtl5(mtl1), mtl6(mtl1), mtl7(mtl1);
-	mtl2.setAmbient(0.1f, 0.4f, 0.4f, 1.0f);
-	mtl3.setAmbient(0.4f, 0.1f, 0.4f, 1.0f);
-	mtl4.setAmbient(0.4f, 0.4f, 0.4f, 1.0f);
-	mtl5.setAmbient(0.4f, 0.1f, 0.1f, 1.0f);
-	mtl6.setAmbient(0.1f, 0.4f, 0.1f, 1.0f);
-	mtl7.setAmbient(0.1f, 0.1f, 0.4f, 1.0f);
+	mtl2.setAmbient(0.1f, 0.8f, 0.8f, 1.0f);
+	mtl3.setAmbient(0.8f, 0.1f, 0.8f, 1.0f);
+	mtl4.setAmbient(0.8f, 0.8f, 0.8f, 1.0f);
+	mtl5.setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
+	mtl6.setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
+	mtl7.setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
 	materials.push_back(mtl1);
 	materials.push_back(mtl2);
 	materials.push_back(mtl3);
@@ -158,13 +158,15 @@ void keyboardDown(unsigned char key, int x, int y) {
 
 void keyboardUp(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
+	int R(rand() % 7);
 	switch (key) {
 	case ' ':
 		shootings.push_back(cannon.front());
 		cannon.erase(cannon.begin());
 		cannon.push_back(Sphere(cannon[0]));
 		cannon[0].setCenter(0.0f, 50.0f, 0.0f);
-		cannon[1].setMTL(materials[rand() % 7]);
+		cannon[1].setMTL(materials[R]);
+		cout << R<<endl;
 		(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
 		(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
 		cout << "TEST";

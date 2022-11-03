@@ -88,12 +88,22 @@ void idle() {
 	end_t = clock();
 
 	if (end_t - start_t > 1000 / 60) {
-		for (vector<Sphere>::size_type i = 0; i < shootings.size(); i++) {
+		vector<Sphere>::size_type i = 0;
+		while(i< shootings.size()){
 			shootings[i].move();
-			if (shootings[i].getCenter()[0] - shootings[i].getRadius() < -boundaryX || shootings[i].getCenter()[0] + shootings[i].getRadius() > boundaryX)
+			if (shootings[i].getCenter()[0] - shootings[i].getRadius() < -boundaryX || shootings[i].getCenter()[0] + shootings[i].getRadius() > boundaryX) {
 				shootings[i].getVelocity()[0] *= -1;
-			if (shootings[i].getCenter()[1] - shootings[i].getRadius() < -boundaryY || shootings[i].getCenter()[1] + shootings[i].getRadius() > boundaryY)
+				if (rand() % 10 > 4)
+					shootings.erase(shootings.begin() + i);
+				i -= 1;
+			}
+			else if (shootings[i].getCenter()[1] - shootings[i].getRadius() < -boundaryY || shootings[i].getCenter()[1] + shootings[i].getRadius() > boundaryY) {
 				shootings[i].getVelocity()[1] *= -1;
+				if (rand() % 10 > 4)
+					shootings.erase(shootings.begin() + i);
+				i -= 1;
+			}
+			i++;
 		}
 		start_t = end_t;
 		glutPostRedisplay();
@@ -130,10 +140,10 @@ void display() {
 	glRotatef(angle, 0.0f, 0.0f, -1.0f);
 	switch (theme) {
 	case SNU:
-		canon.drawCircleWithTexture(75);
+		canon.drawCircleWithTexture(75, 30);
 		break;
 	default:
-		canon.drawSquareWithTexture(150,150);
+		canon.drawSquareWithTexture(150, 150);
 		break;
 	}
 	for (vector<Sphere>::size_type i = 0; i < cannon.size(); i++)

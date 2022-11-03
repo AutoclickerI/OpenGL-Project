@@ -65,13 +65,13 @@ void Texture::drawSquareWithTexture(float width, float height) {
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Texture::drawCircleWithTexture(float radius) {
+void Texture::drawCircleWithTexture(float radius, int slices) {
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glBegin(GL_POLYGON);
-	for (int i = 0; i < 30; i++) {
-		glTexCoord2f(cos(2 * pi * i / 30) / 2 + .5f, sin(2 * pi * i / 30) / 2 + .5f); glVertex2f(radius * cos(2 * pi * i / 30), radius * sin(2 * pi * i / 30));
+	for (int i = 0; i < slices; i++) {
+		glTexCoord2f(cos(2 * pi * i / slices) / 2 + .5f, sin(2 * pi * i / slices) / 2 + .5f); glVertex2f(radius * cos(2 * pi * i / slices), radius * sin(2 * pi * i / slices));
 	}
 	glEnd();
 	glDisable(GL_TEXTURE_2D);

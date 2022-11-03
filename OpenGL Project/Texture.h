@@ -15,7 +15,7 @@ public:
 	void generateTexture();
 	void initTexture();
 	void drawSquareWithTexture(float width, float height);
-	void drawCircleWithTexture(float radius);
+	void drawCircleWithTexture(float radius, int slices);
 
 private:
 	GLuint textureID;

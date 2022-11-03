@@ -16,7 +16,9 @@ using namespace std;
 #define boundaryX (WINDOW_WIDTH)/2
 #define boundaryY (WINDOW_HEIGHT)/2
 const double PI = 3.141592653589793;
+enum Theme {SNU, theme1, theme2};
 
+Theme theme;
 clock_t start_t = clock();
 clock_t end_t;
 
@@ -29,6 +31,7 @@ float angle;
 float speed = 10;
 
 void initialize() {
+	theme = SNU;
 	angle = 0;
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
@@ -125,7 +128,14 @@ void display() {
 	/* Implement: Draw 2D (texture, ID and name)*/
 	glPushMatrix();
 	glRotatef(angle, 0.0f, 0.0f, -1.0f);
-	canon.drawCircleWithTexture(75);
+	switch (theme) {
+	case SNU:
+		canon.drawCircleWithTexture(75);
+		break;
+	default:
+		canon.drawSquareWithTexture(150,150);
+		break;
+	}
 	for (vector<Sphere>::size_type i = 0; i < cannon.size(); i++)
 		cannon[i].draw();
 	glPopMatrix();

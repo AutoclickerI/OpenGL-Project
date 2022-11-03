@@ -93,13 +93,13 @@ void idle() {
 			shootings[i].move();
 			if (shootings[i].getCenter()[0] - shootings[i].getRadius() < -boundaryX || shootings[i].getCenter()[0] + shootings[i].getRadius() > boundaryX) {
 				shootings[i].getVelocity()[0] *= -1;
-				if (rand() % 10 > 4)
+				if (rand() % 10 > 9)
 					shootings.erase(shootings.begin() + i);
 				i -= 1;
 			}
 			else if (shootings[i].getCenter()[1] - shootings[i].getRadius() < -boundaryY || shootings[i].getCenter()[1] + shootings[i].getRadius() > boundaryY) {
 				shootings[i].getVelocity()[1] *= -1;
-				if (rand() % 10 > 4)
+				if (rand() % 10 > 9)
 					shootings.erase(shootings.begin() + i);
 				i -= 1;
 			}
@@ -160,9 +160,11 @@ void display() {
 void keyboardDown(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
 	switch (key) {
+	case 'Q':
 	case 'q':
 		angle -= 3;
 		break;
+	case 'W':
 	case 'w':
 		angle += 3;
 		break;

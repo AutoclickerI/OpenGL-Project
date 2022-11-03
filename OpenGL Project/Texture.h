@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include <string>
 #include <iostream>
 #include <GL/glut.h>
@@ -13,11 +14,13 @@ public:
 	void setFilename(char const* filename);
 	void generateTexture();
 	void initTexture();
-	void drawSquareWithTexture(float ld, float ru);
+	void drawSquareWithTexture(float width, float height);
+	void drawCircleWithTexture(float radius);
 
 private:
 	GLuint textureID;
 	GLubyte* textureData;
 	int imageWidth, imageHeight;
 	char const* Filename;
+	const double pi = 3.141592653589793;
 };

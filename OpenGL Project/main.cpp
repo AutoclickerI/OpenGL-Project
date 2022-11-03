@@ -1,5 +1,4 @@
 #include <ctime>
-#include <cmath>
 #include <vector>
 #include <cstdlib>
 #include "Light.h"
@@ -25,7 +24,7 @@ vector<Sphere> shootings;
 vector<Sphere> cannon;
 vector<Material> materials;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background,canon;
+Texture background, canon;
 float angle;
 float speed = 10;
 
@@ -61,7 +60,7 @@ void initialize() {
 	Sphere sphere1(30, 20, 20);
 	sphere1.setCenter(0.0f, 50.0f, 0.0f);
 	sphere1.setVelocity(0.0f, 0.0f, 0.0f);
-	sphere1.setMTL(materials[rand()%7]);
+	sphere1.setMTL(materials[rand() % 7]);
 	cannon.push_back(sphere1);
 
 	Sphere sphere2(sphere1);
@@ -71,11 +70,11 @@ void initialize() {
 	cannon.push_back(sphere2);
 
 	/* Implement: initialize texture*/
-	background.setFilename("background_snu.png");
+	background.setFilename("textures/background/snu.png");
 	background.settextureID(0);
 	background.initTexture();
 
-	canon.setFilename("snu.png");
+	canon.setFilename("textures/cannon/snu.png");
 	canon.settextureID(0);
 	canon.initTexture();
 }
@@ -126,7 +125,7 @@ void display() {
 	/* Implement: Draw 2D (texture, ID and name)*/
 	glPushMatrix();
 	glRotatef(angle, 0.0f, 0.0f, -1.0f);
-	canon.drawSquareWithTexture(150,150);
+	canon.drawCircleWithTexture(75);
 	for (vector<Sphere>::size_type i = 0; i < cannon.size(); i++)
 		cannon[i].draw();
 	glPopMatrix();
@@ -166,7 +165,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 		cannon.push_back(Sphere(cannon[0]));
 		cannon[0].setCenter(0.0f, 50.0f, 0.0f);
 		cannon[1].setMTL(materials[R]);
-		cout << R<<endl;
+		cout << R << endl;
 		(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
 		(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
 		cout << "TEST";

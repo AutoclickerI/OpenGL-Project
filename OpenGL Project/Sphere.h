@@ -4,7 +4,7 @@
 class Sphere {
 public:
 	Sphere(float r, int sl, int st);
-	Sphere(const Sphere &shape);
+	Sphere(const Sphere& shape);
 	void setRadius(float r);
 	float getRadius() const;
 	void setSlice(int sl);

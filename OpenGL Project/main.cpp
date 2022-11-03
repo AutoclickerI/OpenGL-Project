@@ -27,12 +27,15 @@ vector<Sphere> cannon;
 vector<Material> materials;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
 Texture background, canon;
+int delete_probability;
 float angle;
-float speed = 10;
+float speed;
 
 void initialize() {
 	theme = SNU;
 	angle = 0;
+	speed = 10;
+	delete_probability = 15;
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
 	light.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);
@@ -93,13 +96,13 @@ void idle() {
 			shootings[i].move();
 			if (shootings[i].getCenter()[0] - shootings[i].getRadius() < -boundaryX || shootings[i].getCenter()[0] + shootings[i].getRadius() > boundaryX) {
 				shootings[i].getVelocity()[0] *= -1;
-				if (rand() % 10 > 9)
+				if (rand() % 100 < delete_probability)
 					shootings.erase(shootings.begin() + i);
 				i -= 1;
 			}
 			else if (shootings[i].getCenter()[1] - shootings[i].getRadius() < -boundaryY || shootings[i].getCenter()[1] + shootings[i].getRadius() > boundaryY) {
 				shootings[i].getVelocity()[1] *= -1;
-				if (rand() % 10 > 9)
+				if (rand() % 100 < delete_probability)
 					shootings.erase(shootings.begin() + i);
 				i -= 1;
 			}

@@ -9,6 +9,7 @@ public:
 	void setSpecular(float r, float g, float b, float a);
 	void setShininess(float sh);
 	friend class Sphere;
+	friend class Stage;
 private:
 	float emission[4];
 	float ambient[4];

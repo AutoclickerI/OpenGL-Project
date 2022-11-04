@@ -19,14 +19,13 @@ void display() {
 	glLoadIdentity();
 
 	/* Implement: Draw 2D (texture, ID and name)*/
-	glPushMatrix();
 	background.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
-	glPopMatrix();
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	light.draw();
 	glShadeModel(GL_SMOOTH);
 	/* Implement: Draw 2D (texture, ID and name)*/
+	stage.draw_stage1();
 	glPushMatrix();
 	glRotatef(angle, 0.0f, 0.0f, -1.0f);
 	switch (theme) {
@@ -41,6 +40,9 @@ void display() {
 		cannon[i].draw();
 	glPopMatrix();
 	/* Implement: Draw 3D (light and spheres)*/
+	for (vector<Sphere>::size_type i = 0; i < stage_Sphere.size(); i++)
+		stage_Sphere[i].draw();
+
 	for (vector<Sphere>::size_type i = 0; i < shootings.size(); i++)
 		shootings[i].draw();
 	glDisable(GL_LIGHTING);

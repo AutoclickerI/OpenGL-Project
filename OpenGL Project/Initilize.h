@@ -2,13 +2,14 @@
 #include "Declare.h"
 #include "Display.h"
 #include "Keyboard.h"
+#include "test.h"
 #include "Idle.h"
 
 void initialize() {
 	theme = SNU;
 	angle = 0;
 	speed = 10;
-	delete_probability = 15;
+	delete_probability = 0;
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
 	light.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);
@@ -21,13 +22,15 @@ void initialize() {
 	mtl1.setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
 	mtl1.setShininess(30.0f);
 
-	Material mtl2(mtl1), mtl3(mtl1), mtl4(mtl1), mtl5(mtl1), mtl6(mtl1), mtl7(mtl1);
+	Material mtl2(mtl1), mtl3(mtl1), mtl4(mtl1), mtl5(mtl1), mtl6(mtl1), mtl7(mtl1), stage_color(mtl1);
 	mtl2.setAmbient(0.1f, 0.8f, 0.8f, 1.0f);
 	mtl3.setAmbient(0.8f, 0.1f, 0.8f, 1.0f);
 	mtl4.setAmbient(0.8f, 0.8f, 0.8f, 1.0f);
 	mtl5.setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
 	mtl6.setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
 	mtl7.setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
+	stage_color.setAmbient(1, 1, 1, 1.0f);
+	stage.setMTL(stage_color);
 	materials.push_back(mtl1);
 	materials.push_back(mtl2);
 	materials.push_back(mtl3);
@@ -35,6 +38,16 @@ void initialize() {
 	materials.push_back(mtl5);
 	materials.push_back(mtl6);
 	materials.push_back(mtl7);
+
+	stage_Location = { -5,-4,-3,-2,-1,0,1 };
+	for (int i = 0; i < stage_Location.size(); i++) {
+		Sphere sphere_cache(30, 20, 20);
+		sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+		sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+		MTL_num = rand() % 7;
+		sphere_cache.setMTL(materials[MTL_num], MTL_num);
+		stage_Sphere.push_back(sphere_cache);
+	}
 
 	Sphere sphere1(30, 20, 20);
 	sphere1.setCenter(0.0f, 50.0f, 0.0f);
@@ -45,7 +58,6 @@ void initialize() {
 
 	Sphere sphere2(sphere1);
 	sphere2.setCenter(0.0f, 0.0f, 0.0f);
-	sphere2.setVelocity(0.0f, 0.0f, 0.0f);
 	MTL_num = rand() % 7;
 	sphere2.setMTL(materials[MTL_num], MTL_num);
 	cannon.push_back(sphere2);

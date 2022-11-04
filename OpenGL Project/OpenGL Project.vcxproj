@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,8 +154,10 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="Declare.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="test.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Initilize.h" />
+    <ClInclude Include="Stage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

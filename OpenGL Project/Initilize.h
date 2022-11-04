@@ -39,7 +39,8 @@ void initialize() {
 	materials.push_back(mtl6);
 	materials.push_back(mtl7);
 
-	stage_Location = { -5,-4,-3,-2,-1,0,1 };
+	for(int i=-10;i<2;i++)
+		stage_Location.push_back(i);
 	for (int i = 0; i < stage_Location.size(); i++) {
 		Sphere sphere_cache(30, 20, 20);
 		sphere_cache.setCenter(0.0f, 50.0f, 0.0f);

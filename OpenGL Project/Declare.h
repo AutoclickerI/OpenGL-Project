@@ -28,6 +28,8 @@ clock_t end_t;
 vector<Sphere> shootings;
 vector<Sphere> cannon;
 vector<Sphere> stage_Sphere;
+vector<pair<Sphere,int>> merge;
+vector<int> merge_prograss;
 vector<double> stage_Location;
 vector<Material> materials;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);

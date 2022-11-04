@@ -45,6 +45,10 @@ void display() {
 
 	for (vector<Sphere>::size_type i = 0; i < shootings.size(); i++)
 		shootings[i].draw();
+
+	for (vector<pair<Sphere, int>>::size_type i = 0; i < merge.size(); i++)
+		merge[i].first.draw();
+
 	glDisable(GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
 	glutSwapBuffers();

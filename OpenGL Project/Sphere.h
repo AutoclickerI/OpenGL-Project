@@ -13,13 +13,14 @@ public:
 	const float* getCenter() const;
 	void setVelocity(float x, float y, float z);
 	float* getVelocity() const;
-	void setMTL(const Material& m);
+	void setMTL(const Material& m, int n);
 	void move();
 	void draw() const;
 private:
 	float radius;
 	int slice;
 	int stack;
+	int num;
 	float center[3];
 	mutable float velocity[3];
 	Material mtl;

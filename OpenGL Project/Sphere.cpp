@@ -10,7 +10,7 @@ Sphere::Sphere(const Sphere& shape) {
 	setStack(shape.stack);
 	setCenter(shape.center[0], shape.center[1], shape.center[2]);
 	setVelocity(shape.velocity[0], shape.velocity[1], shape.velocity[2]);
-	setMTL(shape.mtl);
+	setMTL(shape.mtl, shape.num);
 }
 void Sphere::setRadius(float r) {
 	radius = r;
@@ -40,8 +40,9 @@ void Sphere::setVelocity(float x, float y, float z) {
 float* Sphere::getVelocity() const {
 	return velocity;
 }
-void Sphere::setMTL(const Material& m) {
+void Sphere::setMTL(const Material& m, int n) {
 	mtl = m;
+	num = n;
 }
 void Sphere::move() {
 	for (int i = 0; i < 3; i++)

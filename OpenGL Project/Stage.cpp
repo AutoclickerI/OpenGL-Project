@@ -31,8 +31,8 @@ void Stage::draw_stage1() {
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, stage_color.diffuse);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, stage_color.specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, stage_color.shininess);
-	for (int i = 0; i < 1000; i++) {
-		stage1(42 * i / 1000.0);
+	for (int i = 0; i < 300; i++) {
+		stage1(42 * i / 300.0);
 		glVertex3f(center[0], center[1], 0);
 	}
 	glEnd();

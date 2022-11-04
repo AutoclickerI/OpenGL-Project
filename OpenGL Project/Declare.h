@@ -16,7 +16,6 @@
 #define boundaryX (WINDOW_WIDTH)/2
 #define boundaryY (WINDOW_HEIGHT)/2
 
-const double epsilon = 0.000001;
 const double PI = 3.141592653589793;
 enum Theme { SNU, theme1, theme2 };
 

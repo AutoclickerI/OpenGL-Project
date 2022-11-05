@@ -2,6 +2,7 @@
 #include <ctime>
 #include <vector>
 #include <cstdlib>
+#include "Sound.h"
 #include "Light.h"
 #include "Stage.h"
 #include "Sphere.h"
@@ -32,6 +33,7 @@ vector<pair<Sphere,int>> merge;
 vector<int> merge_prograss;
 vector<double> stage_Location;
 vector<Material> materials;
+vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
 Texture background, canon;
 Stage stage;
@@ -39,3 +41,6 @@ int delete_probability;
 float angle;
 float speed;
 int MTL_num;
+
+Sound sound1("sound/BGM.wav", 1);
+Sound sound2("sound/shoot.wav", 0);

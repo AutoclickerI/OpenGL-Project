@@ -71,4 +71,10 @@ void initialize() {
 	canon.setFilename("textures/cannon/snu.png");
 	canon.settextureID(0);
 	canon.initTexture();
+
+	sound.push_back(sound1);
+	sound.push_back(sound2);
+	for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
+		sound[i].initsound();
+	}
 }

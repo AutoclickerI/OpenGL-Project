@@ -21,7 +21,7 @@ public:
 	void setpath(const char* p);
 	const char* getpath() const;
 	*/
-	void initsound();
+	void initsound(bool run);
 	void updatesound();
 	void playsound();
 	void releasesound();

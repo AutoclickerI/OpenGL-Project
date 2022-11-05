@@ -43,4 +43,4 @@ float speed;
 int MTL_num;
 
 Sound sound1("sound/BGM.wav", 1);
-Sound sound2("sound/shoot.wav", 0);
+Sound sound2("sound/shoot1.wav", 0);

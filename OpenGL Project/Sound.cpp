@@ -21,7 +21,7 @@ Sound::Sound(const char* p, bool l) {
 
 
 
-void Sound::initsound() {
+void Sound::initsound(bool run) {
     //FMOD_System_Create(&g_sound_system, 00020210);
     //FMOD_System_Init(g_sound_system, 32, FMOD_INIT_NORMAL, extradriverdata);
 
@@ -38,7 +38,8 @@ void Sound::initsound() {
         result = system->createSound(path, FMOD_LOOP_OFF, 0, &soundfile); // wav 파일로부터 sound 생성 , LOOP_NORMAL은 반복재생
 
     }
-    result = system->playSound(soundfile, 0, false, &channel); // 재생. 단 이때 딱 한번만 실행되므로 제대로 사운드가 끝까지 재생되지 않는다.  무한루프 안에서 시스템 객체를 계~~속 업데이트 시켜줘야 함.
+    if(run)
+        result = system->playSound(soundfile, 0, false, &channel); // 재생. 단 이때 딱 한번만 실행되므로 제대로 사운드가 끝까지 재생되지 않는다.  무한루프 안에서 시스템 객체를 계~~속 업데이트 시켜줘야 함.
 
 
 

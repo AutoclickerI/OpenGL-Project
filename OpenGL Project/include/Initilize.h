@@ -74,7 +74,8 @@ void initialize() {
 
 	sound.push_back(sound1);
 	sound.push_back(sound2);
-	for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
-		sound[i].initsound();
-	}
+	
+	sound[0].initsound(1);
+	sound[1].initsound(0);
+	
 }

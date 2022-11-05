@@ -107,7 +107,9 @@ void idle() {
 
 
 		//}
-
+		for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
+			sound[i].updatesound();
+		}
 
 		start_t = end_t;
 		glutPostRedisplay();

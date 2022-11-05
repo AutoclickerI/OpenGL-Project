@@ -158,7 +158,7 @@
     <ClInclude Include="include\Sound.h" />
     <ClInclude Include="include\Sphere.h" />
     <ClInclude Include="include\Stage.h" />
-    <ClInclude Include="include\Test.h" />
+    <ClInclude Include="include\Functions.h" />
     <ClInclude Include="include\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

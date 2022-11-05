@@ -68,7 +68,7 @@
     <ClInclude Include="include\Stage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Test.h">
+    <ClInclude Include="include\Functions.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\Texture.h">

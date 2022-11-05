@@ -39,7 +39,8 @@ Texture background, canon;
 Stage stage;
 int delete_probability;
 float angle;
-float speed;
+float moving_speed;// stage_sphere's moving speed
+float speed;// cannon's shoot speed
 int MTL_num;
 
 Sound sound1("sound/BGM.wav", 1);

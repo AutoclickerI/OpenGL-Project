@@ -38,40 +38,40 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Light.h">
+    <ClInclude Include="include\Declare.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
+    <ClInclude Include="include\Display.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
+    <ClInclude Include="include\Idle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
+    <ClInclude Include="include\Initilize.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Declare.h">
+    <ClInclude Include="include\Keyboard.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Initilize.h">
+    <ClInclude Include="include\Light.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Display.h">
+    <ClInclude Include="include\Material.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Keyboard.h">
+    <ClInclude Include="include\Sound.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Idle.h">
+    <ClInclude Include="include\Sphere.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Stage.h">
+    <ClInclude Include="include\Stage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="test.h">
+    <ClInclude Include="include\Test.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
+    <ClInclude Include="include\Texture.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

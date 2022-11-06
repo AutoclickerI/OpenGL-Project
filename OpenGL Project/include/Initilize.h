@@ -74,10 +74,10 @@ void initialize() {
 	canon.settextureID(0);
 	canon.initTexture();
 
-	sound.push_back(sound1);
-	sound.push_back(sound2);
+	sound.push_back(bgm);
+	sound.push_back(shoot);
 	
-	sound[0].initsound(1);
-	sound[1].initsound(0);
+	sound[BGM].initsound(1);
+	sound[SHOOT].initsound(0);
 	
 }

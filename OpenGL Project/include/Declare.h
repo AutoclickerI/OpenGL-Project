@@ -19,6 +19,7 @@
 
 const double PI = 3.141592653589793;
 enum Theme { SNU, theme1, theme2 };
+enum SOUND { BGM, SHOOT };
 
 using namespace std;
 
@@ -44,5 +45,5 @@ float speed;// cannon's shoot speed
 int MTL_num, f, ccw;
 int merge_step;
 
-Sound sound1("sound/BGM.wav", 1);
-Sound sound2("sound/shoot1.wav", 0);
+Sound bgm("sound/BGM.wav", 1);
+Sound shoot("sound/shoot1.wav", 0);

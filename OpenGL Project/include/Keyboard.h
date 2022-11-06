@@ -26,7 +26,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 
 	switch (key) {
 	case ' ':
-		sound[1].playsound();
+		sound[SHOOT].playsound();
 		shootings.push_back(cannon.front());
 		cannon.erase(cannon.begin());
 		cannon.push_back(Sphere(cannon[0]));

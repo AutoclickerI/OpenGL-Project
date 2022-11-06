@@ -29,7 +29,7 @@ clock_t end_t;
 vector<Sphere> shootings;
 vector<Sphere> cannon;
 vector<Sphere> stage_Sphere;
-vector<pair<Sphere,int>> merge;
+vector<pair<Sphere,pair<int,int>>> merge;
 vector<int> merge_prograss;
 vector<double> stage_Location;
 vector<Material> materials;
@@ -41,7 +41,7 @@ int delete_probability;
 float angle;
 float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
-int MTL_num;
+int MTL_num, f, ccw = 1;
 
 Sound sound1("sound/BGM.wav", 1);
 Sound sound2("sound/shoot1.wav", 0);

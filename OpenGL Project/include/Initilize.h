@@ -12,6 +12,7 @@ void initialize() {
 	speed = 10;
 	delete_probability = 0;
 	moving_speed = 0.02;
+	mode = MOVING;
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
 	light.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);

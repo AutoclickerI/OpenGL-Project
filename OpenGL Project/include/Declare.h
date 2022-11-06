@@ -18,8 +18,9 @@
 #define boundaryY (WINDOW_HEIGHT)/2
 
 const double PI = 3.141592653589793;
-enum Theme { SNU, theme1, theme2 };
+enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT };
+enum MODE { MAINMENU, MOVING, BOOM, PAUSE };
 
 using namespace std;
 
@@ -44,6 +45,8 @@ float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
 int MTL_num, f, ccw;
 int merge_step;
+int mode;
+int boom_pos, boom_pos_end, boom_mtl, boom_stack;
 
 Sound bgm("sound/BGM.wav", 1);
 Sound shoot("sound/shoot1.wav", 0);

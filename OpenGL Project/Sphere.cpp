@@ -43,6 +43,9 @@ void Sphere::setVelocity(float x, float y, float z) {
 float* Sphere::getVelocity() const {
 	return velocity;
 }
+int Sphere::getnum() const {
+	return num;
+}
 void Sphere::setMTL(const Material& m, int n) {
 	mtl = m;
 	num = n;

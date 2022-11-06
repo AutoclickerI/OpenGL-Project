@@ -15,6 +15,7 @@ public:
 	const float* getCenter() const;
 	void setVelocity(float x, float y, float z);
 	float* getVelocity() const;
+	int getnum() const;
 	void setMTL(const Material& m, int n);
 	void move();
 	void draw() const;

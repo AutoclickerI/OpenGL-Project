@@ -8,6 +8,7 @@
 void initialize() {
 	theme = SNU;
 	angle = 0;
+	merge_step = 10;
 	speed = 10;
 	delete_probability = 0;
 	moving_speed = 0.02;

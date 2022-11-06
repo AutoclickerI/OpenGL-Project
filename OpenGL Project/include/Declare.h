@@ -41,7 +41,8 @@ int delete_probability;
 float angle;
 float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
-int MTL_num, f, ccw = 1;
+int MTL_num, f, ccw;
+int merge_step;
 
 Sound sound1("sound/BGM.wav", 1);
 Sound sound2("sound/shoot1.wav", 0);

@@ -1,5 +1,6 @@
 #pragma once
 #include "Material.h"
+#include <cmath>
 #include <GL/glut.h>
 class Sphere {
 public:
@@ -7,6 +8,7 @@ public:
 	Sphere(const Sphere& shape);
 	void setRadius(float r);
 	float getRadius() const;
+	float getdistance(const Sphere& shape) const;
 	void setSlice(int sl);
 	void setStack(int st);
 	void setCenter(float x, float y, float z);

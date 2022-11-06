@@ -18,6 +18,9 @@ void Sphere::setRadius(float r) {
 float Sphere::getRadius() const {
 	return radius;
 }
+float Sphere::getdistance(const Sphere& shape) const {
+	return sqrt(((shape.center[0] - center[0]) * (shape.center[0] - center[0]) + (shape.center[1] - center[1]) * (shape.center[1] - center[1])));
+}
 void Sphere::setSlice(int sl) {
 	slice = sl;
 }

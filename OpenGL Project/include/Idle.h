@@ -208,61 +208,71 @@ void idle() {
 			}
 			break;
 		case BOOM:
-			if (boom_stack) {
-				if (boom_stack > merge_step * 4)
-					while (boom_pos < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
-						stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
-						stage_Location.erase(stage_Location.begin() + boom_pos);
-						boom_stack = 0;
-						boom_pos_end = boom_pos_end_end = boom_pos;
-					}
-				else {
-					if ((2*boom_stack-1) / merge_step % 2)
-						for (int k = boom_pos; k < boom_pos_end; k++) {
-							stage_Sphere[k].showSphere(false);
-						}
-					else
-						for (int k = boom_pos; k < boom_pos_end; k++) {
-							stage_Sphere[k].showSphere(true);
-						}
-					boom_stack += 1;
-				}
-			}
-			else {
 				boom_pos_end = boom_pos;
+				if (boom_pos < 0) {
+					mode = MOVING;
+					break;
+				}
 				boom_mtl = stage_Sphere[boom_pos].getnum();
 				while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum())
 					boom_pos -= 1;
 				while (boom_pos_end < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
 					boom_pos_end += 1;
-				if (boom_pos_end - boom_pos > 2) {
+ 				if (boom_pos_end - boom_pos > 2) {
 					boom_stack += 1;
 					boom_pos_end_end = boom_pos_end;
-					while (boom_pos_end_end + 1 < stage_Sphere.size())
-						if (stage_Location[boom_pos_end_end] + 0.99 > stage_Location[boom_pos_end_end + 1])
+					while (boom_pos_end_end < stage_Sphere.size())
+						if (stage_Location[boom_pos_end_end - 1] + 0.9801 > stage_Location[boom_pos_end_end])
 							boom_pos_end_end++;
 						else
 							break;
-					if (stage_Location[boom_pos] + 0.99 * (boom_pos_end_end - boom_pos) < stage_Location[boom_pos_end_end])
-						0;
-						//mode = DRAG;
+					mode = DRAG;
 				}
 				else
 					mode = MOVING;
-			}
 			break;
 		case DRAG:
-			if (stage_Location[boom_pos] + 0.99 * (boom_pos_end_end - boom_pos) < stage_Location[boom_pos_end_end]) {
-				stage_Location[boom_pos_end_end] -= 10 * moving_speed;
-				for (int l = boom_pos_end_end; l > boom_pos; l--) {
+			if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end -1 - boom_pos)+0.001 < stage_Location[boom_pos_end_end - 1]) {
+				stage_Location[boom_pos_end_end-1] -= 10 * moving_speed;
+				for (int l = boom_pos_end_end-1; l > boom_pos; l--) {
 					if (stage_Location[l] - stage_Location[l - 1] < 0.98)
 						stage_Location[l - 1] = stage_Location[l] - 0.98;
 					else
 						break;
 				}
+				for (vector<double>::size_type i = 1; i < stage_Location.size(); i++) {
+					stage.stage1(stage_Location[i]);
+					stage_Sphere[i].setCenter(stage.getCenter()[0], stage.getCenter()[1], 0);
+				}
+
 			}
-			else
-				cout << 1;
+			else {
+				if (boom_stack) {
+					if (boom_stack > merge_step * 4) {
+						while (boom_pos < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
+							stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
+							stage_Location.erase(stage_Location.begin() + boom_pos);
+						}
+						boom_stack = 0;
+						boom_pos -= 1;
+						mode = BOOM;
+					}
+					else {
+						if ((2 * boom_stack - 1) / merge_step % 2)
+							for (int k = boom_pos; k < boom_pos_end; k++) {
+								stage_Sphere[k].showSphere(false);
+							}
+						else
+							for (int k = boom_pos; k < boom_pos_end; k++) {
+								stage_Sphere[k].showSphere(true);
+							}
+						boom_stack += 1;
+					}
+				}
+				else
+					mode = BOOM;
+			}
+			break;
 		default:
 			break;
 		}

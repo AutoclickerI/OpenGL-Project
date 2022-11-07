@@ -75,7 +75,6 @@ void idle() {
 				i = 0;
 				while (i < shootings.size()) {
 					if (isCollisionDetected(shootings[i], stage_Sphere[j])) {
-						shootings[i].setVelocity(0, 0, 0);
 						pair<int, int> q(j, 0);
 						pair<Sphere, pair<int, int>> p(shootings[i], q);
 						merge.push_back(p);
@@ -104,7 +103,7 @@ void idle() {
 					xs2 = stage.getCenter()[0]; ys2 = stage.getCenter()[1];
 					stage.stage1(stage_Location[merge[i].second.first] - 0.5);
 					xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
-					
+
 					if (!merge[i].second.second) {
 						if (xs1 * ys2 + xs2 * merge[i].first.getCenter()[1] + merge[i].first.getCenter()[0] * ys1 - xs2 * ys1 - merge[i].first.getCenter()[0] * ys2 - xs1 * merge[i].first.getCenter()[1] > 0)
 							ccw *= -1;
@@ -119,7 +118,7 @@ void idle() {
 					xs2 = stage.getCenter()[0]; ys2 = stage.getCenter()[1];
 					stage.stage1(stage_Location[merge[i].second.first] + 0.5);
 					xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
-					
+
 					if (!merge[i].second.second) {
 						if (xs1 * ys2 + xs2 * merge[i].first.getCenter()[1] + merge[i].first.getCenter()[0] * ys1 - xs2 * ys1 - merge[i].first.getCenter()[0] * ys2 - xs1 * merge[i].first.getCenter()[1] > 0)
 							ccw *= -1;
@@ -160,8 +159,8 @@ void idle() {
 					if (f) {
 						stage_Location[merge[i].second.first] += 0.49 / merge_step;
 						if (merge[i].second.first - 1 >= 0)
-							if (stage_Location[merge[i].second.first - 1] > stage_Location[merge[i].second.first] -1- 0.98 / merge_step * merge_prograss[i])
-								stage_Location[merge[i].second.first - 1] = stage_Location[merge[i].second.first] -1 - 0.98 / merge_step * merge_prograss[i];
+							if (stage_Location[merge[i].second.first - 1] > stage_Location[merge[i].second.first] - 0.98 - 0.98 / merge_step * merge_prograss[i])
+								stage_Location[merge[i].second.first - 1] = stage_Location[merge[i].second.first] - 0.98 - 0.98 / merge_step * merge_prograss[i];
 						if (merge[i].second.first < 0)
 							stage_Location[0] += 0.49 / merge_step;
 						for (int j = merge[i].second.first - 1; j > 0; j--) {
@@ -170,20 +169,20 @@ void idle() {
 							else
 								break;
 						}
-						for (int j = merge[i].second.first +1; j < stage_Location.size(); j++) {
+						for (int j = merge[i].second.first + 1; j < stage_Location.size(); j++) {
 							if (j > 0 && stage_Location[j] - stage_Location[j - 1] < 1)
 								stage_Location[j] = stage_Location[j - 1] + 0.98;
 							else
 								break;
 						}
-						stage.stage1(stage_Location[merge[i].second.first] - 0.5 - 0.49 / merge_step * merge_prograss[i]);
+						stage.stage1(stage_Location[merge[i].second.first] - 0.49 - 0.49 / merge_step * merge_prograss[i]);
 					}
 					//forward pass
 					else {
 						stage_Location[merge[i].second.first] -= 0.49 / merge_step;
 						if (merge[i].second.first + 1 < stage_Location.size())
-							if (stage_Location[merge[i].second.first + 1] < stage_Location[merge[i].second.first] + 1 + 0.98 / merge_step * merge_prograss[i])
-								stage_Location[merge[i].second.first + 1] = stage_Location[merge[i].second.first] + 1 + 0.98 / merge_step * merge_prograss[i];
+							if (stage_Location[merge[i].second.first + 1] < stage_Location[merge[i].second.first] + 0.98 + 0.98 / merge_step * merge_prograss[i])
+								stage_Location[merge[i].second.first + 1] = stage_Location[merge[i].second.first] + 0.98 + 0.98 / merge_step * merge_prograss[i];
 						for (int j = merge[i].second.first; j > 0; j--) {
 							if (j > 0 && stage_Location[j] - stage_Location[j - 1] < 1)
 								stage_Location[j - 1] = stage_Location[j] - 0.98;
@@ -196,7 +195,7 @@ void idle() {
 							else
 								break;
 						}
-						stage.stage1(stage_Location[merge[i].second.first] + 0.5 + 0.49 / merge_step * merge_prograss[i]);
+						stage.stage1(stage_Location[merge[i].second.first] + 0.49 + 0.49 / merge_step * merge_prograss[i]);
 					}
 					xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
 					merge[i].first.setCenter(xm + ccw * 30 * (merge_step - merge_prograss[i]) / merge_step * (ys2 - ys1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), ym - ccw * 30 * (merge_step - merge_prograss[i]) / merge_step * (xs2 - xs1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), 0);
@@ -224,12 +223,6 @@ void idle() {
 		default:
 			break;
 		}
-
-		
-		
-
-
-
 
 		for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
 			sound[i].updatesound();

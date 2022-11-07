@@ -54,14 +54,19 @@ void Sphere::move() {
 	for (int i = 0; i < 3; i++)
 		center[i] += velocity[i];
 }
+void Sphere::showSphere(bool s) {
+	show = s;
+}
 void Sphere::draw() const {
-	glMaterialfv(GL_FRONT, GL_EMISSION, mtl.emission);
-	glMaterialfv(GL_FRONT, GL_AMBIENT, mtl.ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mtl.diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mtl.specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, mtl.shininess);
-	glPushMatrix();
-	glTranslatef(center[0], center[1], center[2]);
-	glutSolidSphere(radius, slice, stack);
-	glPopMatrix();
+	if (show) {
+		glMaterialfv(GL_FRONT, GL_EMISSION, mtl.emission);
+		glMaterialfv(GL_FRONT, GL_AMBIENT, mtl.ambient);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, mtl.diffuse);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, mtl.specular);
+		glMaterialfv(GL_FRONT, GL_SHININESS, mtl.shininess);
+		glPushMatrix();
+		glTranslatef(center[0], center[1], center[2]);
+		glutSolidSphere(radius, slice, stack);
+		glPopMatrix();
+	}
 }

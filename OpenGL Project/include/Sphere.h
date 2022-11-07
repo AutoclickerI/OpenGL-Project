@@ -14,6 +14,7 @@ public:
 	void setCenter(float x, float y, float z);
 	const float* getCenter() const;
 	void setVelocity(float x, float y, float z);
+	void showSphere(bool s);
 	float* getVelocity() const;
 	int getnum() const;
 	void setMTL(const Material& m, int n);
@@ -27,4 +28,5 @@ private:
 	float center[3];
 	mutable float velocity[3];
 	Material mtl;
+	bool show = true;
 };

@@ -10,7 +10,7 @@ void initialize() {
 	angle = 0;
 	merge_step = 10;
 	speed = 10;
-	delete_probability = 0;
+	delete_probability = 50;
 	moving_speed = 0.02;
 	mode = MOVING;
 	srand((unsigned int)time(NULL));

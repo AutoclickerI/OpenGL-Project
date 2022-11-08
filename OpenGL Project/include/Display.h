@@ -3,7 +3,7 @@
 
 void displayCharacters(void* font, string str, float x, float y) {
 	glRasterPos2f(x, y);
-	for (int i = 0; i < str.size(); i++)
+	for (int i = 0; i < (int)str.size(); i++)
 		glutBitmapCharacter(font, str[i]);
 }
 
@@ -65,7 +65,7 @@ void display() {
 		break;
 	}
 	/* Implement: Draw 2D (texture, ID and name)*/
-	
+
 	glutSwapBuffers();
 }
 

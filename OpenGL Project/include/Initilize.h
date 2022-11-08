@@ -47,7 +47,7 @@ void initialize() {
 
 	for (int i = -10; i < 2; i++)
 		stage_Location.push_back(i);
-	for (int i = 0; i < stage_Location.size(); i++) {
+	for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
 		Sphere sphere_cache(30, 20, 20);
 		sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
 		sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);

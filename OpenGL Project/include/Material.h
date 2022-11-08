@@ -11,9 +11,9 @@ public:
 	friend class Sphere;
 	friend class Stage;
 private:
-	float emission[4];
-	float ambient[4];
-	float diffuse[4];
-	float specular[4];
-	float shininess[1];
+	float emission[4] = { 0,0,0,0 };
+	float ambient[4] = { 0,0,0,0 };
+	float diffuse[4] = { 0,0,0,0 };
+	float specular[4] = { 0,0,0,0 };
+	float shininess[1] = { 0 };
 };

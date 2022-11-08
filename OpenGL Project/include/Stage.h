@@ -10,6 +10,6 @@ public:
 	const double* getCenter() const;
 private:
 	int screen_size = 1280;
-	double center[2];
+	double center[2] = { 0,0 };
 	Material stage_color;
 };

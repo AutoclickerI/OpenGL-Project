@@ -17,7 +17,7 @@ void idle() {
 					mode = CLEAR;
 					break;
 				}
-				if (stage_Location.back()>44) {
+				if (stage_Location.back() > 44) {
 					mode = GAMEOVER;
 					break;
 				}
@@ -83,9 +83,7 @@ void idle() {
 				i = 0;
 				while (i < shootings.size()) {
 					if (isCollisionDetected(shootings[i], stage_Sphere[j])) {
-						pair<int, int> q(j, 0);
-						pair<Sphere, pair<int, int>> p(shootings[i], q);
-						merge.push_back(p);
+						merge.push_back(pair<Sphere, pair<int, int>>(shootings[i], pair<int, int>(j, 0)));
 						merge_prograss.push_back(0);
 						shootings.erase(shootings.begin() + i);
 						i -= 1;
@@ -181,7 +179,7 @@ void idle() {
 							else
 								break;
 						}
-						for (int j = merge[0].second.first + 1; j < stage_Location.size(); j++) {
+						for (int j = merge[0].second.first + 1; j < (int)stage_Location.size(); j++) {
 							if (j > 0 && stage_Location[j] - stage_Location[j - 1] < 0.98)
 								stage_Location[j] = stage_Location[j - 1] + 0.98;
 							else
@@ -192,7 +190,7 @@ void idle() {
 					//forward pass
 					else {
 						stage_Location[merge[0].second.first] -= 0.49 / merge_step;
-						if (merge[0].second.first + 1 < stage_Location.size())
+						if (merge[0].second.first + 1 < (int)stage_Location.size())
 							if (stage_Location[merge[0].second.first + 1] < stage_Location[merge[0].second.first] + 0.98 + 0.98 / merge_step * merge_prograss[0])
 								stage_Location[merge[0].second.first + 1] = stage_Location[merge[0].second.first] + 0.98 + 0.98 / merge_step * merge_prograss[0];
 						for (int j = merge[0].second.first; j > 0; j--) {
@@ -201,7 +199,7 @@ void idle() {
 							else
 								break;
 						}
-						for (int j = merge[0].second.first + 2; j < stage_Location.size(); j++) {
+						for (int j = merge[0].second.first + 2; j < (int)stage_Location.size(); j++) {
 							if (j > 0 && stage_Location[j] - stage_Location[j - 1] < 0.98)
 								stage_Location[j] = stage_Location[j - 1] + 0.98;
 							else
@@ -220,12 +218,12 @@ void idle() {
 			boom_mtl = stage_Sphere[boom_pos].getnum();
 			while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum())
 				boom_pos -= 1;
-			while (boom_pos_end < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
+			while (boom_pos_end < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
 				boom_pos_end += 1;
 			if (boom_pos_end - boom_pos > 2) {
 				boom_stack += 1;
 				boom_pos_end_end = boom_pos_end;
-				while (boom_pos_end_end < stage_Sphere.size())
+				while (boom_pos_end_end < (int)stage_Sphere.size())
 					if (stage_Location[boom_pos_end_end - 1] + 0.9801 > stage_Location[boom_pos_end_end])
 						boom_pos_end_end++;
 					else
@@ -244,12 +242,12 @@ void idle() {
 			boom_mtl = stage_Sphere[boom_pos].getnum();
 			while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum())
 				boom_pos -= 1;
-			while (boom_pos_end < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
+			while (boom_pos_end < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
 				boom_pos_end += 1;
 			if (boom_pos_end - boom_pos > 2 && boom_pos_end_end < boom_pos_end - 1) {
 				boom_stack += 1;
 				boom_pos_end_end = boom_pos_end;
-				while (boom_pos_end_end < stage_Sphere.size())
+				while (boom_pos_end_end < (int)stage_Sphere.size())
 					if (stage_Location[boom_pos_end_end - 1] + 0.9801 > stage_Location[boom_pos_end_end])
 						boom_pos_end_end++;
 					else
@@ -261,9 +259,9 @@ void idle() {
 			break;
 		case DRAG:
 			if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end - 1 - boom_pos) + 0.001 < stage_Location[boom_pos_end_end - 1]) {
-				for (int step=0; step < 20; step++) {
+				for (int step = 0; step < 20; step++) {
 					if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end - 1 - boom_pos) + 0.001 < stage_Location[boom_pos_end_end - 1])
-						stage_Location[boom_pos_end_end - 1] -= moving_speed/2.0f;
+						stage_Location[boom_pos_end_end - 1] -= moving_speed / 2.0f;
 					for (int l = boom_pos_end_end - 1; l > boom_pos; l--) {
 						if (stage_Location[l] - stage_Location[l - 1] < 0.98)
 							stage_Location[l - 1] = stage_Location[l] - 0.98;
@@ -279,7 +277,7 @@ void idle() {
 			else {
 				if (boom_stack) {
 					if (boom_stack > merge_step * 4) {
-						while (boom_pos < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
+						while (boom_pos < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
 							stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
 							stage_Location.erase(stage_Location.begin() + boom_pos);
 						}

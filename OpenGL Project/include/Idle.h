@@ -13,6 +13,10 @@ void idle() {
 		case MOVING:
 			/* Start pushing first block */
 			if (!merge.size()) {
+				if (!stage_Location.size()) {
+					mode = CLEAR;
+					break;
+				}
 				if (stage_Location[0] < 0)
 					factor = 5;
 				else
@@ -253,12 +257,15 @@ void idle() {
 			break;
 		case DRAG:
 			if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end - 1 - boom_pos) + 0.001 < stage_Location[boom_pos_end_end - 1]) {
-				stage_Location[boom_pos_end_end - 1] -= 10 * moving_speed;
-				for (int l = boom_pos_end_end - 1; l > boom_pos; l--) {
-					if (stage_Location[l] - stage_Location[l - 1] < 0.98)
-						stage_Location[l - 1] = stage_Location[l] - 0.98;
-					else
-						break;
+				for (int step=0; step < 20; step++) {
+					if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end - 1 - boom_pos) + 0.001 < stage_Location[boom_pos_end_end - 1])
+						stage_Location[boom_pos_end_end - 1] -= moving_speed/2.0f;
+					for (int l = boom_pos_end_end - 1; l > boom_pos; l--) {
+						if (stage_Location[l] - stage_Location[l - 1] < 0.98)
+							stage_Location[l - 1] = stage_Location[l] - 0.98;
+						else
+							break;
+					}
 				}
 				for (vector<double>::size_type i = 1; i < stage_Location.size(); i++) {
 					stage.stage1(stage_Location[i]);
@@ -291,6 +298,8 @@ void idle() {
 				else
 					mode = BOOM;
 			}
+			break;
+		case CLEAR:
 			break;
 		default:
 			break;

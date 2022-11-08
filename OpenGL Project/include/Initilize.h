@@ -11,8 +11,8 @@ void initialize() {
 	merge_step = 10;
 	speed = 10;
 	Frame = 60;
-	color_num = 3;
-	delete_probability = 0;
+	color_num = 2;
+	delete_probability = 100;
 	moving_speed = 0.02;
 	mode = MOVING;
 
@@ -77,6 +77,10 @@ void initialize() {
 	canon.setFilename("textures/cannon/snu.png");
 	canon.settextureID(0);
 	canon.initTexture();
+
+	clear.setFilename("textures/state/clear.png");
+	clear.settextureID(0);
+	clear.initTexture();
 
 	sound.push_back(bgm);
 	sound.push_back(shoot);

@@ -26,15 +26,18 @@ void keyboardUp(unsigned char key, int x, int y) {
 
 	switch (key) {
 	case ' ':
-		sound[SHOOT].playsound();
-		shootings.push_back(cannon.front());
-		cannon.erase(cannon.begin());
-		cannon.push_back(Sphere(cannon[0]));
-		cannon[0].setCenter(0.0f, 50.0f, 0.0f);
-		MTL_num = rand() % 7;
-		cannon[1].setMTL(materials[MTL_num], MTL_num);
-		(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
-		(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
+		if (mode == MOVING) {
+			sound[SHOOT].playsound();
+			shootings.push_back(cannon.front());
+			cannon.erase(cannon.begin());
+			cannon.push_back(Sphere(cannon[0]));
+			cannon[0].setCenter(0.0f, 50.0f, 0.0f);
+			MTL_num = rand() % 7;
+			cannon[1].setMTL(materials[MTL_num], MTL_num);
+			(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
+			(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
+		}
+		break;
 	default:
 		break;
 	}

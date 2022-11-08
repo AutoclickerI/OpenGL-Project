@@ -82,6 +82,10 @@ void initialize() {
 	clear.settextureID(0);
 	clear.initTexture();
 
+	gameover.setFilename("textures/state/gameover.png");
+	gameover.settextureID(0);
+	gameover.initTexture();
+
 	sound.push_back(bgm);
 	sound.push_back(shoot);
 

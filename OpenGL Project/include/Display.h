@@ -58,6 +58,9 @@ void display() {
 	case CLEAR:
 		clear.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 		break;
+	case GAMEOVER:
+		gameover.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		break;
 	default:
 		break;
 	}

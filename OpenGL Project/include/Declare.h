@@ -20,7 +20,7 @@
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT };
-enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, PAUSE, CLEAR };
+enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, PAUSE, CLEAR, GAMEOVER };
 
 using namespace std;
 
@@ -38,7 +38,7 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, canon, clear;
+Texture background, canon, clear, gameover;
 Stage stage;
 int delete_probability;
 float angle;

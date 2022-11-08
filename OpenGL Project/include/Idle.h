@@ -208,33 +208,53 @@ void idle() {
 			}
 			break;
 		case BOOM:
-				boom_pos_end = boom_pos;
-				if (boom_pos < 0) {
-					mode = MOVING;
-					break;
-				}
-				boom_mtl = stage_Sphere[boom_pos].getnum();
-				while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum())
-					boom_pos -= 1;
-				while (boom_pos_end < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
-					boom_pos_end += 1;
- 				if (boom_pos_end - boom_pos > 2) {
-					boom_stack += 1;
-					boom_pos_end_end = boom_pos_end;
-					while (boom_pos_end_end < stage_Sphere.size())
-						if (stage_Location[boom_pos_end_end - 1] + 0.9801 > stage_Location[boom_pos_end_end])
-							boom_pos_end_end++;
-						else
-							break;
-					mode = DRAG;
-				}
-				else
-					mode = MOVING;
+			boom_pos_end = boom_pos;
+			boom_mtl = stage_Sphere[boom_pos].getnum();
+			while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum())
+				boom_pos -= 1;
+			while (boom_pos_end < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
+				boom_pos_end += 1;
+			if (boom_pos_end - boom_pos > 2) {
+				boom_stack += 1;
+				boom_pos_end_end = boom_pos_end;
+				while (boom_pos_end_end < stage_Sphere.size())
+					if (stage_Location[boom_pos_end_end - 1] + 0.9801 > stage_Location[boom_pos_end_end])
+						boom_pos_end_end++;
+					else
+						break;
+				mode = DRAG;
+			}
+			else
+				mode = MOVING;
+			break;
+		case CHAIN_BOOM:
+			boom_pos_end = boom_pos_end_end = boom_pos;
+			if (boom_pos < 0) {
+				mode = MOVING;
+				break;
+			}
+			boom_mtl = stage_Sphere[boom_pos].getnum();
+			while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum())
+				boom_pos -= 1;
+			while (boom_pos_end < stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
+				boom_pos_end += 1;
+			if (boom_pos_end - boom_pos > 2 && boom_pos_end_end < boom_pos_end - 1) {
+				boom_stack += 1;
+				boom_pos_end_end = boom_pos_end;
+				while (boom_pos_end_end < stage_Sphere.size())
+					if (stage_Location[boom_pos_end_end - 1] + 0.9801 > stage_Location[boom_pos_end_end])
+						boom_pos_end_end++;
+					else
+						break;
+				mode = DRAG;
+			}
+			else
+				mode = MOVING;
 			break;
 		case DRAG:
-			if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end -1 - boom_pos)+0.001 < stage_Location[boom_pos_end_end - 1]) {
-				stage_Location[boom_pos_end_end-1] -= 10 * moving_speed;
-				for (int l = boom_pos_end_end-1; l > boom_pos; l--) {
+			if (stage_Location[boom_pos] + 0.98 * (boom_pos_end_end - 1 - boom_pos) + 0.001 < stage_Location[boom_pos_end_end - 1]) {
+				stage_Location[boom_pos_end_end - 1] -= 10 * moving_speed;
+				for (int l = boom_pos_end_end - 1; l > boom_pos; l--) {
 					if (stage_Location[l] - stage_Location[l - 1] < 0.98)
 						stage_Location[l - 1] = stage_Location[l] - 0.98;
 					else
@@ -244,7 +264,6 @@ void idle() {
 					stage.stage1(stage_Location[i]);
 					stage_Sphere[i].setCenter(stage.getCenter()[0], stage.getCenter()[1], 0);
 				}
-
 			}
 			else {
 				if (boom_stack) {
@@ -255,7 +274,7 @@ void idle() {
 						}
 						boom_stack = 0;
 						boom_pos -= 1;
-						mode = BOOM;
+						mode = CHAIN_BOOM;
 					}
 					else {
 						if ((2 * boom_stack - 1) / merge_step % 2)

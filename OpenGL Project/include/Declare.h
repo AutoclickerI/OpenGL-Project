@@ -20,10 +20,11 @@
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT };
-enum MODE { MAINMENU, MOVING, BOOM, DRAG, PAUSE };
+enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, PAUSE };
 
 using namespace std;
 
+MODE mode;
 Theme theme;
 clock_t start_t = clock();
 clock_t end_t;
@@ -31,7 +32,7 @@ clock_t end_t;
 vector<Sphere> shootings;
 vector<Sphere> cannon;
 vector<Sphere> stage_Sphere;
-vector<pair<Sphere,pair<int,int>>> merge;
+vector<pair<Sphere, pair<int, int>>> merge;
 vector<int> merge_prograss;
 vector<double> stage_Location;
 vector<Material> materials;
@@ -45,7 +46,6 @@ float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
 int MTL_num, f, ccw;
 int merge_step;
-int mode;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;
 
 Sound bgm("sound/BGM.wav", 1);

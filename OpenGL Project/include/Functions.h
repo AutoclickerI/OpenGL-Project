@@ -3,7 +3,7 @@
 
 bool isCollisionDetected(const Sphere& sph1, const Sphere& sph2) {
 	/* Implement: collision detection */
-	return sph1.getRadius() + sph2.getRadius()> sph1.getdistance(sph2);
+	return sph1.getRadius() + sph2.getRadius() > sph1.getdistance(sph2);
 }
 
 void handleCollision(Sphere& sph1, Sphere& sph2) {

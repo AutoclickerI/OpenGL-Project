@@ -11,10 +11,10 @@ void Stage::stage1(double pos) {
 	}
 	else if (pos < 25.3) {
 		center[0] = 350;
-		center[1] = 250-60*(pos-17);
+		center[1] = 250 - 60 * (pos - 17);
 	}
 	else {
-		center[0] = 350-60*(pos-25.3);
+		center[0] = 350 - 60 * (pos - 25.3);
 		center[1] = -248;
 	}
 };

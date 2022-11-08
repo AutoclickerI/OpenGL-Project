@@ -42,7 +42,7 @@ void initialize() {
 	materials.push_back(mtl6);
 	materials.push_back(mtl7);
 
-	for(int i=-10;i<2;i++)
+	for (int i = -10; i < 2; i++)
 		stage_Location.push_back(i);
 	for (int i = 0; i < stage_Location.size(); i++) {
 		Sphere sphere_cache(30, 20, 20);
@@ -77,8 +77,8 @@ void initialize() {
 
 	sound.push_back(bgm);
 	sound.push_back(shoot);
-	
+
 	sound[BGM].initsound(1);
 	sound[SHOOT].initsound(0);
-	
+
 }

@@ -10,9 +10,12 @@ void initialize() {
 	angle = 0;
 	merge_step = 10;
 	speed = 10;
-	delete_probability = 100;
+	Frame = 60;
+	color_num = 3;
+	delete_probability = 0;
 	moving_speed = 0.02;
 	mode = MOVING;
+
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
 	light.setDiffuse(0.7f, 0.7f, 0.7f, 1.0f);
@@ -48,7 +51,7 @@ void initialize() {
 		Sphere sphere_cache(30, 20, 20);
 		sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
 		sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
-		MTL_num = rand() % 7;
+		MTL_num = rand() % color_num;
 		sphere_cache.setMTL(materials[MTL_num], MTL_num);
 		stage_Sphere.push_back(sphere_cache);
 	}
@@ -56,13 +59,13 @@ void initialize() {
 	Sphere sphere1(30, 20, 20);
 	sphere1.setCenter(0.0f, 50.0f, 0.0f);
 	sphere1.setVelocity(0.0f, 0.0f, 0.0f);
-	MTL_num = rand() % 7;
+	MTL_num = rand() % color_num;
 	sphere1.setMTL(materials[MTL_num], MTL_num);
 	cannon.push_back(sphere1);
 
 	Sphere sphere2(sphere1);
 	sphere2.setCenter(0.0f, 0.0f, 0.0f);
-	MTL_num = rand() % 7;
+	MTL_num = rand() % color_num;
 	sphere2.setMTL(materials[MTL_num], MTL_num);
 	cannon.push_back(sphere2);
 

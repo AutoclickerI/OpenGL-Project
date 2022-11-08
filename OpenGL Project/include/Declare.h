@@ -47,6 +47,9 @@ float speed;// cannon's shoot speed
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;
+int Frame;
+int color_num;
+
 
 Sound bgm("sound/BGM.wav", 1);
 Sound shoot("sound/shoot1.wav", 0);

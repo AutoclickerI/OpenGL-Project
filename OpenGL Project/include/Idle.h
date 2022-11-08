@@ -6,7 +6,7 @@ void idle() {
 	/* Implement: update spheres and handle collision at boundary*/
 
 	end_t = clock();
-	if (end_t - start_t > 1000 / 60) {
+	if (end_t - start_t > 1000 / Frame) {
 		int factor = 1;
 		vector<Sphere>::size_type i;
 		switch (mode) {

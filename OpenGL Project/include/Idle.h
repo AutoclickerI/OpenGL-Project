@@ -27,14 +27,14 @@ void idle() {
 					factor = 1;
 				stage_Location[0] += factor * moving_speed;
 			}
-			stage.stage1(stage_Location[0]);
+			stage.setPos(stage_Location[0], STAGE_NOW);
 			stage_Sphere[0].setCenter(stage.getCenter()[0], stage.getCenter()[1], 0);
 
 			/* Pushing other blocks using previous block */
 			for (vector<double>::size_type i = 1; i < stage_Location.size(); i++) {
 				if (stage_Location[i] - stage_Location[i - 1] < 0.98)
 					stage_Location[i] = stage_Location[i - 1] + 0.98;
-				stage.stage1(stage_Location[i]);
+				stage.setPos(stage_Location[i], STAGE_NOW);
 				stage_Sphere[i].setCenter(stage.getCenter()[0], stage.getCenter()[1], 0);
 			}
 
@@ -96,17 +96,17 @@ void idle() {
 			if (merge.size()) {
 				if (!merge[0].second.second) {
 					ccw = 1;
-					stage.stage1(stage_Location[merge[0].second.first] + 1);
+					stage.setPos(stage_Location[merge[0].second.first] + 1, STAGE_NOW);
 					f = pow(merge[0].first.getCenter()[0] - stage.getCenter()[0], 2.0) + pow(merge[0].first.getCenter()[1] - stage.getCenter()[1], 2.0) > 7057.44;
 				}
 				float xs1, xs2, xm, ys1, ys2, ym;
 				//backward pass
 				if (f) {
-					stage.stage1(stage_Location[merge[0].second.first] - 1);
+					stage.setPos(stage_Location[merge[0].second.first] - 1, STAGE_NOW);
 					xs1 = stage.getCenter()[0]; ys1 = stage.getCenter()[1];
-					stage.stage1(stage_Location[merge[0].second.first]);
+					stage.setPos(stage_Location[merge[0].second.first], STAGE_NOW);
 					xs2 = stage.getCenter()[0]; ys2 = stage.getCenter()[1];
-					stage.stage1(stage_Location[merge[0].second.first] - 0.49);
+					stage.setPos(stage_Location[merge[0].second.first] - 0.49, STAGE_NOW);
 					xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
 
 					if (!merge[0].second.second) {
@@ -117,11 +117,11 @@ void idle() {
 				//forward pass
 				else
 				{
-					stage.stage1(stage_Location[merge[0].second.first]);
+					stage.setPos(stage_Location[merge[0].second.first], STAGE_NOW);
 					xs1 = stage.getCenter()[0]; ys1 = stage.getCenter()[1];
-					stage.stage1(stage_Location[merge[0].second.first] + 1);
+					stage.setPos(stage_Location[merge[0].second.first] + 1, STAGE_NOW);
 					xs2 = stage.getCenter()[0]; ys2 = stage.getCenter()[1];
-					stage.stage1(stage_Location[merge[0].second.first] + 0.49);
+					stage.setPos(stage_Location[merge[0].second.first] + 0.49, STAGE_NOW);
 					xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
 
 					if (!merge[0].second.second) {
@@ -185,7 +185,7 @@ void idle() {
 							else
 								break;
 						}
-						stage.stage1(stage_Location[merge[0].second.first] - 0.49 - 0.49 / merge_step * merge_prograss[0]);
+						stage.setPos(stage_Location[merge[0].second.first] - 0.49 - 0.49 / merge_step * merge_prograss[0], STAGE_NOW);
 					}
 					//forward pass
 					else {
@@ -205,7 +205,7 @@ void idle() {
 							else
 								break;
 						}
-						stage.stage1(stage_Location[merge[0].second.first] + 0.49 + 0.49 / merge_step * merge_prograss[0]);
+						stage.setPos(stage_Location[merge[0].second.first] + 0.49 + 0.49 / merge_step * merge_prograss[0], STAGE_NOW);
 					}
 					xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
 					merge[0].first.setCenter(xm + ccw * 30 * (merge_step - merge_prograss[0]) / merge_step * (ys2 - ys1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), ym - ccw * 30 * (merge_step - merge_prograss[0]) / merge_step * (xs2 - xs1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), 0);
@@ -270,7 +270,7 @@ void idle() {
 					}
 				}
 				for (vector<double>::size_type i = 1; i < stage_Location.size(); i++) {
-					stage.stage1(stage_Location[i]);
+					stage.setPos(stage_Location[i], STAGE_NOW);
 					stage_Sphere[i].setCenter(stage.getCenter()[0], stage.getCenter()[1], 0);
 				}
 			}

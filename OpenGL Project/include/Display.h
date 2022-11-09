@@ -28,7 +28,7 @@ void display() {
 		light.draw();
 		glShadeModel(GL_SMOOTH);
 		/* Implement: Draw 2D (texture, ID and name)*/
-		stage.draw_stage1();
+		stage.draw_stage(STAGE_NOW);
 		glPushMatrix();
 		glRotatef(angle, 0.0f, 0.0f, -1.0f);
 		switch (theme) {

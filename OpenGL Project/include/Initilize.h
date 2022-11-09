@@ -12,6 +12,7 @@ void initialize() {
 	speed = 10;
 	Frame = 60;
 	color_num = 2;
+	STAGE_NOW = STAGE2;
 	delete_probability = 100;
 	moving_speed = 0.02;
 	mode = MOVING;

@@ -4,8 +4,10 @@
 
 class Stage {
 public:
+	void setPos(double pos, int stage);
 	void stage1(double pos);
-	void draw_stage1();
+	void stage2(double pos);
+	void draw_stage(int stage);
 	void setMTL(const Material& m);
 	const double* getCenter() const;
 private:

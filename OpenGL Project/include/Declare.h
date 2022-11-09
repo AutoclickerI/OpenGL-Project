@@ -21,6 +21,7 @@ const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT };
 enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, PAUSE, CLEAR, GAMEOVER };
+enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 
 using namespace std;
 
@@ -44,6 +45,7 @@ int delete_probability;
 float angle;
 float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
+STAGE STAGE_NOW;
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;

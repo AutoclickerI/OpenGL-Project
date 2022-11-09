@@ -19,11 +19,45 @@ void Stage::stage1(double pos) {
 	}
 };
 
+void Stage::stage2(double pos) {
+	if (pos < 17) {
+		center[0] = -60 * pos + 670;
+		center[1] = -250;
+	}
+	else if (pos < 25.3) {
+		center[0] = -350;
+		center[1] = -250 + 60 * (pos - 17);
+	}
+	else {
+		center[0] = -350 + 60 * (pos - 25.3);
+		center[1] = 248;
+	}
+};
+
+void Stage::setPos(double pos, int stage) {
+	switch (stage) {
+	case 0:
+		stage1(pos);
+		break;
+	case 1:
+		stage2(pos);
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	default:
+		break;
+	}
+}
+
 const double* Stage::getCenter() const {
 	return center;
 }
 
-void Stage::draw_stage1() {
+void Stage::draw_stage(int stage) {
 	glLineWidth(7.0f);
 	glBegin(GL_LINE_STRIP);
 	glMaterialfv(GL_FRONT, GL_EMISSION, stage_color.emission);
@@ -32,7 +66,7 @@ void Stage::draw_stage1() {
 	glMaterialfv(GL_FRONT, GL_SPECULAR, stage_color.specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, stage_color.shininess);
 	for (int i = 0; i < 300; i++) {
-		stage1(42 * i / 300.0);
+		setPos(42 * i / 300.0, stage);
 		glVertex3f(center[0], center[1], 0);
 	}
 	glEnd();

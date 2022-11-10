@@ -185,7 +185,7 @@ void idle() {
 							boom_pos -= 1;
 						while (boom_pos_end + 1 < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end + 1].getnum() && stage_Location[boom_pos_end + 1] - stage_Location[boom_pos_end] < 0.9801)
 							boom_pos_end += 1;
-						if (boom_pos == 0 && boom_mtl == stage_Sphere[boom_pos].getnum() && boom_pos_end - boom_pos > 1) {
+						if ((boom_pos == 0|| stage_Location[boom_pos] - stage_Location[boom_pos-1] > 1.46) && boom_mtl == stage_Sphere[boom_pos].getnum() && boom_pos_end - boom_pos > 1) {
 							mode = BOOM;
 							boom_stack = 0;
 							merge.erase(merge.begin());

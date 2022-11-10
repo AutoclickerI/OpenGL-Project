@@ -11,7 +11,7 @@ void initialize() {
 	merge_step = 10;
 	speed = 10;
 	Frame = 60;
-	color_num = 4;
+	color_num = 2;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;
@@ -48,6 +48,7 @@ void initialize() {
 
 	for (int i = -10; i < 2; i++)
 		stage_Location.push_back(i);
+
 	for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
 		Sphere sphere_cache(30, 20, 20);
 		sphere_cache.setCenter(0.0f, 50.0f, 0.0f);

@@ -11,7 +11,7 @@ void initialize() {
 	merge_step = 10;
 	speed = 10;
 	Frame = 60;
-	color_num = 2;
+	color_num = 4;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;

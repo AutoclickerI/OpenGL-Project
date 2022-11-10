@@ -18,9 +18,9 @@ public:
 	void drawCircleWithTexture(float radius, int slices);
 
 private:
-	GLuint textureID;
-	GLubyte* textureData;
-	int imageWidth, imageHeight;
-	char const* Filename;
+	GLuint textureID = 0;
+	GLubyte* textureData = 0;
+	int imageWidth = 1280, imageHeight = 720;
+	char const* Filename = "snu.png";
 	const double pi = 3.141592653589793;
 };

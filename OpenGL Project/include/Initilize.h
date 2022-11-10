@@ -89,8 +89,13 @@ void initialize() {
 
 	sound.push_back(bgm);
 	sound.push_back(shoot);
+	sound.push_back(boomsound);
+	sound.push_back(stageclear);
+	sound.push_back(stagefailed);
 
+	for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
+		sound[i].initsound(0);
+	}
 	sound[BGM].initsound(1);
-	sound[SHOOT].initsound(0);
 
 }

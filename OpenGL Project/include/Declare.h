@@ -19,7 +19,7 @@
 
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
-enum SOUND { BGM, SHOOT };
+enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED }; 
 enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, PAUSE, CLEAR, GAMEOVER };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 
@@ -49,9 +49,13 @@ STAGE STAGE_NOW;
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;
+int pause = 0;
 int Frame;
 int color_num;
 
 
 Sound bgm("sound/BGM.wav", 1);
 Sound shoot("sound/shoot1.wav", 0);
+Sound boomsound("sound/boomsound.wav", 0);
+Sound stageclear("sound/stageclear.wav", 0);
+Sound stagefailed("sound/stagefailed.wav", 0);

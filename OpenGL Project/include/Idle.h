@@ -236,6 +236,7 @@ void idle() {
 			while (boom_pos_end < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
 				boom_pos_end += 1;
 			if (boom_pos_end - boom_pos > 2) {
+				sound[BOOMSOUND].playsound();
 				boom_stack += 1;
 				boom_pos_end_end = boom_pos_end;
 				while (boom_pos_end_end < (int)stage_Sphere.size())
@@ -260,6 +261,7 @@ void idle() {
 			while (boom_pos_end < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
 				boom_pos_end += 1;
 			if (boom_pos_end - boom_pos > 2 && boom_pos_end_end < boom_pos_end - 1) {
+				sound[BOOMSOUND].playsound();
 				boom_stack += 1;
 				boom_pos_end_end = boom_pos_end;
 				while (boom_pos_end_end < (int)stage_Sphere.size())

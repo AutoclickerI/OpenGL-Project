@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "fmod.h"
 #include "fmod.hpp"
 #include <iostream>
 #include <conio.h>
@@ -24,6 +25,8 @@ public:
 	void initsound(bool run);
 	void updatesound();
 	void playsound();
+	void pausesound();
+	void resumesound();
 	void releasesound();
 
 	const char* path;

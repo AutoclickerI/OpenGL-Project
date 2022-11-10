@@ -101,6 +101,19 @@ void keyboardUp(unsigned char key, int x, int y) {
 			(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
 		}
 		break;
+	case 'p':
+	case 'P':
+		if (pause == 0) {
+			sound[BGM].pausesound();
+			pause = 1;
+			
+		}
+		 else if (pause == 1) {
+			sound[BGM].resumesound();
+			pause = 0;
+			
+		}
+		 break;
 	default:
 		break;
 	}

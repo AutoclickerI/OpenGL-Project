@@ -63,6 +63,16 @@ void Sound::playsound() {
     result = system->playSound(soundfile, 0, false, &channel);
 }
 
+void Sound::pausesound() {
+    result = channel->setPaused(true);
+
+}
+void Sound::resumesound() {
+    result = channel->setPaused(false);
+
+}
+
+
 void Sound::releasesound() {
     system->release();
 }

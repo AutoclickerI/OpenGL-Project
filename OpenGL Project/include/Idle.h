@@ -17,9 +17,24 @@ void idle() {
 					mode = CLEAR;
 					break;
 				}
-				if (stage_Location.back() > 44) {
-					mode = GAMEOVER;
-					break;
+				switch (STAGE_NOW) {
+				case STAGE1:
+				case STAGE2:
+					if (stage_Location.back() > 44) {
+						mode = GAMEOVER;
+						break;
+					}
+				case STAGE3:
+					if (stage_Location.back() > 67) {
+						mode = GAMEOVER;
+						break;
+					}
+				case STAGE4:
+					if (stage_Location.back() > 75) {
+						mode = GAMEOVER;
+						break;
+					}
+
 				}
 				if (stage_Location[0] < 0)
 					factor = 5;

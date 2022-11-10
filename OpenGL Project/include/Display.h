@@ -89,4 +89,4 @@ void Reshape(int NewWidth, int NewHeight) {
 	glLoadIdentity();
 	glOrtho(-1.0 * WidthFactor, 1.0 * WidthFactor, -1.0 * HeightFactor, 1.0 * HeightFactor, -1.0, 1.0);
 
-}
+}	

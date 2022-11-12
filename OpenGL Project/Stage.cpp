@@ -37,8 +37,8 @@ void Stage::stage2(double pos) {
 void Stage::stage3(double pos) {
 	int stageR = 400;
 	if (pos < -3) {
-		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
-		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+		center[0] = 0;
+		center[1] = 400 - pos;
 	}
 	else if (pos <= 12) {
 		center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);

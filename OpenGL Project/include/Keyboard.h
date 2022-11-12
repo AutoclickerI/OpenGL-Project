@@ -8,6 +8,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 	case BOOM:
 	case CHAIN_BOOM:
 	case DRAG:
+	case CHAIN_DRAG:
 		switch (key) {
 		case 'Q':
 		case 'q':
@@ -89,7 +90,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 
 	switch (key) {
 	case ' ':
-		if (mode == MOVING) {
+ 		if (mode == MOVING) {
 			sound[SHOOT].playsound();
 			shootings.push_back(cannon.front());
 			cannon.erase(cannon.begin());

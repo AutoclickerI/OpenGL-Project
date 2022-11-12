@@ -25,12 +25,12 @@ void idle() {
 						break;
 					}
 				case STAGE3:
-					if (stage_Location.back() > 67) {
+					if (stage_Location.back() > 55) {
 						mode = GAMEOVER;
 						break;
 					}
 				case STAGE4:
-					if (stage_Location.back() > 75) {
+					if (stage_Location.back() > 71) {
 						mode = GAMEOVER;
 						break;
 					}
@@ -320,6 +320,7 @@ void idle() {
 		case BOOM:
 			if (boom_pos_end - boom_pos > 1) {
 				boom_stack += 1;
+				sound[BOOMSOUND].playsound();
 				mode = DRAG;
 			}
 			else
@@ -337,7 +338,6 @@ void idle() {
 			while (boom_pos_end < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end].getnum())
 				boom_pos_end += 1;
 			if (boom_pos_end - boom_pos > 2 && boom_pos_end_end < boom_pos_end - 1) {
-				sound[BOOMSOUND].playsound();
 				boom_stack += 1;
 				boom_pos_end_end = boom_pos_end;
 				while (boom_pos_end_end < (int)stage_Sphere.size())
@@ -397,6 +397,8 @@ void idle() {
 			}
 			else {
 				if (boom_stack) {
+					if (boom_stack==1)
+						sound[BOOMSOUND].playsound();
 					if (boom_stack > merge_step * 4) {
 						while (boom_pos < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
 							stage_Sphere.erase(stage_Sphere.begin() + boom_pos);

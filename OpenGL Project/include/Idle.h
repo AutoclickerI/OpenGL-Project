@@ -150,21 +150,6 @@ void idle() {
 					merge[0].second.second = 1;
 					merge_prograss[0] += 1;
 
-					/*
-					//backward pass
-					if (f) {
-						stage_Location.insert(stage_Location.begin() + merge[0].second.first, stage_Location[merge[0].second.first] - 1.47 + 0.49 / merge_step * merge_prograss[0]);
-						stage_Sphere.insert(stage_Sphere.begin() + merge[0].second.first, merge[0].first);
-						boom_pos = merge[0].second.first;
-					}
-					//forward pass
-					else {
-						stage_Location.insert(stage_Location.begin() + 1 + merge[0].second.first, stage_Location[merge[0].second.first] + 0.49 + 0.49 / merge_step * merge_prograss[0]);
-						stage_Sphere.insert(stage_Sphere.begin() + 1 + merge[0].second.first, merge[0].first);
-						boom_pos = 1 + merge[0].second.first;
-					}
-					*/
-
 					//Fixing erasing effect
 
 					boom_mtl = merge[0].first.getnum();
@@ -181,13 +166,11 @@ void idle() {
 							boom_pos -= 1;
 						while (boom_pos_end + 1 < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end + 1].getnum() && stage_Location[boom_pos_end + 1] - stage_Location[boom_pos_end] < 0.9801)
 							boom_pos_end += 1;
-						cout << "ERROR?\n";
 						if (boom_pos_end - boom_pos > 1) {
 							mode = BOOM;
 							boom_stack = 0;
 							merge.erase(merge.begin());
 							merge_prograss.erase(merge_prograss.begin());
-							cout << "case1";
 							break;
 						}
 					}
@@ -200,12 +183,11 @@ void idle() {
 							boom_pos -= 1;
 						while (boom_pos_end + 1 < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end + 1].getnum() && stage_Location[boom_pos_end + 1] - stage_Location[boom_pos_end] < 0.9801)
 							boom_pos_end += 1;
-						if ((boom_pos == 0|| stage_Location[boom_pos] - stage_Location[boom_pos-1] > 1.46) && boom_mtl == stage_Sphere[boom_pos].getnum() && boom_pos_end - boom_pos > 1) {
+						if ((boom_pos == 0 || stage_Location[boom_pos] - stage_Location[boom_pos - 1] > 1.46) && boom_mtl == stage_Sphere[boom_pos].getnum() && boom_pos_end - boom_pos > 1) {
 							mode = BOOM;
 							boom_stack = 0;
 							merge.erase(merge.begin());
 							merge_prograss.erase(merge_prograss.begin());
-							cout << "case 2";
 							break;
 						}
 
@@ -213,29 +195,11 @@ void idle() {
 							mode = BOOM;
 							boom_stack = 0;
 							merge.erase(merge.begin());
-							merge_prograss.erase(merge_prograss.begin());
-							cout << "case 3";
-							boom_pos++;
+							merge_prograss.erase(merge_prograss.begin()); \
+								boom_pos++;
 							break;
 						}
 					}
-
-					/*
-					//backward pass
-					if (f) {
-						while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum() && stage_Location[boom_pos] - stage_Location[boom_pos - 1] < 0.9801)
-							boom_pos -= 1;
-						while (boom_pos_end + 1 < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end + 1].getnum() && stage_Location[boom_pos_end + 1] - stage_Location[boom_pos_end] < 0.9801)
-							boom_pos_end += 1;
-					}
-					//forward pass
-					else {
-						while (0 < boom_pos && boom_mtl == stage_Sphere[boom_pos - 1].getnum() && stage_Location[boom_pos] - stage_Location[boom_pos - 1] < 0.9801)
-							boom_pos -= 1;
-						while (boom_pos_end + 1 < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos_end + 1].getnum() && stage_Location[boom_pos_end + 1] - stage_Location[boom_pos_end] < 0.9801)
-							boom_pos_end += 1;
-					}
-					*/
 					stage_Location.erase(stage_Location.begin() + 1 - f + merge[0].second.first);
 					stage_Sphere.erase(stage_Sphere.begin() + 1 - f + merge[0].second.first);
 
@@ -246,17 +210,9 @@ void idle() {
 				else if (merge_prograss[0] == merge_step + 1) {
 					merge_prograss[0] -= 1;
 					//backward pass
-					if (f) {
-						stage_Location.insert(stage_Location.begin() + merge[0].second.first, stage_Location[merge[0].second.first] - 1.47 + 0.49 / merge_step * merge_prograss[0]);
-						stage_Sphere.insert(stage_Sphere.begin() + merge[0].second.first, merge[0].first);
-						boom_pos = merge[0].second.first;
-					}
-					//forward pass
-					else {
-						stage_Location.insert(stage_Location.begin() + 1 + merge[0].second.first, stage_Location[merge[0].second.first] + 0.49 + 0.49 / merge_step * merge_prograss[0]);
-						stage_Sphere.insert(stage_Sphere.begin() + 1 + merge[0].second.first, merge[0].first);
-						boom_pos = 1 + merge[0].second.first;
-					}
+					stage_Location.insert(stage_Location.begin() + 1 + merge[0].second.first - f, stage_Location[merge[0].second.first] + 0.49 - 1.96 * f + 0.49 / merge_step * merge_prograss[0]);
+					stage_Sphere.insert(stage_Sphere.begin() + 1 + merge[0].second.first - f, merge[0].first);
+					boom_pos = 1 + merge[0].second.first - f;
 					merge.erase(merge.begin());
 					merge_prograss.erase(merge_prograss.begin());
 					while (merge.size()) {
@@ -397,7 +353,7 @@ void idle() {
 			}
 			else {
 				if (boom_stack) {
-					if (boom_stack==1)
+					if (boom_stack == 1)
 						sound[BOOMSOUND].playsound();
 					if (boom_stack > merge_step * 4) {
 						while (boom_pos < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
@@ -425,9 +381,7 @@ void idle() {
 			}
 			break;
 		case CLEAR:
-			break;
 		case GAMEOVER:
-			break;
 		default:
 			break;
 		}

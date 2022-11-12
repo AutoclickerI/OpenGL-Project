@@ -35,17 +35,20 @@ void Stage::stage2(double pos) {
 };
 
 void Stage::stage3(double pos) {
-	int stageR;
-		if (pos <= 12) {
-			stageR = 400;
-			center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);
-			center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);
-		}
-		else if (pos < 16) {
-			stageR = 70;
-			center[0] = stageR * sin((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) + 256.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
-			center[1] = stageR * cos((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) - 209;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
-		}
+	int stageR = 400;
+	if (pos < -3) {
+		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+	}
+	else if (pos <= 12) {
+		center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);
+		center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);
+	}
+	else if (pos < 16) {
+		stageR = 70;
+		center[0] = stageR * sin((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) + 256.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[1] = stageR * cos((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) - 209;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+	}
 	else if (pos < 35) {
 			stageR = 260;
 			center[0] = stageR * sin(((-pos * 360) / (2 * PI * stageR)) - 30 * PI / 180);
@@ -69,8 +72,14 @@ void Stage::stage3(double pos) {
 
 void Stage::stage4(double pos) {
 	double stageR = 400.0-4*pos;
-	center[0] = (stageR) * sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
-	center[1] = (stageR) * cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+	if (pos > -3) {
+		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+	}
+	else {
+		center[0] = 0;
+		center[1] = 400-pos;
+	}
 
 }
 

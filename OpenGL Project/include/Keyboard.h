@@ -36,6 +36,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 			angle = 0;
 			delete_probability -= 10;
 			shootings.clear();
+			merge.clear();
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
 			for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
@@ -64,6 +65,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 			stage_Location.clear();
 			stage_Sphere.clear();
 			shootings.clear();
+			merge.clear();
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
 			for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {

@@ -22,6 +22,7 @@ enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED };
 enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
+enum DIFFICULTY {EASY, MEDIUM, HARD};
 
 using namespace std;
 
@@ -46,6 +47,7 @@ float angle;
 float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
 STAGE STAGE_NOW;
+DIFFICULTY difficulty;
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;

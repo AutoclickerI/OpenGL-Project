@@ -41,28 +41,28 @@ void Stage::stage3(double pos) {
 		center[1] = 400 - pos;
 	}
 	else if (pos <= 12) {
-		center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);
-		center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180);
+		center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180.0);
+		center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) + 30 * PI / 180.0);
 	}
 	else if (pos < 16) {
 		stageR = 70;
-		center[0] = stageR * sin((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) + 256.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
-		center[1] = stageR * cos((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) - 209;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[0] = stageR * sin((pos * 360) / (2 * PI * stageR) - 80 * PI / 180.0) + 256.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[1] = stageR * cos((pos * 360) / (2 * PI * stageR) - 80 * PI / 180.0) - 209;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
 	}
 	else if (pos < 35) {
 			stageR = 260;
-			center[0] = stageR * sin(((-pos * 360) / (2 * PI * stageR)) - 30 * PI / 180);
-			center[1] = stageR * cos(((-pos * 360) / (2 * PI * stageR)) - 30 * PI / 180);
+			center[0] = stageR * sin(((-pos * 360) / (2 * PI * stageR)) - 30 * PI / 180.0);
+			center[1] = stageR * cos(((-pos * 360) / (2 * PI * stageR)) - 30 * PI / 180.0);
 		}
 	else if (pos < 39) {
 			stageR = 70;
-			center[0] = stageR * sin(((-pos * 360) / (2 * PI * stageR)) + 90 * PI / 180) - 177;
-			center[1] = stageR * cos(((-pos * 360) / (2 * PI * stageR)) + 90 * PI / 180) - 73;
+			center[0] = stageR * sin(((-pos * 360) / (2 * PI * stageR)) + 90 * PI / 180.0) - 177;
+			center[1] = stageR * cos(((-pos * 360) / (2 * PI * stageR)) + 90 * PI / 180.0) - 73;
 		}
 	else if (pos < 49.7) {
 			stageR = 120;
-			center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) - 96 * PI / 180);
-			center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) - 96 * PI / 180);
+			center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) - 96 * PI / 180.0);
+			center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) - 96 * PI / 180.0);
 		}
 	else {
 			center[0] = 0;
@@ -73,8 +73,8 @@ void Stage::stage3(double pos) {
 void Stage::stage4(double pos) {
 	double stageR = 400.0-4*pos;
 	if (pos > -3) {
-		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
-		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180.0);
+		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180.0);
 	}
 	else {
 		center[0] = 0;
@@ -118,7 +118,7 @@ void Stage::draw_stage(int stage) {
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, stage_color.diffuse);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, stage_color.specular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, stage_color.shininess);
-	for (int i = 0; i < 500; i++) {
+	for (int i = -2; i < 500; i++) {
 		setPos(42 * i / 300.0, stage);
 		glVertex3f(center[0], center[1], 0);
 	}

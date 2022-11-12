@@ -91,12 +91,21 @@ void keyboardUp(unsigned char key, int x, int y) {
 	switch (key) {
 	case ' ':
  		if (mode == MOVING) {
+			bool No_add = true;
 			sound[SHOOT].playsound();
 			shootings.push_back(cannon.front());
 			cannon.erase(cannon.begin());
 			cannon.push_back(Sphere(cannon[0]));
 			cannon[0].setCenter(0.0f, 50.0f, 0.0f);
-			MTL_num = rand() % color_num;
+			while (No_add) {
+				MTL_num = rand() % color_num;
+				if (difficulty == HARD) {
+					No_add = false;
+				}
+				for (vector<Sphere>::size_type l = 0; l < stage_Sphere.size(); l++)
+					if (MTL_num == stage_Sphere[l].getnum())
+						No_add = false;
+			}
 			cannon[1].setMTL(materials[MTL_num], MTL_num);
 			(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
 			(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);

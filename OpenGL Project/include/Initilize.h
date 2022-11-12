@@ -11,10 +11,11 @@ void initialize() {
 	merge_step = 10;
 	speed = 10;
 	Frame = 60;
-	color_num = 2;
+	color_num = 7;
 	STAGE_NOW = STAGE3;
 	delete_probability = 100;
 	moving_speed = 0.02;
+	difficulty = EASY;
 	mode = MOVING;
 
 	srand((unsigned int)time(NULL));

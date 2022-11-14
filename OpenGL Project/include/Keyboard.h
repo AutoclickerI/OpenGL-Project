@@ -3,7 +3,7 @@
 
 void SpecialInput(int key, int x, int y) {
 	switch (mode) {
-	case MAINMENU:
+	case MAINMENU1:
 		switch (key)
 		{
 		case GLUT_KEY_UP:
@@ -32,7 +32,7 @@ void SpecialInput(int key, int x, int y) {
 		switch (key)
 		{
 		case GLUT_KEY_LEFT:
-			mode = MAINMENU;
+			mode = MAINMENU1;
 			break;
 		default:
 			break;
@@ -74,11 +74,12 @@ void keyboardDown(unsigned char key, int x, int y) {
 		case 'C':
 		case 'c':
 			mode = MOVING;
-			moving_speed *= 2;
+			moving_speed *= 1.5;
 			angle = 0;
 			delete_probability -= 10;
 			shootings.clear();
 			merge.clear();
+			level++;
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
 			for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
@@ -101,7 +102,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 		case 'R':
 		case 'r':
 			mode = MOVING;
-			angle = 0;
+			angle = level = 0;
 			moving_speed = 0.02;
 			delete_probability = 100;
 			stage_Location.clear();
@@ -121,8 +122,8 @@ void keyboardDown(unsigned char key, int x, int y) {
 			break;
 		case 'Q':
 		case 'q':
-			mode = MAINMENU;
-			angle = 0;
+			mode = MAINMENU1;
+			angle = level = 0;
 			moving_speed = 0.02;
 			delete_probability = 100;
 			stage_Location.clear();
@@ -156,7 +157,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 	switch (key) {
 	case ' ':
 		switch (mode) {
-		case MAINMENU:
+		case MAINMENU1:
 			switch (arrow_pos) {
 			case -80:
 				mode = MOVING;

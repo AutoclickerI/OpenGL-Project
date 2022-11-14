@@ -31,7 +31,7 @@ void idle() {
 						break;
 					}
 				case STAGE3:
-					if (stage_Location.back() > 55) {
+					if (stage_Location.back() > 71) {
 						mode = GAMEOVER;
 						STAGE_NOW = STAGE1;
 						sound[STAGEFAILED].playsound();
@@ -40,7 +40,7 @@ void idle() {
 						break;
 					}
 				case STAGE4:
-					if (stage_Location.back() > 71) {
+					if (stage_Location.back() > 55) {
 						mode = GAMEOVER;
 						STAGE_NOW = STAGE1;
 						sound[STAGEFAILED].playsound();
@@ -326,7 +326,7 @@ void idle() {
 					stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
 					stage_Location.erase(stage_Location.begin() + boom_pos);
 					boom_pos_end--;
-					score += 550 * difficulty * difficulty - 150 * difficulty + 100;
+					score += (550 * difficulty * difficulty - 150 * difficulty + 100)*(level+1);
 				}
 				boom_stack = 0;
 				boom_pos -= 1;

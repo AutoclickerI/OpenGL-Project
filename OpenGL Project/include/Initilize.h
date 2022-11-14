@@ -6,7 +6,7 @@
 #include "Idle.h"
 
 void initialize() {
-	score = 0;
+	score = level = 0;
 	theme = SNU;
 	angle = 0;
 	merge_step = 10;
@@ -18,7 +18,7 @@ void initialize() {
 	delete_probability = 100;
 	moving_speed = 0.02;
 	difficulty = MEDIUM;
-	mode = MAINMENU;
+	mode = MAINMENU1;
 
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
@@ -76,7 +76,7 @@ void initialize() {
 	cannon.push_back(sphere2);
 
 	/* Implement: initialize texture*/
-	background.setFilename("textures/background/snu.png");
+	background.setFilename("textures/background/mosquito.png");
 	background.settextureID(0);
 	background.initTexture();
 

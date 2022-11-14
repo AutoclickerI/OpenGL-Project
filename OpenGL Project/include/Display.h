@@ -18,7 +18,7 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	switch (mode) {
-	case MAINMENU:
+	case MAINMENU1:
 		if(start_t%1200>600)
 			mainmenu1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 		else

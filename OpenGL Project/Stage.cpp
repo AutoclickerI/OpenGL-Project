@@ -17,7 +17,21 @@ void Stage::stage1(double pos) {
 		center[0] = 350 - 60 * (pos - 25.3);
 		center[1] = -248;
 	}
-};
+}
+
+
+void Stage::stage3(double pos) {
+	double stageR = 400 - 4 * pos;
+	if (pos > -3) {
+		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
+	}
+	else {
+		center[0] = 0;
+		center[1] = 400 - pos;
+	}
+
+}
 
 void Stage::stage2(double pos) {
 	if (pos < 17) {
@@ -34,7 +48,7 @@ void Stage::stage2(double pos) {
 	}
 };
 
-void Stage::stage3(double pos) {
+void Stage::stage4(double pos) {
 	int stageR = 400;
 	if (pos < -3) {
 		center[0] = 0;
@@ -69,21 +83,6 @@ void Stage::stage3(double pos) {
 			center[1] = -120 - 60 * (pos - 49.7);
 		}
 }
-
-void Stage::stage4(double pos) {
-	double stageR = 400-4*pos;
-	if (pos > -3) {
-		center[0] = (stageR)*sin(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
-		center[1] = (stageR)*cos(((pos * 360) / (2 * PI * 400.0 - 15 * pos)) + 30 * PI / 180);
-	}
-	else {
-		center[0] = 0;
-		center[1] = 400-pos;
-	}
-
-}
-
-
 
 void Stage::setPos(double pos, int stage) {
 	switch (stage) {

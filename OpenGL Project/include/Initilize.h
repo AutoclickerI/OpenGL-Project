@@ -13,7 +13,7 @@ void initialize() {
 	speed = 10;
 	arrow_pos = -80;
 	Frame = 60;
-	color_num = 7;
+	color_num = 1;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;
@@ -76,7 +76,7 @@ void initialize() {
 	cannon.push_back(sphere2);
 
 	/* Implement: initialize texture*/
-	background.setFilename("textures/background/mosquito.png");
+	background.setFilename("textures/background/snu.png");
 	background.settextureID(0);
 	background.initTexture();
 

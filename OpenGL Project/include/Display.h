@@ -50,11 +50,7 @@ void display() {
 			glLineWidth(5.0f);
 			glEnable(GL_LINE_STIPPLE);
 			glLineStipple(6, 0xAAAA);
-			glMaterialfv(GL_FRONT, GL_EMISSION, cannon[0].getMTL().emission);
 			glMaterialfv(GL_FRONT, GL_AMBIENT, cannon[0].getMTL().ambient);
-			glMaterialfv(GL_FRONT, GL_DIFFUSE, cannon[0].getMTL().diffuse);
-			glMaterialfv(GL_FRONT, GL_SPECULAR, cannon[0].getMTL().specular);
-			glMaterialfv(GL_FRONT, GL_SHININESS, cannon[0].getMTL().shininess);
 			glBegin(GL_LINES);
 			glVertex3f(0, 0, 0);
 			glVertex3f(0, 700, 0);

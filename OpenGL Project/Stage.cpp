@@ -113,11 +113,7 @@ const double* Stage::getCenter() const {
 void Stage::draw_stage(int stage) {
 	glLineWidth(7.0f);
 	glBegin(GL_LINE_STRIP);
-	glMaterialfv(GL_FRONT, GL_EMISSION, stage_color.emission);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, stage_color.ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, stage_color.diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, stage_color.specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, stage_color.shininess);
 	for (int i = -2; i < 500; i++) {
 		setPos(42 * i / 300.0, stage);
 		glVertex3f(center[0], center[1], 0);

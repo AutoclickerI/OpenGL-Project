@@ -10,13 +10,14 @@ void initialize() {
 	angle = 0;
 	merge_step = 10;
 	speed = 10;
+	arrow_pos = -80;
 	Frame = 60;
 	color_num = 7;
 	STAGE_NOW = STAGE3;
 	delete_probability = 100;
 	moving_speed = 0.02;
 	difficulty = EASY;
-	mode = MOVING;
+	mode = MAINMENU;
 
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
@@ -88,6 +89,23 @@ void initialize() {
 	gameover.setFilename("textures/state/gameover.png");
 	gameover.settextureID(0);
 	gameover.initTexture();
+
+	mainmenu1.setFilename("textures/state/mainmenu1.png");
+	mainmenu1.settextureID(0);
+	mainmenu1.initTexture();
+
+	mainmenu2.setFilename("textures/state/mainmenu2.png");
+	mainmenu2.settextureID(0);
+	mainmenu2.initTexture();
+
+	arrow.setFilename("textures/background/snu.png");//Need fix
+	arrow.settextureID(0);
+	arrow.initTexture();
+
+	developers.setFilename("textures/state/developers.png");
+	developers.settextureID(0);
+	developers.initTexture();
+
 
 	sound.push_back(bgm);
 	sound.push_back(shoot);

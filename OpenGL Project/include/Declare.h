@@ -20,7 +20,7 @@
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED };
-enum MODE { MAINMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER };
+enum MODE { MAINMENU, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 enum DIFFICULTY {EASY, MEDIUM, HARD};
 
@@ -40,7 +40,7 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, canon, clear, gameover;
+Texture background, canon, clear, gameover ,mainmenu1, mainmenu2, arrow, developers;
 Stage stage;
 int delete_probability;
 float angle;
@@ -51,6 +51,7 @@ DIFFICULTY difficulty;
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;
+int arrow_pos;
 int pause = 0;
 int Frame;
 int color_num;

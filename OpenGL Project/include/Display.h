@@ -18,6 +18,19 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	switch (mode) {
+	case MAINMENU:
+		if(start_t%1200>600)
+			mainmenu1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		else
+			mainmenu2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		glPushMatrix();
+		glTranslatef(-220,arrow_pos,0);
+		arrow.drawCircleWithTexture(30, 3);
+		glPopMatrix();
+		break;
+	case DEVELOPERS:
+		developers.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		break;
 	case MOVING:
 	case BOOM:
 	case CHAIN_BOOM:

@@ -14,6 +14,7 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(keyboardDown);
 	glutKeyboardUpFunc(keyboardUp);
+	glutSpecialFunc(SpecialInput);
 	glutIdleFunc(idle);
 
 	// enter GLUT event processing cycle

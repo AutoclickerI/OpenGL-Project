@@ -1,6 +1,46 @@
 #pragma once
 #include "Declare.h"
 
+void SpecialInput(int key, int x, int y) {
+	switch (mode) {
+	case MAINMENU:
+		switch (key)
+		{
+		case GLUT_KEY_UP:
+			//do something here
+			if (arrow_pos < -80)
+				arrow_pos += 80;
+			break;
+		case GLUT_KEY_DOWN:
+			//do something here
+			if (arrow_pos > -320)
+				arrow_pos -= 80;
+			break;
+		case GLUT_KEY_LEFT:
+			//do something here
+			break;
+		case GLUT_KEY_RIGHT:
+			//do something here
+			break;
+		default:
+			break;
+		}
+		break;
+	case DEVELOPERS:
+		switch (key)
+		{
+		case GLUT_KEY_LEFT:
+			mode = MAINMENU;
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
 void keyboardDown(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
 	switch (mode) {
@@ -89,11 +129,29 @@ void keyboardDown(unsigned char key, int x, int y) {
 
 void keyboardUp(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
-
+	bool No_add = true;
 	switch (key) {
 	case ' ':
- 		if (mode == MOVING) {
-			bool No_add = true;
+		switch (mode) {
+		case MAINMENU:
+			switch (arrow_pos) {
+			case -80:
+				mode = MOVING;
+				break;
+			case -160:
+				mode = HIGHSCORE;
+				break;
+			case -240:
+				mode = SETTING;
+				break;
+			case -320:
+				mode = DEVELOPERS;
+				break;
+			default:
+				break;
+			}
+			break;
+		case MOVING:
 			sound[SHOOT].playsound();
 			shootings.push_back(cannon.front());
 			cannon.erase(cannon.begin());
@@ -111,6 +169,9 @@ void keyboardUp(unsigned char key, int x, int y) {
 			cannon[1].setMTL(materials[MTL_num], MTL_num);
 			(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
 			(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
+			break;
+		default:
+			break;
 		}
 		break;
 	case 'p':
@@ -118,14 +179,14 @@ void keyboardUp(unsigned char key, int x, int y) {
 		if (pause == 0) {
 			sound[BGM].pausesound();
 			pause = 1;
-			
+
 		}
-		 else if (pause == 1) {
+		else if (pause == 1) {
 			sound[BGM].resumesound();
 			pause = 0;
-			
+
 		}
-		 break;
+		break;
 	default:
 		break;
 	}

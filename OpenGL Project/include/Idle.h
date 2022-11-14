@@ -15,6 +15,7 @@ void idle() {
 			if (!merge.size()) {
 				if (!stage_Location.size()) {
 					mode = CLEAR;
+					sound[STAGECLEAR].playsound();
 					break;
 				}
 				switch (STAGE_NOW) {
@@ -22,16 +23,19 @@ void idle() {
 				case STAGE2:
 					if (stage_Location.back() > 44) {
 						mode = GAMEOVER;
+						sound[STAGEFAILED].playsound();
 						break;
 					}
 				case STAGE3:
 					if (stage_Location.back() > 55) {
 						mode = GAMEOVER;
+						sound[STAGEFAILED].playsound();
 						break;
 					}
 				case STAGE4:
 					if (stage_Location.back() > 71) {
 						mode = GAMEOVER;
+						sound[STAGEFAILED].playsound();
 						break;
 					}
 

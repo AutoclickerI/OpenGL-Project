@@ -18,6 +18,7 @@ public:
 	float* getVelocity() const;
 	int getnum() const;
 	void setMTL(const Material& m, int n);
+	Material getMTL();
 	void move();
 	void draw() const;
 private:

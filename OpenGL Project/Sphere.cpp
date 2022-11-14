@@ -57,6 +57,9 @@ void Sphere::move() {
 void Sphere::showSphere(bool s) {
 	show = s;
 }
+Material Sphere::getMTL() {
+	return mtl;
+}
 void Sphere::draw() const {
 	if (show) {
 		glMaterialfv(GL_FRONT, GL_EMISSION, mtl.emission);

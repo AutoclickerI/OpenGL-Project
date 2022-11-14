@@ -35,39 +35,6 @@ void display() {
 	case BOOM:
 	case CHAIN_BOOM:
 	case DRAG:
-		background.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
-		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_LIGHTING);
-		light.draw();
-		glShadeModel(GL_SMOOTH);
-		/* Implement: Draw 2D (texture, ID and name)*/
-		stage.draw_stage(STAGE_NOW);
-		glPushMatrix();
-		glRotatef(angle, 0.0f, 0.0f, -1.0f);
-		switch (theme) {
-		case SNU:
-			canon.drawCircleWithTexture(75, 30);
-			break;
-		default:
-			canon.drawSquareWithTexture(150, 150);
-			break;
-		}
-		for (vector<Sphere>::size_type i = 0; i < cannon.size(); i++)
-			cannon[i].draw();
-		glPopMatrix();
-		/* Implement: Draw 3D (light and spheres)*/
-		for (vector<Sphere>::size_type i = 0; i < stage_Sphere.size(); i++)
-			stage_Sphere[i].draw();
-
-		for (vector<Sphere>::size_type i = 0; i < shootings.size(); i++)
-			shootings[i].draw();
-
-		for (vector<pair<Sphere, int>>::size_type i = 0; i < merge.size(); i++)
-			merge[i].first.draw();
-
-		glDisable(GL_LIGHTING);
-		glDisable(GL_DEPTH_TEST);
-		break;
 	case CHAIN_DRAG:
 		background.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 		glEnable(GL_DEPTH_TEST);
@@ -78,6 +45,22 @@ void display() {
 		stage.draw_stage(STAGE_NOW);
 		glPushMatrix();
 		glRotatef(angle, 0.0f, 0.0f, -1.0f);
+		//show track if we are not in hard mode
+		if (difficulty != HARD) {
+			glLineWidth(5.0f);
+			glEnable(GL_LINE_STIPPLE);
+			glLineStipple(6, 0xAAAA);
+			glMaterialfv(GL_FRONT, GL_EMISSION, cannon[0].getMTL().emission);
+			glMaterialfv(GL_FRONT, GL_AMBIENT, cannon[0].getMTL().ambient);
+			glMaterialfv(GL_FRONT, GL_DIFFUSE, cannon[0].getMTL().diffuse);
+			glMaterialfv(GL_FRONT, GL_SPECULAR, cannon[0].getMTL().specular);
+			glMaterialfv(GL_FRONT, GL_SHININESS, cannon[0].getMTL().shininess);
+			glBegin(GL_LINES);
+			glVertex3f(0, 0, 0);
+			glVertex3f(0, 700, 0);
+			glEnd();
+			glDisable(GL_LINE_STIPPLE);
+		}
 		switch (theme) {
 		case SNU:
 			canon.drawCircleWithTexture(75, 30);

@@ -10,6 +10,7 @@ public:
 	void setShininess(float sh);
 	friend class Sphere;
 	friend class Stage;
+	friend void display();
 private:
 	float emission[4] = { 0,0,0,0 };
 	float ambient[4] = { 0,0,0,0 };

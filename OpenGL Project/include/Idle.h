@@ -24,18 +24,24 @@ void idle() {
 					if (stage_Location.back() > 44) {
 						mode = GAMEOVER;
 						sound[STAGEFAILED].playsound();
+						cout << "your score:" << score << endl;
+						score = 0;
 						break;
 					}
 				case STAGE3:
 					if (stage_Location.back() > 55) {
 						mode = GAMEOVER;
 						sound[STAGEFAILED].playsound();
+						cout << "your score:" << score << endl;
+						score = 0;
 						break;
 					}
 				case STAGE4:
 					if (stage_Location.back() > 71) {
 						mode = GAMEOVER;
 						sound[STAGEFAILED].playsound();
+						cout << "your score:" << score << endl;
+						score = 0;
 						break;
 					}
 
@@ -316,6 +322,7 @@ void idle() {
 					stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
 					stage_Location.erase(stage_Location.begin() + boom_pos);
 					boom_pos_end--;
+					score += 550 * difficulty * difficulty - 150 * difficulty + 100;
 				}
 				boom_stack = 0;
 				boom_pos -= 1;
@@ -360,10 +367,13 @@ void idle() {
 					if (boom_stack == 1)
 						sound[BOOMSOUND].playsound();
 					if (boom_stack > merge_step * 4) {
+						int cnt = 0;
 						while (boom_pos < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
 							stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
 							stage_Location.erase(stage_Location.begin() + boom_pos);
+							cnt++;
 						}
+						score *= cnt - 2 + difficulty;
 						boom_stack = 0;
 						boom_pos -= 1;
 						mode = CHAIN_BOOM;
@@ -396,5 +406,6 @@ void idle() {
 
 		start_t = end_t;
 		glutPostRedisplay();
+		cout << score << endl;
 	}
 }

@@ -6,6 +6,7 @@
 #include "Idle.h"
 
 void initialize() {
+	score = 0;
 	theme = SNU;
 	angle = 0;
 	merge_step = 10;

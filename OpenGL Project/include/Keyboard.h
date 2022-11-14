@@ -137,6 +137,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 			switch (arrow_pos) {
 			case -80:
 				mode = MOVING;
+				score = 0;
 				break;
 			case -160:
 				mode = HIGHSCORE;

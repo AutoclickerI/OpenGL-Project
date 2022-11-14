@@ -48,6 +48,7 @@ float moving_speed;// stage_sphere's moving speed
 float speed;// cannon's shoot speed
 STAGE STAGE_NOW;
 DIFFICULTY difficulty;
+unsigned long long score;
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;

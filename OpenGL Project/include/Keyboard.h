@@ -158,6 +158,11 @@ void keyboardUp(unsigned char key, int x, int y) {
 			cannon.push_back(Sphere(cannon[0]));
 			cannon[0].setCenter(0.0f, 50.0f, 0.0f);
 			while (No_add) {
+				if (!stage_Location.size()) {
+					mode = CLEAR;
+					sound[STAGECLEAR].playsound();
+					break;
+				}
 				MTL_num = rand() % color_num;
 				if (difficulty == HARD) {
 					No_add = false;

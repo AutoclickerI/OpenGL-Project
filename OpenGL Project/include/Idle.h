@@ -15,6 +15,7 @@ void idle() {
 			if (!merge.size()) {
 				if (!stage_Location.size()) {
 					mode = CLEAR;
+					STAGE_NOW = static_cast<STAGE>((STAGE_NOW + 1) % 4);
 					sound[STAGECLEAR].playsound();
 					break;
 				}
@@ -23,6 +24,7 @@ void idle() {
 				case STAGE2:
 					if (stage_Location.back() > 44) {
 						mode = GAMEOVER;
+						STAGE_NOW = STAGE1;
 						sound[STAGEFAILED].playsound();
 						cout << "your score:" << score << endl;
 						score = 0;
@@ -31,6 +33,7 @@ void idle() {
 				case STAGE3:
 					if (stage_Location.back() > 55) {
 						mode = GAMEOVER;
+						STAGE_NOW = STAGE1;
 						sound[STAGEFAILED].playsound();
 						cout << "your score:" << score << endl;
 						score = 0;
@@ -39,6 +42,7 @@ void idle() {
 				case STAGE4:
 					if (stage_Location.back() > 71) {
 						mode = GAMEOVER;
+						STAGE_NOW = STAGE1;
 						sound[STAGEFAILED].playsound();
 						cout << "your score:" << score << endl;
 						score = 0;

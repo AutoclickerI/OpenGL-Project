@@ -14,10 +14,10 @@ void initialize() {
 	arrow_pos = -80;
 	Frame = 60;
 	color_num = 7;
-	STAGE_NOW = STAGE3;
+	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;
-	difficulty = EASY;
+	difficulty = MEDIUM;
 	mode = MAINMENU;
 
 	srand((unsigned int)time(NULL));

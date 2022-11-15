@@ -12,12 +12,12 @@ void initialize() {
 	merge_step = 10;
 	speed = 10;
 	arrow_pos = -80;
+	arrow_pos_2 = -120;
 	Frame = 60;
-	color_num = 1;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;
-	difficulty = MEDIUM;
+	difficulty = NORMAL;
 	mode = MAINMENU1;
 
 	srand((unsigned int)time(NULL));
@@ -52,28 +52,10 @@ void initialize() {
 	for (int i = -10; i < 2; i++)
 		stage_Location.push_back(i);
 
-
-	for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
-		Sphere sphere_cache(30, 20, 20);
-		sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
-		sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
-		MTL_num = rand() % color_num;
-		sphere_cache.setMTL(materials[MTL_num], MTL_num);
-		stage_Sphere.push_back(sphere_cache);
-	}
-
-	Sphere sphere1(30, 20, 20);
 	sphere1.setCenter(0.0f, 50.0f, 0.0f);
 	sphere1.setVelocity(0.0f, 0.0f, 0.0f);
-	MTL_num = rand() % color_num;
-	sphere1.setMTL(materials[MTL_num], MTL_num);
-	cannon.push_back(sphere1);
 
-	Sphere sphere2(sphere1);
 	sphere2.setCenter(0.0f, 0.0f, 0.0f);
-	MTL_num = rand() % color_num;
-	sphere2.setMTL(materials[MTL_num], MTL_num);
-	cannon.push_back(sphere2);
 
 	/* Implement: initialize texture*/
 	background.setFilename("textures/background/snu.png");
@@ -92,13 +74,21 @@ void initialize() {
 	gameover.settextureID(0);
 	gameover.initTexture();
 
-	mainmenu1.setFilename("textures/state/mainmenu1.png");
-	mainmenu1.settextureID(0);
-	mainmenu1.initTexture();
+	mainmenu1_1.setFilename("textures/state/mainmenu1_1.png");
+	mainmenu1_1.settextureID(0);
+	mainmenu1_1.initTexture();
 
-	mainmenu2.setFilename("textures/state/mainmenu2.png");
-	mainmenu2.settextureID(0);
-	mainmenu2.initTexture();
+	mainmenu1_2.setFilename("textures/state/mainmenu1_2.png");
+	mainmenu1_2.settextureID(0);
+	mainmenu1_2.initTexture();
+
+	mainmenu2_1.setFilename("textures/state/mainmenu2_1.png");
+	mainmenu2_1.settextureID(0);
+	mainmenu2_1.initTexture();
+
+	mainmenu2_2.setFilename("textures/state/mainmenu2_2.png");
+	mainmenu2_2.settextureID(0);
+	mainmenu2_2.initTexture();
 
 	arrow.setFilename("textures/background/snu.png");//Need fix
 	arrow.settextureID(0);

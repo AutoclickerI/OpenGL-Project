@@ -22,7 +22,7 @@ enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED };
 enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
-enum DIFFICULTY {EASY, MEDIUM, HARD};
+enum DIFFICULTY { EASY, NORMAL, HARD };
 
 using namespace std;
 
@@ -40,8 +40,10 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, canon, clear, gameover ,mainmenu1, mainmenu2, arrow, developers;
+Texture background, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers;
 Stage stage;
+Sphere sphere1(30, 20, 20);
+Sphere sphere2(sphere1);
 int delete_probability;
 float angle;
 float moving_speed;// stage_sphere's moving speed
@@ -52,11 +54,11 @@ unsigned long long score;
 int MTL_num, f, ccw;
 int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;
-int arrow_pos;
+int arrow_pos, arrow_pos_2;
 int pause = 0;
 int level;
 int Frame;
-int color_num;
+int color_num[3] = { 3,5,7 };
 
 
 Sound bgm("sound/BGM.wav", 1);

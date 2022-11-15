@@ -20,11 +20,21 @@ void display() {
 	switch (mode) {
 	case MAINMENU1:
 		if(start_t%1200>600)
-			mainmenu1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			mainmenu1_1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 		else
-			mainmenu2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			mainmenu1_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 		glPushMatrix();
 		glTranslatef(-220,arrow_pos,0);
+		arrow.drawCircleWithTexture(30, 3);
+		glPopMatrix();
+		break;
+	case MAINMENU2:
+		if (start_t % 1200 > 600)
+			mainmenu2_1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		else
+			mainmenu2_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		glPushMatrix();
+		glTranslatef(-220, arrow_pos_2, 0);
 		arrow.drawCircleWithTexture(30, 3);
 		glPopMatrix();
 		break;

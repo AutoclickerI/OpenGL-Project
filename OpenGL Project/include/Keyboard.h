@@ -26,6 +26,26 @@ void SpecialInput(int key, int x, int y) {
 			break;
 		}
 		break;
+	case MAINMENU2:
+		switch (key)
+		{
+		case GLUT_KEY_LEFT:
+			mode = MAINMENU1;
+			break;
+		case GLUT_KEY_UP:
+			//do something here
+			if (arrow_pos_2 < -120)
+				arrow_pos_2 += 80;
+			break;
+		case GLUT_KEY_DOWN:
+			//do something here
+			if (arrow_pos_2 > -280)
+				arrow_pos_2 -= 80;
+			break;
+		default:
+			break;
+		}
+		break;
 	case HIGHSCORE:
 	case SETTING:
 	case DEVELOPERS:
@@ -86,7 +106,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 				Sphere sphere_cache(30, 20, 20);
 				sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
 				sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
-				MTL_num = rand() % color_num;
+				MTL_num = rand() % color_num[difficulty];
 				sphere_cache.setMTL(materials[MTL_num], MTL_num);
 				stage_Sphere.push_back(sphere_cache);
 			}
@@ -115,7 +135,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 				Sphere sphere_cache(30, 20, 20);
 				sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
 				sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
-				MTL_num = rand() % color_num;
+				MTL_num = rand() % color_num[difficulty];
 				sphere_cache.setMTL(materials[MTL_num], MTL_num);
 				stage_Sphere.push_back(sphere_cache);
 			}
@@ -132,14 +152,6 @@ void keyboardDown(unsigned char key, int x, int y) {
 			merge.clear();
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
-			for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
-				Sphere sphere_cache(30, 20, 20);
-				sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
-				sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
-				MTL_num = rand() % color_num;
-				sphere_cache.setMTL(materials[MTL_num], MTL_num);
-				stage_Sphere.push_back(sphere_cache);
-			}
 			break;
 		default:
 			break;
@@ -160,7 +172,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 		case MAINMENU1:
 			switch (arrow_pos) {
 			case -80:
-				mode = MOVING;
+				mode = MAINMENU2;
 				score = 0;
 				break;
 			case -160:
@@ -171,6 +183,66 @@ void keyboardUp(unsigned char key, int x, int y) {
 				break;
 			case -320:
 				mode = DEVELOPERS;
+				break;
+			default:
+				break;
+			}
+			break;
+		case MAINMENU2:
+			switch (arrow_pos_2) {
+			case -120:
+				difficulty = EASY;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+				break;
+			case -200:
+ 				difficulty = NORMAL;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+				break;
+			case -280:
+				difficulty = HARD;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
 				break;
 			default:
 				break;
@@ -188,7 +260,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 					sound[STAGECLEAR].playsound();
 					break;
 				}
-				MTL_num = rand() % color_num;
+				MTL_num = rand() % color_num[difficulty];
 				if (difficulty == HARD) {
 					No_add = false;
 				}

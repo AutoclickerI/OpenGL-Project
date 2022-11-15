@@ -398,8 +398,6 @@ void idle() {
 					mode = CHAIN_BOOM;
 			}
 			break;
-		case CLEAR:
-		case GAMEOVER:
 		default:
 			break;
 		}

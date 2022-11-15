@@ -12,7 +12,7 @@ void initialize() {
 	merge_step = 10;
 	speed = 10;
 	arrow_pos = -80;
-	arrow_pos_2 = -120;
+	arrow_pos_2 = -110;
 	Frame = 60;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
@@ -98,6 +98,9 @@ void initialize() {
 	developers.settextureID(0);
 	developers.initTexture();
 
+	Pause.setFilename("textures/state/pause.png");
+	Pause.settextureID(0);
+	Pause.initTexture();
 
 	sound.push_back(bgm);
 	sound.push_back(shoot);

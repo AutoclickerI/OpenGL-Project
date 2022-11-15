@@ -20,7 +20,23 @@ void SpecialInput(int key, int x, int y) {
 			//do something here
 			break;
 		case GLUT_KEY_RIGHT:
-			//do something here
+			switch (arrow_pos) {
+			case -80:
+				mode = MAINMENU2;
+				score = 0;
+				break;
+			case -160:
+				mode = HIGHSCORE;
+				break;
+			case -240:
+				mode = SETTING;
+				break;
+			case -320:
+				mode = DEVELOPERS;
+				break;
+			default:
+				break;
+			}
 			break;
 		default:
 			break;
@@ -32,15 +48,78 @@ void SpecialInput(int key, int x, int y) {
 		case GLUT_KEY_LEFT:
 			mode = MAINMENU1;
 			break;
+		case GLUT_KEY_RIGHT:
+			switch (arrow_pos_2) {
+			case -110:
+				cannon.clear();
+				difficulty = EASY;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+				break;
+			case -200:
+				cannon.clear();
+				difficulty = NORMAL;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+				break;
+			case -290:
+				cannon.clear();
+				difficulty = HARD;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+				break;
+			default:
+				break;
+			}
+			break;
 		case GLUT_KEY_UP:
 			//do something here
-			if (arrow_pos_2 < -120)
-				arrow_pos_2 += 80;
+			if (arrow_pos_2 < -110)
+				arrow_pos_2 += 90;
 			break;
 		case GLUT_KEY_DOWN:
 			//do something here
-			if (arrow_pos_2 > -280)
-				arrow_pos_2 -= 80;
+			if (arrow_pos_2 > -290)
+				arrow_pos_2 -= 90;
 			break;
 		default:
 			break;
@@ -197,7 +276,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 			break;
 		case MAINMENU2:
 			switch (arrow_pos_2) {
-			case -120:
+			case -110:
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
@@ -235,7 +314,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 				break;
-			case -280:
+			case -290:
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
@@ -288,15 +367,43 @@ void keyboardUp(unsigned char key, int x, int y) {
 		break;
 	case 'p':
 	case 'P':
-		if (pause == 0) {
-			sound[BGM].pausesound();
-			pause = 1;
-
+		switch (mode) {
+		case MOVING:
+		case BOOM:
+		case CHAIN_BOOM:
+		case DRAG:
+		case CHAIN_DRAG:
+			if (!pause) {
+				sound[BGM].pausesound();
+				pause = 1; 
+			}
+			break;
+		default:
+			break;
 		}
-		else if (pause == 1) {
+		break;
+	case 'q':
+	case 'Q':
+		if (pause) {
+			mode = MAINMENU1;
 			sound[BGM].resumesound();
+			angle = level = pause = 0;
+			moving_speed = 0.02;
+			delete_probability = 100;
+			stage_Location.clear();
+			stage_Sphere.clear();
+			shootings.clear();
+			merge.clear();
+			for (int i = -10; i < 2; i++)
+				stage_Location.push_back(i);
+			break;
+		}
+		break;
+	case 'r':
+	case 'R':
+		if (pause) {
 			pause = 0;
-
+			sound[BGM].resumesound();
 		}
 		break;
 	default:

@@ -125,6 +125,13 @@ void keyboardDown(unsigned char key, int x, int y) {
 			angle = level = 0;
 			moving_speed = 0.02;
 			delete_probability = 100;
+			cannon.clear();
+			MTL_num = rand() % color_num[difficulty];
+			sphere1.setMTL(materials[MTL_num], MTL_num);
+			cannon.push_back(sphere1);
+			MTL_num = rand() % color_num[difficulty];
+			sphere2.setMTL(materials[MTL_num], MTL_num);
+			cannon.push_back(sphere2);
 			stage_Location.clear();
 			stage_Sphere.clear();
 			shootings.clear();
@@ -191,6 +198,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 		case MAINMENU2:
 			switch (arrow_pos_2) {
 			case -120:
+				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
 				MTL_num = rand() % color_num[difficulty];
@@ -209,6 +217,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				}
 				break;
 			case -200:
+				cannon.clear();
  				difficulty = NORMAL;
 				mode = MOVING;
 				MTL_num = rand() % color_num[difficulty];
@@ -227,6 +236,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				}
 				break;
 			case -280:
+				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
 				MTL_num = rand() % color_num[difficulty];

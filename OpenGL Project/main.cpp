@@ -22,5 +22,6 @@ int main(int argc, char** argv) {
 	for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
 		sound[i].releasesound();
 	}
+
 	return 0;
 }

@@ -2,6 +2,7 @@
 #include <ctime>
 #include <vector>
 #include <cstdlib>
+#include <fstream>
 #include "Sound.h"
 #include "Light.h"
 #include "Stage.h"
@@ -40,7 +41,7 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers;
+Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers, highscore;
 Stage stage;
 Sphere sphere1(30, 20, 20);
 Sphere sphere2(sphere1);
@@ -59,6 +60,21 @@ int pause = 0;
 int level;
 int Frame;
 int color_num[3] = { 3,5,7 };
+const float scaleFactor = 300.0f;
+int rank;
+vector<string> ordnum{" 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
+
+ifstream iscore("score/top10.txt");
+//ofstream oscore("score/top10.txt");
+string word;
+int number;
+vector<pair<string,int>> playdata(20);  // difficulty, score
+vector<int> scoredata(10);
+
+
+
+
+
 
 
 Sound bgm("sound/BGM.wav", 1);

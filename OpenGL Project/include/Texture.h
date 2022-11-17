@@ -16,6 +16,7 @@ public:
 	void initTexture();
 	void drawSquareWithTexture(float width, float height);
 	void drawCircleWithTexture(float radius, int slices);
+	void displayStrokeCharacters(void* font, string c, float lnWidth, float x, float y);
 
 private:
 	GLuint textureID = 0;
@@ -23,4 +24,6 @@ private:
 	int imageWidth = 1280, imageHeight = 720;
 	char const* Filename = "snu.png";
 	const double pi = 3.141592653589793;
+	const float scaleFactor = 2.0f;
+
 };

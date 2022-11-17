@@ -1,4 +1,5 @@
 #include "Texture.h"
+
 void Texture::setFilename(char const* filename) {
 	Filename = filename;
 }
@@ -75,4 +76,15 @@ void Texture::drawCircleWithTexture(float radius, int slices) {
 	}
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+}
+
+void Texture::displayStrokeCharacters(void* font, string c, float lnWidth, float x, float y) {
+	glPushMatrix();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glLineWidth(lnWidth);
+	glTranslatef(x, y, 0.0f);
+	glScalef(1 / scaleFactor, 1 / scaleFactor, 1 / scaleFactor);
+	for (int i = 0; i < c.size(); i++)
+		glutStrokeCharacter(font, c[i]);
+	glPopMatrix();
 }

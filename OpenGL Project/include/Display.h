@@ -1,5 +1,7 @@
 #pragma once
+#include <fstream>
 #include "Declare.h"
+#include "Texture.h"
 
 void displayCharacters(void* font, string str, float x, float y) {
 	glRasterPos2f(x, y);
@@ -14,7 +16,6 @@ void display() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-boundaryX, boundaryX, -boundaryY, boundaryY, -100.0, 100.0);
-
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	if (!pause) {
@@ -97,6 +98,33 @@ void display() {
 			break;
 		case GAMEOVER:
 			gameover.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+		case HIGHSCORE:
+			//highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "1st 12345", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
+			//highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "2nd 1234", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3));
+			//highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "3rd 123", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.2));
+
+			/*
+			for (int i=0;!iscore.eof();i++)
+			{
+				iscore >> word;
+				playdata[i].first=word;
+				
+				iscore >> number;
+				scoredata[i] = number;
+				cout << word<<number << endl;
+			}
+			*/
+
+				for (int i = 0; i < 10; i++)
+				{
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, ordnum[i], 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playdata[i].first, 5.0f, WINDOW_WIDTH * (-0.1), WINDOW_HEIGHT * (0.3-(0.08*i)) );
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(scoredata[i]), 5.0f, WINDOW_WIDTH * (0.1), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+
+					cout << i<<" "<<playdata[i].first<<" "<<playdata[i].second << endl;
+					
+				}
+
 			break;
 		default:
 			break;

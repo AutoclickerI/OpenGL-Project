@@ -113,4 +113,15 @@ void initialize() {
 	}
 	sound[BGM].initsound(1);
 
+	for (int i = 0; !iscore.eof(); i++)
+	{
+		iscore >> word;
+		playdata[i].first = word;
+
+		iscore >> number;
+		scoredata[i] = number;
+		cout << word << number << endl;
+	}
 }
+
+

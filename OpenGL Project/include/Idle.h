@@ -28,6 +28,14 @@ void idle() {
 							STAGE_NOW = STAGE1;
 							sound[STAGEFAILED].playsound();
 							cout << "your score:" << score << endl;
+							for (int i = 0; i < 10; i++) {
+								if (score > scoredata[i]) {
+									scoredata[i] = score;
+									break;
+									//oscore << scoredata[0].second << endl;
+									//rank = 0;
+								}
+							}
 							score = 0;
 						}
 						break;
@@ -410,6 +418,6 @@ void idle() {
 
 		start_t = end_t;
 		glutPostRedisplay();
-		cout << score << endl;
+
 	}
 }

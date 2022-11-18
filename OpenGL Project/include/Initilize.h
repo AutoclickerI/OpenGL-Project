@@ -102,6 +102,8 @@ void initialize() {
 	Pause.settextureID(0);
 	Pause.initTexture();
 
+
+
 	sound.push_back(bgm);
 	sound.push_back(shoot);
 	sound.push_back(boomsound);
@@ -116,12 +118,16 @@ void initialize() {
 	for (int i = 0; !iscore.eof(); i++)
 	{
 		iscore >> word;
-		playdata[i].first = word;
+		playername[i] = word;
 
 		iscore >> number;
 		scoredata[i] = number;
 		cout << word << number << endl;
+		
+		iscore >> word;
+		difficultydata[i] = word;
 	}
+	iscore.close();
 }
 
 

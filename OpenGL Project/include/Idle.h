@@ -30,10 +30,20 @@ void idle() {
 							cout << "your score:" << score << endl;
 							for (int i = 0; i < 10; i++) {
 								if (score > scoredata[i]) {
-									scoredata[i] = score;
+									scoredata.insert(scoredata.begin()+i, score);
+									switch (difficulty) {
+									case EASY:
+										difficultydata.insert(difficultydata.begin()+i, "EASY");
+										break;
+									case NORMAL:
+										difficultydata.insert(difficultydata.begin()+i, "NORMAL");
+										break;
+									case HARD:
+										difficultydata.insert(difficultydata.begin()+i, "HARD");
+										break;
+									}
+									scorechange = 1;
 									break;
-									//oscore << scoredata[0].second << endl;
-									//rank = 0;
 								}
 							}
 							score = 0;
@@ -45,6 +55,24 @@ void idle() {
 							STAGE_NOW = STAGE1;
 							sound[STAGEFAILED].playsound();
 							cout << "your score:" << score << endl;
+							for (int i = 0; i < 10; i++) {
+								if (score > scoredata[i]) {
+									scoredata.insert(scoredata.begin()+i, score);
+									switch (difficulty) {
+									case EASY:
+										difficultydata.insert(difficultydata.begin()+i, "EASY");
+										break;
+									case NORMAL:
+										difficultydata.insert(difficultydata.begin()+i, "NORMAL");
+										break;
+									case HARD:
+										difficultydata.insert(difficultydata.begin()+i, "HARD");
+										break;
+									}
+									scorechange = 1;
+									break;
+								}
+							}
 							score = 0;
 						}
 						break;
@@ -54,6 +82,24 @@ void idle() {
 							STAGE_NOW = STAGE1;
 							sound[STAGEFAILED].playsound();
 							cout << "your score:" << score << endl;
+							for (int i = 0; i < 10; i++) {
+								if (score > scoredata[i]) {
+									scoredata.insert(scoredata.begin()+i, score);
+									switch (difficulty) {
+									case EASY:
+										difficultydata.insert(difficultydata.begin()+i, "EASY");
+										break;
+									case NORMAL:
+										difficultydata.insert(difficultydata.begin()+i, "NORMAL");
+										break;
+									case HARD:
+										difficultydata.insert(difficultydata.begin()+i, "HARD");
+										break;
+									}
+									scorechange = 1;
+									break;
+								}
+							}
 							score = 0;
 						}
 						break;
@@ -408,6 +454,20 @@ void idle() {
 						mode = CHAIN_BOOM;
 				}
 				break;
+			
+			case GAMEOVER:
+				if (scorechange == 1) {
+					ofstream oscore("score/top10.txt");
+					if (oscore.is_open()) {
+						for (int i = 0; i < 10; i++) {
+							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
+						}
+						scorechange = 0;
+						oscore.close();
+					}
+				}
+				break;
+				
 			default:
 				break;
 			}

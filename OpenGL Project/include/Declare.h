@@ -21,7 +21,7 @@
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED };
-enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER };
+enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 enum DIFFICULTY { EASY, NORMAL, HARD };
 
@@ -41,7 +41,7 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers, highscore;
+Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers, highscore, scoresave;
 Stage stage;
 Sphere sphere1(30, 20, 20);
 Sphere sphere2(sphere1);
@@ -64,12 +64,14 @@ const float scaleFactor = 300.0f;
 int rank;
 vector<string> ordnum{" 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
 
-ifstream iscore("score/top10.txt");
-//ofstream oscore("score/top10.txt");
+fstream iscore("score/top10.txt");
 string word;
 int number;
-vector<pair<string,int>> playdata(20);  // difficulty, score
-vector<int> scoredata(10);
+vector<string> playername(20);  // playername,difficulty
+vector<string> difficultydata(20);
+vector<int> scoredata(20);
+bool scorechange=0;
+vector<char*> username(3);
 
 
 

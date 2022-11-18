@@ -98,32 +98,23 @@ void display() {
 			break;
 		case GAMEOVER:
 			gameover.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			break;
 		case HIGHSCORE:
-			//highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "1st 12345", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
-			//highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "2nd 1234", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3));
-			//highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "3rd 123", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.2));
-
-			/*
-			for (int i=0;!iscore.eof();i++)
-			{
-				iscore >> word;
-				playdata[i].first=word;
-				
-				iscore >> number;
-				scoredata[i] = number;
-				cout << word<<number << endl;
-			}
-			*/
+			highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN,"HIGHSCORES", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
 
 				for (int i = 0; i < 10; i++)
 				{
 					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, ordnum[i], 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playdata[i].first, 5.0f, WINDOW_WIDTH * (-0.1), WINDOW_HEIGHT * (0.3-(0.08*i)) );
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(scoredata[i]), 5.0f, WINDOW_WIDTH * (0.1), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-
-					cout << i<<" "<<playdata[i].first<<" "<<playdata[i].second << endl;
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3-(0.08*i)) );
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(scoredata[i]), 5.0f, WINDOW_WIDTH * (0), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 					
 				}
+			break;
+		case SCORESAVE:
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, username[0], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
+
 
 			break;
 		default:

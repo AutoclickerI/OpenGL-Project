@@ -71,6 +71,8 @@ vector<string> difficultydata(20);
 vector<int> scoredata(20);
 bool scorechange = 0;
 vector<char> currentplayer(100);
+string fullname="XXX";
+int ranking;
 
 
 

@@ -84,6 +84,7 @@ void idle() {
 							cout << "your score:" << score << endl;
 							for (int i = 0; i < 10; i++) {
 								if (score > scoredata[i]) {
+									ranking = i;
 									scoredata.insert(scoredata.begin()+i, score);
 									switch (difficulty) {
 									case EASY:
@@ -477,7 +478,7 @@ void idle() {
 						for (int i = 0; i < 10; i++) {
 							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
 						}
-						scorechange = 0;
+						//scorechange = 0;
 						oscore.close();
 					}
 				}

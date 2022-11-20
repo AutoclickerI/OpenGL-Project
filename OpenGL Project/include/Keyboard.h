@@ -30,7 +30,7 @@ void SpecialInput(int key, int x, int y) {
 				break;
 			case -240:
 				//mode = SETTING;
-				mode = SCORESAVE;
+				mode = SCORESAVE; //임시
 				break;
 			case -320:
 				mode = DEVELOPERS;
@@ -270,6 +270,23 @@ void keyboardDown(unsigned char key, int x, int y) {
 			}
 			break;
 		case ',':
+			if (scorechange == 1) {
+				fullname[0] = currentplayer[0];
+				fullname[1] = currentplayer[1];
+				fullname[2] = currentplayer[2];
+				cout << ranking;
+				playername.insert(playername.begin() + ranking, fullname);
+				ofstream oscore("score/top10.txt");
+				if (oscore.is_open()) {
+					for (int i = 0; i < 10; i++) {
+						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
+					}
+					scorechange = 0;
+					oscore.close();
+				}
+			}
+		
+
 			mode = MAINMENU1;
 			break;
 		default:
@@ -344,7 +361,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				break;
 			case -240:
 				//mode = SETTING;
-				mode = SCORESAVE;
+				mode = SCORESAVE; //임시
 				break;
 			case -320:
 				mode = DEVELOPERS;

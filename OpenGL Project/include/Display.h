@@ -113,6 +113,10 @@ void display() {
 			break;
 		case SCORESAVE:
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.4));
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.3));
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking+1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3));
+
+
 			for (int i = 0; i < 3; i++) {
 				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(currentplayer[i]), 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (-0.1 * i));
 			}

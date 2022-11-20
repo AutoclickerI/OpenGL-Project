@@ -19,9 +19,5 @@ int main(int argc, char** argv) {
 
 	// enter GLUT event processing cycle
 	glutMainLoop();
-	for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
-		sound[i].releasesound();
-	}
-
 	return 0;
 }

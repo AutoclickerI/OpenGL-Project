@@ -29,7 +29,8 @@ void SpecialInput(int key, int x, int y) {
 				mode = HIGHSCORE;
 				break;
 			case -240:
-				mode = SETTING;
+				//mode = SETTING;
+				mode = SCORESAVE;
 				break;
 			case -320:
 				mode = DEVELOPERS;
@@ -239,11 +240,88 @@ void keyboardDown(unsigned char key, int x, int y) {
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
 			break;
+		case 'S':
+		case 's':
+			mode = SCORESAVE;
+			break;
 		default:
 			break;
 		}
 		break;
+	case SCORESAVE:
+		if ((key >= 65) && (key <= 90) || (key >= 97) && (key <= 122)) {
+			if (currentplayer[0] == 0) {
+				currentplayer[0] = key;
+			}
+			else if (currentplayer[1] == 0) {
+				currentplayer[1] = key;
+			}
+			else if (currentplayer[2] == 0) {
+				currentplayer[2] = key;
+			}
+			break;
+		}
+		switch (key) {
+		case '.':
+			//mode = MAINMENU1;
 
+			for (int i = 0; i < 3; i++) {
+				currentplayer[i] = 0;
+			}
+			break;
+		case ',':
+			mode = MAINMENU1;
+			break;
+		default:
+			break;
+		}
+
+		/*
+		switch (key) {
+		case '.':
+			mode = ENTERSCORE;
+			break;
+		case 'q':
+		case 'Q':
+			mode = MAINMENU1;
+			for (int i = 0; i < 3; i++) {
+				currentplayer[i] = 0;
+			}
+
+			break;
+		default:
+			break;
+		}
+		break;
+		*/
+
+		/*
+	case ENTERSCORE:
+		if ((key >= 65) && (key <= 90) || (key >= 97) && (key <= 122)) {
+			if (currentplayer[0] == 0) {
+				currentplayer[0] = key;
+			}
+			else if (currentplayer[1] == 0) {
+				currentplayer[1] = key;
+			}
+			else if (currentplayer[2] == 0) {
+				currentplayer[2] = key;
+			}
+			break;
+		}
+		switch (key) {
+		case '.':
+			mode = MAINMENU1;
+
+			for (int i = 0; i < 3; i++) {
+				currentplayer[i] = 0;
+			}
+			break;
+		default:
+			break;
+		}
+		*/
+		
 	default:
 		break;
 	}
@@ -265,7 +343,8 @@ void keyboardUp(unsigned char key, int x, int y) {
 				mode = HIGHSCORE;
 				break;
 			case -240:
-				mode = SETTING;
+				//mode = SETTING;
+				mode = SCORESAVE;
 				break;
 			case -320:
 				mode = DEVELOPERS;

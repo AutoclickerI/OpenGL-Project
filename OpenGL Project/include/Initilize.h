@@ -122,7 +122,6 @@ void initialize() {
 
 		iscore >> number;
 		scoredata[i] = number;
-		cout << word << number << endl;
 		
 		iscore >> word;
 		difficultydata[i] = word;

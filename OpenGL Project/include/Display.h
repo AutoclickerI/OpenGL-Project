@@ -100,23 +100,32 @@ void display() {
 			gameover.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			break;
 		case HIGHSCORE:
-			highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN,"HIGHSCORES", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
+			highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "HIGHSCORES", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
 
-				for (int i = 0; i < 10; i++)
-				{
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, ordnum[i], 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3-(0.08*i)) );
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(scoredata[i]), 5.0f, WINDOW_WIDTH * (0), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-					
-				}
+			for (int i = 0; i < 10; i++)
+			{
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, ordnum[i], 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(scoredata[i]), 5.0f, WINDOW_WIDTH * (0), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+
+			}
 			break;
 		case SCORESAVE:
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, username[0], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
-
-
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.4));
+			for (int i = 0; i < 3; i++) {
+				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(currentplayer[i]), 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (-0.1 * i));
+			}
 			break;
+
+			/*
+		case ENTERSCORE:
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "WHO ARE YOU?", 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.4));
+			for (int i = 0; i < 3; i++) {
+				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(currentplayer[i]), 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (-0.1 * i));
+			}
+			break;
+			*/
 		default:
 			break;
 		}

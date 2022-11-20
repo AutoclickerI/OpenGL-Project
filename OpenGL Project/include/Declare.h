@@ -61,7 +61,6 @@ int level;
 int Frame;
 int color_num[3] = { 3,5,7 };
 const float scaleFactor = 300.0f;
-int rank;
 vector<string> ordnum{" 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
 
 fstream iscore("score/top10.txt");
@@ -70,8 +69,8 @@ int number;
 vector<string> playername(20);  // playername,difficulty
 vector<string> difficultydata(20);
 vector<int> scoredata(20);
-bool scorechange=0;
-vector<char*> username(3);
+bool scorechange = 0;
+vector<char> currentplayer(100);
 
 
 

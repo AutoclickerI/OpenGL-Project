@@ -93,6 +93,8 @@ void display() {
 
 			glDisable(GL_LIGHTING);
 			glDisable(GL_DEPTH_TEST);
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SCORE: ", 7.0f, WINDOW_WIDTH * (0.07), WINDOW_HEIGHT * (0.4));
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(score), 7.0f, WINDOW_WIDTH * (0.3), WINDOW_HEIGHT * (0.4));
 			break;
 		case CLEAR:
 			clear.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -110,7 +112,6 @@ void display() {
 				char S[100];
 				sprintf(S, "%07d", scoredata[i]);
 					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S, 5.0f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-					to_string(scoredata[i]);
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.26), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 			}
 			break;
@@ -123,7 +124,7 @@ void display() {
 			for (int i = 0; i < 3; i++) {
 				string s;
 				s += currentplayer[i];
-				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, s, 5.0f, WINDOW_WIDTH * (-0.4 + 0.1 * i), WINDOW_HEIGHT * (-0.2));
+				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, s, 5.0f, WINDOW_WIDTH * (-0.1 + 0.07 * i), WINDOW_HEIGHT * (-0.2));
 			}
 			break;
 		default:

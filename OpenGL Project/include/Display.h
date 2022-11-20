@@ -122,7 +122,10 @@ void display() {
 
 
 			for (int i = 0; i < 3; i++) {
-				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(currentplayer[i]), 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (-0.1 * i));
+				string s;
+				s += currentplayer[i];
+				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, s, 5.0f, WINDOW_WIDTH * (-0.4 + 0.1 * i), WINDOW_HEIGHT * (-0.2));
+				
 			}
 			break;
 

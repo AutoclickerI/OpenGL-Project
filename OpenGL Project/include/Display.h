@@ -2,7 +2,8 @@
 #include <fstream>
 #include "Declare.h"
 #include "Texture.h"
-
+#include <iomanip>
+#include <stdio.h>
 void displayCharacters(void* font, string str, float x, float y) {
 	glRasterPos2f(x, y);
 	for (int i = 0; i < (int)str.size(); i++)
@@ -106,9 +107,11 @@ void display() {
 			{
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, ordnum[i], 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(scoredata[i]), 5.0f, WINDOW_WIDTH * (0), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
-
+				char S[100];
+				sprintf(S, "%07d", scoredata[i]);
+					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S, 5.0f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+					to_string(scoredata[i]);
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.26), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 			}
 			break;
 		case SCORESAVE:
@@ -116,27 +119,13 @@ void display() {
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3));
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER" , 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2));
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS ',' TO SAVE", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.1));
-
-
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking+1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3));
-
-
 			for (int i = 0; i < 3; i++) {
 				string s;
 				s += currentplayer[i];
 				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, s, 5.0f, WINDOW_WIDTH * (-0.4 + 0.1 * i), WINDOW_HEIGHT * (-0.2));
-				
 			}
 			break;
-
-			/*
-		case ENTERSCORE:
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "WHO ARE YOU?", 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.4));
-			for (int i = 0; i < 3; i++) {
-				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(currentplayer[i]), 5.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (-0.1 * i));
-			}
-			break;
-			*/
 		default:
 			break;
 		}

@@ -263,8 +263,6 @@ void keyboardDown(unsigned char key, int x, int y) {
 		}
 		switch (key) {
 		case '.':
-			//mode = MAINMENU1;
-
 			for (int i = 0; i < 3; i++) {
 				currentplayer[i] = 0;
 			}
@@ -285,60 +283,11 @@ void keyboardDown(unsigned char key, int x, int y) {
 					oscore.close();
 				}
 			}
-		
-
 			mode = MAINMENU1;
 			break;
 		default:
 			break;
 		}
-
-		/*
-		switch (key) {
-		case '.':
-			mode = ENTERSCORE;
-			break;
-		case 'q':
-		case 'Q':
-			mode = MAINMENU1;
-			for (int i = 0; i < 3; i++) {
-				currentplayer[i] = 0;
-			}
-
-			break;
-		default:
-			break;
-		}
-		break;
-		*/
-
-		/*
-	case ENTERSCORE:
-		if ((key >= 65) && (key <= 90) || (key >= 97) && (key <= 122)) {
-			if (currentplayer[0] == 0) {
-				currentplayer[0] = key;
-			}
-			else if (currentplayer[1] == 0) {
-				currentplayer[1] = key;
-			}
-			else if (currentplayer[2] == 0) {
-				currentplayer[2] = key;
-			}
-			break;
-		}
-		switch (key) {
-		case '.':
-			mode = MAINMENU1;
-
-			for (int i = 0; i < 3; i++) {
-				currentplayer[i] = 0;
-			}
-			break;
-		default:
-			break;
-		}
-		*/
-		
 	default:
 		break;
 	}

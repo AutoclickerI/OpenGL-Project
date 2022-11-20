@@ -459,19 +459,8 @@ void idle() {
 				break;
 			
 			case GAMEOVER:
-				
-				if (scorechange == 1) /*{
-					ofstream oscore("score/top10.txt");
-					if (oscore.is_open()) {
-						for (int i = 0; i < 10; i++) {
-							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
-						}
-						scorechange = 0;
-						oscore.close();
-					}
-					*/
+				if (scorechange == 1) 
 					mode = SCORESAVE;
-				//}
 				break;
 			case SCORESAVE:
 				if (scorechange == 1) {
@@ -480,12 +469,10 @@ void idle() {
 						for (int i = 0; i < 10; i++) {
 							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
 						}
-						//scorechange = 0;
 						oscore.close();
 					}
 				}
 				break;
-				
 			default:
 				break;
 			}

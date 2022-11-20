@@ -66,7 +66,7 @@ vector<string> ordnum{" 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 
 fstream iscore("score/top10.txt");
 string word;
 int number;
-vector<string> playername(20);  // playername,difficulty
+vector<string> playername(20); 
 vector<string> difficultydata(20);
 vector<int> scoredata(20);
 bool scorechange = 0;

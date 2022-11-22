@@ -174,7 +174,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 		case 'C':
 		case 'c':
 			mode = MOVING;
-			moving_speed *= 1.5;
+			moving_speed *= 1.3;
 			angle = 0;
 			delete_probability -= 10;
 			shootings.clear();

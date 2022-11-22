@@ -1,7 +1,8 @@
 #include "Stage.h"
 
-void Stage::setMTL(const Material& m) {
-	stage_color = m;
+void Stage::setMTL(const Material& m1, const Material& m2) {
+	stage_color = m1;
+	red = m2;
 }
 
 void Stage::stage1(double pos) {
@@ -86,13 +87,13 @@ void Stage::stage4(double pos) {
 void Stage::stage5(double pos) {
 	int stageR;
 	if (pos <= 7) {
-		center[0] = -400 + 37;
-		center[1] = 360 - 60 * pos - 15+129;
+		center[0] = -363;
+		center[1] = 474 - 60 * pos;
 	}
 	else if (pos < 10) {
 		stageR = 70;
-		center[0] = stageR * sin((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) + 265.5 - 596 + 37;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
-		center[1] = stageR * cos((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) - 211 + 287 - 15;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[0] = stageR * sin((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) - 293.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[1] = stageR * cos((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) + 61;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
 	}
 	else if (pos < 25) {
 		stageR = 220;
@@ -143,26 +144,34 @@ void Stage::draw_stage(int stage) {
 	glMaterialfv(GL_FRONT, GL_AMBIENT, stage_color.ambient);
 	switch (stage) {
 	case 0:
-		for (int i = -2; i < 500; i++) {
-			setPos(42 * i / 300.0, stage);
+		for (int i = -2; i < 300; i++) {
+			setPos(44 * i / 300.0, stage);
+			if (i > 278)
+				glMaterialfv(GL_FRONT, GL_AMBIENT, red.ambient);
 			glVertex3f(center[0], center[1], 0);
 		}
 		break;
 	case 1:
-		for (int i = -2; i < 500; i++) {
-			setPos(42 * i / 300.0, stage);
+		for (int i = -2; i < 300; i++) {
+			setPos(44 * i / 300.0, stage);
+			if (i > 278)
+				glMaterialfv(GL_FRONT, GL_AMBIENT, red.ambient);
 			glVertex3f(center[0], center[1], 0);
 		}
 		break;
 	case 2:
-		for (int i = -2; i < 500; i++) {
-			setPos(42 * i / 300.0, stage);
+		for (int i = -2; i < 300; i++) {
+			setPos(70 * i / 300.0, stage);
+			if (i > 293)
+				glMaterialfv(GL_FRONT, GL_AMBIENT, red.ambient);
 			glVertex3f(center[0], center[1], 0);
 		}
 		break;
 	case 3:
-		for (int i = -2; i < 500; i++) {
-			setPos(42 * i / 300.0, stage);
+		for (int i = -2; i < 300; i++) {
+			setPos(55 * i / 300.0, stage);
+			if (i > 287)
+				glMaterialfv(GL_FRONT, GL_AMBIENT, red.ambient);
 			glVertex3f(center[0], center[1], 0);
 		}
 		break;
@@ -199,6 +208,8 @@ void Stage::draw_stage(int stage) {
 		glBegin(GL_LINE_STRIP);
 		for (int i = 1; i < 150; i++) {
 			setPos(38 + 30 * i / 150.0, stage);
+			if (i > 142)
+				glMaterialfv(GL_FRONT, GL_AMBIENT, red.ambient);
 			glVertex3f(center[0], center[1], 0);
 		}
 		break;

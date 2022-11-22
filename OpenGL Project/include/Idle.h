@@ -4,7 +4,8 @@
 
 void idle() {
 	/* Implement: update spheres and handle collision at boundary*/
-
+	if (score > 999999999)
+		score = 999999999;
 	end_t = clock();
 	if (end_t - start_t > 1000 / Frame) {
 		int factor = 1;
@@ -31,16 +32,16 @@ void idle() {
 							for (int i = 0; i < 10; i++) {
 								if (score > scoredata[i]) {
 									ranking = i;
-									scoredata.insert(scoredata.begin()+i, score);
+									scoredata.insert(scoredata.begin() + i, score);
 									switch (difficulty) {
 									case EASY:
-										difficultydata.insert(difficultydata.begin()+i, "EASY");
+										difficultydata.insert(difficultydata.begin() + i, "EASY");
 										break;
 									case NORMAL:
-										difficultydata.insert(difficultydata.begin()+i, "NORMAL");
+										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
 										break;
 									case HARD:
-										difficultydata.insert(difficultydata.begin()+i, "HARD");
+										difficultydata.insert(difficultydata.begin() + i, "HARD");
 										break;
 									}
 									scorechange = 1;
@@ -59,16 +60,16 @@ void idle() {
 							for (int i = 0; i < 10; i++) {
 								if (score > scoredata[i]) {
 									ranking = i;
-									scoredata.insert(scoredata.begin()+i, score);
+									scoredata.insert(scoredata.begin() + i, score);
 									switch (difficulty) {
 									case EASY:
-										difficultydata.insert(difficultydata.begin()+i, "EASY");
+										difficultydata.insert(difficultydata.begin() + i, "EASY");
 										break;
 									case NORMAL:
-										difficultydata.insert(difficultydata.begin()+i, "NORMAL");
+										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
 										break;
 									case HARD:
-										difficultydata.insert(difficultydata.begin()+i, "HARD");
+										difficultydata.insert(difficultydata.begin() + i, "HARD");
 										break;
 									}
 									scorechange = 1;
@@ -87,16 +88,16 @@ void idle() {
 							for (int i = 0; i < 10; i++) {
 								if (score > scoredata[i]) {
 									ranking = i;
-									scoredata.insert(scoredata.begin()+i, score);
+									scoredata.insert(scoredata.begin() + i, score);
 									switch (difficulty) {
 									case EASY:
-										difficultydata.insert(difficultydata.begin()+i, "EASY");
+										difficultydata.insert(difficultydata.begin() + i, "EASY");
 										break;
 									case NORMAL:
-										difficultydata.insert(difficultydata.begin()+i, "NORMAL");
+										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
 										break;
 									case HARD:
-										difficultydata.insert(difficultydata.begin()+i, "HARD");
+										difficultydata.insert(difficultydata.begin() + i, "HARD");
 										break;
 									}
 									scorechange = 1;
@@ -485,9 +486,9 @@ void idle() {
 						mode = CHAIN_BOOM;
 				}
 				break;
-			
+
 			case GAMEOVER:
-				if (scorechange == 1) 
+				if (scorechange == 1)
 					mode = SCORESAVE;
 				break;
 			case SCORESAVE:

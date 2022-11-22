@@ -6,6 +6,7 @@
 #include "Idle.h"
 
 void initialize() {
+	manual = MOUSE;
 	score = level = 0;
 	theme = SNU;
 	angle = 0;
@@ -40,7 +41,7 @@ void initialize() {
 	mtl6.setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
 	mtl7.setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
 	stage_color.setAmbient(1, 1, 1, 1.0f);
-	stage.setMTL(stage_color);
+	stage.setMTL(stage_color, mtl5);
 	materials.push_back(mtl1);
 	materials.push_back(mtl2);
 	materials.push_back(mtl3);

@@ -15,6 +15,9 @@ int main(int argc, char** argv) {
 	glutKeyboardFunc(keyboardDown);
 	glutKeyboardUpFunc(keyboardUp);
 	glutSpecialFunc(SpecialInput);
+	glutMouseFunc(mouse);
+	glutMotionFunc(mouseMove);
+	glutPassiveMotionFunc(mousePassiveMove);
 	glutIdleFunc(idle);
 
 	// enter GLUT event processing cycle

@@ -83,6 +83,34 @@ void Stage::stage4(double pos) {
 	}
 }
 
+void Stage::stage5(double pos) {
+	int stageR;
+	if (pos <= 7) {
+		center[0] = -400 + 37;
+		center[1] = 360 - 60 * pos - 15+129;
+	}
+	else if (pos < 10) {
+		stageR = 70;
+		center[0] = stageR * sin((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) + 265.5 - 596 + 37;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[1] = stageR * cos((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) - 211 + 287 - 15;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+	}
+	else if (pos < 25) {
+		stageR = 220;
+		center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) + 130 * PI / 180) - 19;
+		center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) + 130 * PI / 180) - 14;
+	}
+	else if (pos < 38) {
+		stageR = 350;
+		center[0] = stageR * sin(((-pos * 360) / (2 * PI * stageR)) + 190 * PI / 180) - 220;
+		center[1] = stageR * cos(((-pos * 360) / (2 * PI * stageR)) + 190 * PI / 180) + 40;
+	}
+	else {
+		stageR = 320;
+		center[0] = stageR * sin(((pos * 360) / (2 * PI * stageR)) - 80 * PI / 180);
+		center[1] = stageR * cos(((pos * 360) / (2 * PI * stageR)) - 80 * PI / 180);
+	}
+}
+
 void Stage::setPos(double pos, int stage) {
 	switch (stage) {
 	case 0:
@@ -98,6 +126,7 @@ void Stage::setPos(double pos, int stage) {
 		stage4(pos);
 		break;
 	case 4:
+		stage5(pos);
 		break;
 	default:
 		break;
@@ -112,9 +141,69 @@ void Stage::draw_stage(int stage) {
 	glLineWidth(7.0f);
 	glBegin(GL_LINE_STRIP);
 	glMaterialfv(GL_FRONT, GL_AMBIENT, stage_color.ambient);
-	for (int i = -2; i < 500; i++) {
-		setPos(42 * i / 300.0, stage);
-		glVertex3f(center[0], center[1], 0);
+	switch (stage) {
+	case 0:
+		for (int i = -2; i < 500; i++) {
+			setPos(42 * i / 300.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		break;
+	case 1:
+		for (int i = -2; i < 500; i++) {
+			setPos(42 * i / 300.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		break;
+	case 2:
+		for (int i = -2; i < 500; i++) {
+			setPos(42 * i / 300.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		break;
+	case 3:
+		for (int i = -2; i < 500; i++) {
+			setPos(42 * i / 300.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		break;
+	case 4:
+		for (int i = -2; i < 150; i++) {
+			setPos(25 * i / 150.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		glEnd();
+		glPushMatrix();
+		glTranslatef(center[0], center[1], 1);
+		blackhole.drawCircleWithTexture(50, 30);
+		glPopMatrix();
+		setPos(25 + 13 * 1 / 300.0, stage);
+		glPushMatrix();
+		glTranslatef(center[0], center[1], 1);
+		whitehole.drawCircleWithTexture(50, 30);
+		glPopMatrix();
+		glBegin(GL_LINE_STRIP);
+		for (int i = 1; i < 150; i++) {
+			setPos(25 + 13 * i / 150.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		glEnd();
+		glPushMatrix();
+		glTranslatef(center[0], center[1], 1);
+		blackhole.drawCircleWithTexture(50, 30);
+		glPopMatrix();
+		setPos(38 + 13 * 1 / 300.0, stage);
+		glPushMatrix();
+		glTranslatef(center[0], center[1], 1);
+		whitehole.drawCircleWithTexture(50, 30);
+		glPopMatrix();
+		glBegin(GL_LINE_STRIP);
+		for (int i = 1; i < 150; i++) {
+			setPos(38 + 30 * i / 150.0, stage);
+			glVertex3f(center[0], center[1], 0);
+		}
+		break;
+	default:
+		break;
 	}
 	glEnd();
 }

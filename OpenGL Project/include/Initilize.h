@@ -102,7 +102,13 @@ void initialize() {
 	Pause.settextureID(0);
 	Pause.initTexture();
 
+	blackhole.setFilename("textures/object/blackhole.png");
+	blackhole.settextureID(0);
+	blackhole.initTexture();
 
+	whitehole.setFilename("textures/object/whitehole.png");
+	whitehole.settextureID(0);
+	whitehole.initTexture();
 
 	sound.push_back(bgm);
 	sound.push_back(shoot);

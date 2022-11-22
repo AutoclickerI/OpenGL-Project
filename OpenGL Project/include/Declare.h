@@ -1,4 +1,5 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include <ctime>
 #include <vector>
 #include <cstdlib>
@@ -41,7 +42,7 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers, highscore, scoresave;
+Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2, arrow, developers, highscore, scoresave, blackhole, whitehole;
 Stage stage;
 Sphere sphere1(30, 20, 20);
 Sphere sphere2(sphere1);

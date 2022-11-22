@@ -1,7 +1,11 @@
 #pragma once
 #include "Material.h"
+#include "texture.h"
 #include <cmath>
 #include <GL/glut.h>
+
+extern Texture blackhole;
+extern Texture whitehole;
 
 class Stage {
 public:
@@ -10,6 +14,7 @@ public:
 	void stage2(double pos);
 	void stage3(double pos);
 	void stage4(double pos);
+	void stage5(double pos);
 	void draw_stage(int stage);
 	void setMTL(const Material& m);
 	const double* getCenter() const;

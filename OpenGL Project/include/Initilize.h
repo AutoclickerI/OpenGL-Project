@@ -6,7 +6,7 @@
 #include "Idle.h"
 
 void initialize() {
-	manual = MOUSE;
+	manual = KEYBOARD1;
 	score = level = 0;
 	theme = SNU;
 	angle = 0;

@@ -627,10 +627,12 @@ void mouseMove(int x, int y) {
 	double posx, posy;
 	posx = x - WINDOW_WIDTH / 2;
 	posy = -y + WINDOW_HEIGHT / 2;
-	if (posx)
-		angle = atan2(posx, posy) * 180 / PI;
-	else
-		angle = (posy < 0) * 180;
+	if (manual == MOUSE) {
+		if (posx)
+			angle = atan2(posx, posy) * 180 / PI;
+		else
+			angle = (posy < 0) * 180;
+	}
 	switch (mode) {
 	case MAINMENU1:
 		if (480 < x && x < 800 && 380 < y) {
@@ -664,10 +666,12 @@ void mousePassiveMove(int x, int y) {
 	double posx, posy;
 	posx = x - WINDOW_WIDTH / 2;
 	posy = -y + WINDOW_HEIGHT / 2;
-	if (posx)
-		angle = (atan2(posx, posy) * 180 / PI);
-	else
-		angle = (posy < 0) * 180;
+	if (manual == MOUSE) {
+		if (posx)
+			angle = (atan2(posx, posy) * 180 / PI);
+		else
+			angle = (posy < 0) * 180;
+	}
 	switch (mode) {
 	case MAINMENU1:
 		if (480 < x && x < 800 && 380 < y) {

@@ -24,7 +24,7 @@ enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED };
 enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
-enum MANUAL {KEYBOARD1, KEYBOARD2, MOUSE};
+enum MANUAL { KEYBOARD1, KEYBOARD2, MOUSE };
 enum DIFFICULTY { EASY, NORMAL, HARD };
 
 using namespace std;
@@ -64,17 +64,17 @@ int level;
 int Frame;
 int color_num[3] = { 3,5,7 };
 const float scaleFactor = 300.0f;
-vector<string> ordnum{" 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
+vector<string> ordnum{ " 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
 
 fstream iscore("score/top10.txt");
 string word;
 int number;
-vector<string> playername(20); 
+vector<string> playername(20);
 vector<string> difficultydata(20);
 vector<int> scoredata(20);
 bool scorechange = 0;
 vector<char> currentplayer(100);
-string fullname="XXX";
+string fullname = "XXX";
 int ranking;
 
 

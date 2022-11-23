@@ -129,7 +129,7 @@ void initialize() {
 
 		iscore >> number;
 		scoredata[i] = number;
-		
+
 		iscore >> word;
 		difficultydata[i] = word;
 	}

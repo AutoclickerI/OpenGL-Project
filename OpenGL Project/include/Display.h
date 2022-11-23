@@ -37,12 +37,22 @@ void display() {
 			else
 				mainmenu2_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			glPushMatrix();
+			glTranslatef(-580, 300, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(30, 3);
+			glPopMatrix();
+			glPushMatrix();
 			glTranslatef(-220, arrow_pos_2, 0);
 			arrow.drawCircleWithTexture(30, 3);
 			glPopMatrix();
 			break;
 		case DEVELOPERS:
 			developers.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			glPushMatrix();
+			glTranslatef(-580, 300, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(30, 3);
+			glPopMatrix();
 			break;
 		case MOVING:
 		case BOOM:
@@ -103,6 +113,11 @@ void display() {
 			gameover.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			break;
 		case HIGHSCORE:
+			glPushMatrix();
+			glTranslatef(-580, 300, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(30, 3);
+			glPopMatrix();
 			highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "HIGHSCORES", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4));
 
 			for (int i = 0; i < 10; i++)
@@ -111,16 +126,16 @@ void display() {
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 				char S[100];
 				sprintf(S, "%07d", scoredata[i]);
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S, 5.0f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S, 5.0f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.26), WINDOW_HEIGHT * (0.3 - (0.08 * i)));
 			}
 			break;
 		case SCORESAVE:
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.4));
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3));
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER" , 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2));
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2));
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS ',' TO SAVE", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.1));
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking+1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3));
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking + 1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3));
 			for (int i = 0; i < 3; i++) {
 				string s;
 				s += currentplayer[i];
@@ -158,4 +173,4 @@ void Reshape(int NewWidth, int NewHeight) {
 	glLoadIdentity();
 	glOrtho(-1.0 * WidthFactor, 1.0 * WidthFactor, -1.0 * HeightFactor, 1.0 * HeightFactor, -1.0, 1.0);
 
-}	
+}

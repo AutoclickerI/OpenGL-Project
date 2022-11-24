@@ -78,7 +78,7 @@ void Texture::drawCircleWithTexture(float radius, int slices) {
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Texture::displayStrokeCharacters(void* font, string c, float lnWidth, float x, float y) {
+void Texture::displayStrokeCharacters(void* font, string c, float lnWidth, float x, float y, float scaleFactor) {
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glLineWidth(lnWidth);

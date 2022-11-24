@@ -132,6 +132,12 @@ void initialize() {
 		
 		iscore >> word;
 		difficultydata[i] = word;
+
+		iscore >> number;
+		themedata[i] = number;
+
+		iscore >> number;
+		framedata[i] = number;
 	}
 	iscore.close();
 }

@@ -16,7 +16,7 @@ public:
 	void initTexture();
 	void drawSquareWithTexture(float width, float height);
 	void drawCircleWithTexture(float radius, int slices);
-	void displayStrokeCharacters(void* font, string c, float lnWidth, float x, float y);
+	void displayStrokeCharacters(void* font, string c, float lnWidth, float x, float y, float scaleFactor);
 
 private:
 	GLuint textureID = 0;

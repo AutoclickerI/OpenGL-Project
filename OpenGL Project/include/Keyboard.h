@@ -281,9 +281,9 @@ void keyboardDown(unsigned char key, int x, int y) {
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
 			break;
-		case 'S':
-		case 's':
-			mode = SCORESAVE;
+		//case 'S':
+		//case 's':
+		//	mode = SCORESAVE;
 			break;
 		default:
 			break;
@@ -315,10 +315,10 @@ void keyboardDown(unsigned char key, int x, int y) {
 				fullname[2] = currentplayer[2];
 				cout << ranking;
 				playername.insert(playername.begin() + ranking, fullname);
-				ofstream oscore("score/top10.txt");
+				ofstream oscore("score/top10.ini");
 				if (oscore.is_open()) {
 					for (int i = 0; i < 10; i++) {
-						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
+						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " " << themedata[i] << " " << framedata[i] << endl;
 					}
 					scorechange = 0;
 					oscore.close();

@@ -158,9 +158,9 @@ void SpecialInput(int key, int x, int y) {
 					angle += 3;
 				break;
 			case GLUT_KEY_UP:
-				if (180 < angle&& angle!=360)
+				if (180 < angle && angle != 360)
 					angle += 3;
-				if (angle < 180&&angle!=0)
+				if (angle < 180 && angle != 0)
 					angle -= 3;
 				break;
 			case GLUT_KEY_DOWN:
@@ -383,7 +383,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				break;
 			case -200:
 				cannon.clear();
- 				difficulty = NORMAL;
+				difficulty = NORMAL;
 				mode = MOVING;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
@@ -461,7 +461,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 		case CHAIN_DRAG:
 			if (!pause) {
 				sound[BGM].pausesound();
-				pause = 1; 
+				pause = 1;
 			}
 			break;
 		default:
@@ -501,11 +501,97 @@ void mouse(int button, int state, int x, int y) {
 	bool No_add = true;
 	printf("(%d, %d, %d, %d)\n", button, state, x, y);
 	switch (mode) {
+	case MAINMENU1:
+		if (480 < x && x < 800 && 380 < y && button == 0 && state == 1) {
+			if (y < 465) {
+				arrow_pos = -80;
+				mode = MAINMENU2;
+				score = 0;
+			}
+			else if (y < 550) {
+				arrow_pos = -160;
+				mode = HIGHSCORE;
+			}
+			else if (y < 635) {
+				arrow_pos = -240;
+				mode = SETTING;
+			}
+			else if (y < 720) {
+				arrow_pos = -320;
+				mode = DEVELOPERS;
+			}
+		}
+		break;
+	case MAINMENU2:
+		if (510 < x && x < 780 && 435 < y && button == 0 && state == 1) {
+			if (y < 518) {
+				arrow_pos_2 = -110;
+				cannon.clear();
+				difficulty = EASY;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+			}
+			else if (y < 601) {
+				arrow_pos_2 = -200;
+				cannon.clear();
+				difficulty = NORMAL;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+			}
+			else if (y < 685) {
+				arrow_pos_2 = -290;
+				cannon.clear();
+				difficulty = HARD;
+				mode = MOVING;
+				MTL_num = rand() % color_num[difficulty];
+				sphere1.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere1);
+				MTL_num = rand() % color_num[difficulty];
+				sphere2.setMTL(materials[MTL_num], MTL_num);
+				cannon.push_back(sphere2);
+				for (vector<double>::size_type i = 0; i < stage_Location.size(); i++) {
+					Sphere sphere_cache(30, 20, 20);
+					sphere_cache.setCenter(0.0f, 50.0f, 0.0f);
+					sphere_cache.setVelocity(0.0f, 0.0f, 0.0f);
+					MTL_num = rand() % color_num[difficulty];
+					sphere_cache.setMTL(materials[MTL_num], MTL_num);
+					stage_Sphere.push_back(sphere_cache);
+				}
+			}
+		}
+	case HIGHSCORE:
+	case SETTING:
+	case DEVELOPERS:
+		if (30 < x && x < 80 && 30 < y && y < 90 && button == 0 && state == 1)
+			mode = MAINMENU1;
+		break;
 	case MOVING:
-	case BOOM:
-	case CHAIN_BOOM:
-	case DRAG:
-	case CHAIN_DRAG:
 		if (manual == MOUSE && button == 0 && state == 1) {
 			sound[SHOOT].playsound();
 			shootings.push_back(cannon.front());
@@ -539,12 +625,40 @@ void mouse(int button, int state, int x, int y) {
 void mouseMove(int x, int y) {
 	/* Implement */
 	double posx, posy;
-	posx = x - WINDOW_WIDTH/2;
-	posy = -y + WINDOW_HEIGHT/2;
-	if (posx)
-		angle = atan2(posx , posy) * 180 / PI;
-	else
-		angle = (posy < 0) * 180;
+	posx = x - WINDOW_WIDTH / 2;
+	posy = -y + WINDOW_HEIGHT / 2;
+	if (manual == MOUSE) {
+		if (posx)
+			angle = atan2(posx, posy) * 180 / PI;
+		else
+			angle = (posy < 0) * 180;
+	}
+	switch (mode) {
+	case MAINMENU1:
+		if (480 < x && x < 800 && 380 < y) {
+			if (y < 465)
+				arrow_pos = -80;
+			else if (y < 550)
+				arrow_pos = -160;
+			else if (y < 635)
+				arrow_pos = -240;
+			else if (y < 720)
+				arrow_pos = -320;
+		}
+		break;
+	case MAINMENU2:
+		if (510 < x && x < 780 && 435 < y) {
+			if (y < 518)
+				arrow_pos_2 = -110;
+			else if (y < 601)
+				arrow_pos_2 = -200;
+			else if (y < 685)
+				arrow_pos_2 = -290;
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void mousePassiveMove(int x, int y) {
@@ -552,8 +666,36 @@ void mousePassiveMove(int x, int y) {
 	double posx, posy;
 	posx = x - WINDOW_WIDTH / 2;
 	posy = -y + WINDOW_HEIGHT / 2;
-	if (posx)
-		angle = (atan2(posx , posy) * 180 / PI);
-	else
-		angle = (posy < 0) * 180;
+	if (manual == MOUSE) {
+		if (posx)
+			angle = (atan2(posx, posy) * 180 / PI);
+		else
+			angle = (posy < 0) * 180;
+	}
+	switch (mode) {
+	case MAINMENU1:
+		if (480 < x && x < 800 && 380 < y) {
+			if (y < 465)
+				arrow_pos = -80;
+			else if (y < 550)
+				arrow_pos = -160;
+			else if (y < 635)
+				arrow_pos = -240;
+			else if (y < 720)
+				arrow_pos = -320;
+		}
+		break;
+	case MAINMENU2:
+		if (510 < x && x < 780 && 435 < y) {
+			if (y < 518)
+				arrow_pos_2 = -110;
+			else if (y < 601)
+				arrow_pos_2 = -200;
+			else if (y < 685)
+				arrow_pos_2 = -290;
+		}
+		break;
+	default:
+		break;
+	}
 }

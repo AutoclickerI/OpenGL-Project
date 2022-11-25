@@ -24,7 +24,7 @@ enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED };
 enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
-enum MANUAL {KEYBOARD1, KEYBOARD2, MOUSE};
+enum MANUAL { KEYBOARD1, KEYBOARD2, MOUSE };
 enum DIFFICULTY { EASY, NORMAL, HARD };
 
 using namespace std;
@@ -67,7 +67,7 @@ vector<string> ordnum{" 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 
 ifstream iscore("score/top10.ini");
 string word;
 int number;
-vector<string> playername(20); 
+vector<string> playername(20);
 vector<string> difficultydata(20);
 vector<int> scoredata(20);
 vector<int> themedata(20);

@@ -1,5 +1,6 @@
 #pragma once
 #include "Declare.h"
+#include "Functions.h"
 
 void SpecialInput(int key, int x, int y) {
 	switch (mode) {
@@ -593,7 +594,12 @@ void mouse(int button, int state, int x, int y) {
 			mode = MAINMENU1;
 		break;
 	case MOVING:
-		if (manual == MOUSE && button == 0 && state == 1) {
+		if (0 < x && x < 130 && 0 < y && y < 130 && button == 0 && state == 1 && item == 1) {
+			getclock();
+			item = 0;
+			Frame = Frame / 2;
+		}
+		else if (manual == MOUSE && button == 0 && state == 1) {
 			sound[SHOOT].playsound();
 			shootings.push_back(cannon.front());
 			cannon.erase(cannon.begin());

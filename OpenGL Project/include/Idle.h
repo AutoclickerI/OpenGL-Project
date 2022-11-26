@@ -24,119 +24,23 @@ void idle() {
 					switch (STAGE_NOW) {
 					case STAGE1:
 					case STAGE2:
-						if (stage_Location.back() > 44) {
-							mode = GAMEOVER;
-							STAGE_NOW = STAGE1;
-							sound[STAGEFAILED].playsound();
-							cout << "your score:" << score << endl;
-							for (int i = 0; i < 10; i++) {
-								if (score > scoredata[i]) {
-									ranking = i;
-									scoredata.insert(scoredata.begin() + i, score);
-									switch (difficulty) {
-									case EASY:
-										difficultydata.insert(difficultydata.begin() + i, "EASY");
-										break;
-									case NORMAL:
-										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
-										break;
-									case HARD:
-										difficultydata.insert(difficultydata.begin() + i, "HARD");
-										break;
-									}
-									scorechange = 1;
-									break;
-								}
-							}
-							score = 0;
-						}
+						if (stage_Location.back() > 44) gameoverprocess();
 						break;
 					case STAGE3:
-						if (stage_Location.back() > 70) {
-							mode = GAMEOVER;
-							STAGE_NOW = STAGE1;
-							sound[STAGEFAILED].playsound();
-							cout << "your score:" << score << endl;
-							for (int i = 0; i < 10; i++) {
-								if (score > scoredata[i]) {
-									ranking = i;
-									scoredata.insert(scoredata.begin() + i, score);
-									switch (difficulty) {
-									case EASY:
-										difficultydata.insert(difficultydata.begin() + i, "EASY");
-										break;
-									case NORMAL:
-										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
-										break;
-									case HARD:
-										difficultydata.insert(difficultydata.begin() + i, "HARD");
-										break;
-									}
-									scorechange = 1;
-									break;
-								}
-							}
-							score = 0;
-						}
+						if (stage_Location.back() > 70) gameoverprocess();
 						break;
 					case STAGE4:
-						if (stage_Location.back() > 55) {
-							mode = GAMEOVER;
-							STAGE_NOW = STAGE1;
-							sound[STAGEFAILED].playsound();
-							cout << "your score:" << score << endl;
-							for (int i = 0; i < 10; i++) {
-								if (score > scoredata[i]) {
-									ranking = i;
-									scoredata.insert(scoredata.begin() + i, score);
-									switch (difficulty) {
-									case EASY:
-										difficultydata.insert(difficultydata.begin() + i, "EASY");
-										break;
-									case NORMAL:
-										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
-										break;
-									case HARD:
-										difficultydata.insert(difficultydata.begin() + i, "HARD");
-										break;
-									}
-									scorechange = 1;
-									break;
-								}
-							}
-							score = 0;
-						}
+						if (stage_Location.back() > 55)	gameoverprocess();
 						break;
 					case STAGE5:
-						if (stage_Location.back() > 68) {
-							mode = GAMEOVER;
-							STAGE_NOW = STAGE1;
-							sound[STAGEFAILED].playsound();
-							cout << "your score:" << score << endl;
-							for (int i = 0; i < 10; i++) {
-								if (score > scoredata[i]) {
-									ranking = i;
-									scoredata.insert(scoredata.begin() + i, score);
-									switch (difficulty) {
-									case EASY:
-										difficultydata.insert(difficultydata.begin() + i, "EASY");
-										break;
-									case NORMAL:
-										difficultydata.insert(difficultydata.begin() + i, "NORMAL");
-										break;
-									case HARD:
-										difficultydata.insert(difficultydata.begin() + i, "HARD");
-										break;
-									}
-									scorechange = 1;
-									break;
-								}
-							}
-							score = 0;
-						}
+						if (stage_Location.back() > 68) gameoverprocess();
 						break;
 					default:
 						break;
+					}
+					if ((end_t - item_t > 3000) && (end_t - item_t < 4000) && Framerevert == 0 && item == 0) {
+						Frame = Frame * 2;
+						Framerevert = 1;
 					}
 					if (stage_Location[0] < 0)
 						factor = 5;

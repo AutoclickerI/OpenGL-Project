@@ -6,7 +6,6 @@
 #include "Idle.h"
 
 void initialize() {
-	manual = KEYBOARD1;
 	score = level = 0;
 	theme = SNU;
 	angle = 0;
@@ -14,7 +13,6 @@ void initialize() {
 	speed = 10;
 	arrow_pos = -80;
 	arrow_pos_2 = -110;
-	Frame = 60;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;
@@ -122,8 +120,7 @@ void initialize() {
 	}
 	sound[BGM].initsound(1);
 
-	for (int i = 0; !iscore.eof(); i++)
-	{
+	for (int i = 0; (!iscore.eof()) && i < 10; i++) {
 		iscore >> word;
 		playername[i] = word;
 
@@ -132,13 +129,27 @@ void initialize() {
 
 		iscore >> word;
 		difficultydata[i] = word;
-
-		iscore >> number;
-		themedata[i] = number;
-
-		iscore >> number;
-		framedata[i] = number;
 	}
+
+	iscore >> number;
+	switch (number) {
+	case 0:
+		manual = KEYBOARD1;
+		break;
+	case 1:
+		manual = KEYBOARD2;
+		break;
+	case 2:
+		manual = MOUSE;
+		break;
+	default:
+		manual = MOUSE;
+		break;
+	}
+
+	iscore >> number;
+	if (number != NULL)	Frame = number;
+	else Frame = 60;
 	iscore.close();
 }
 

@@ -61,8 +61,6 @@ void idle() {
 								if (score > scoredata[i]) {
 									ranking = i;
 									scoredata.insert(scoredata.begin() + i, score);
-									themedata.insert(themedata.begin() + i, theme+1);
-									framedata.insert(framedata.begin() + i, Frame+1);
 									switch (difficulty) {
 									case EASY:
 										difficultydata.insert(difficultydata.begin() + i, "EASY");
@@ -91,8 +89,6 @@ void idle() {
 								if (score > scoredata[i]) {
 									ranking = i;
 									scoredata.insert(scoredata.begin() + i, score);
-									themedata.insert(themedata.begin() + i, theme);
-									framedata.insert(framedata.begin() + i, Frame);
 									switch (difficulty) {
 									case EASY:
 										difficultydata.insert(difficultydata.begin() + i, "EASY");
@@ -121,8 +117,6 @@ void idle() {
 								if (score > scoredata[i]) {
 									ranking = i;
 									scoredata.insert(scoredata.begin() + i, score);
-									themedata.insert(themedata.begin() + i, theme);
-									framedata.insert(framedata.begin() + i, Frame);
 									switch (difficulty) {
 									case EASY:
 										difficultydata.insert(difficultydata.begin() + i, "EASY");
@@ -502,8 +496,9 @@ void idle() {
 					ofstream oscore("score/top10.ini");
 					if (oscore.is_open()) {
 						for (int i = 0; i < 10; i++) {
-							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " " << themedata[i] << " " << framedata[i] << endl;
+							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
 						}
+						oscore << manual << " " << Frame << endl;
 						oscore.close();
 					}
 				}

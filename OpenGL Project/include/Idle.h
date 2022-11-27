@@ -4,8 +4,6 @@
 
 void idle() {
 	/* Implement: update spheres and handle collision at boundary*/
-	if (score > 999999999)
-		score = 999999999;
 	end_t = clock();
 	if (end_t - start_t > 1000 / Frame) {
 		int factor = 1;
@@ -518,6 +516,7 @@ void idle() {
 
 		start_t = end_t;
 		glutPostRedisplay();
-
 	}
+	if (score > 999999999)
+		score = 999999999;
 }

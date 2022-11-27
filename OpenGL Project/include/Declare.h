@@ -71,12 +71,12 @@ int number;
 vector<string> playername(20);
 vector<string> difficultydata(20);
 vector<int> scoredata(20);
-vector<char> currentplayer(100);
+vector<char> currentplayer(10);
 bool scorechange = 0;
 string fullname="XXX";
 int ranking;
 bool item = 1;
-bool Framerevert = 0;
+bool velocityrevert = 0;
 
 
 

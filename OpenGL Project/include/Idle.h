@@ -38,9 +38,9 @@ void idle() {
 					default:
 						break;
 					}
-					if ((end_t - item_t > 3000) && (end_t - item_t < 4000) && Framerevert == 0 && item == 0) {
-						Frame = Frame * 2;
-						Framerevert = 1;
+					if (end_t - item_t > 3000 && velocityrevert == 0 && item == 0) {
+						moving_speed *= 2;
+						velocityrevert = 1;
 					}
 					if (stage_Location[0] < 0)
 						factor = 5;
@@ -414,7 +414,7 @@ void idle() {
 		for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
 			sound[i].updatesound();
 		}
-
+		cout << mode << endl;
 		start_t = end_t;
 		glutPostRedisplay();
 

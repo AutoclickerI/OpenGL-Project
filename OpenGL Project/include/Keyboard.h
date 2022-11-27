@@ -56,6 +56,7 @@ void SpecialInput(int key, int x, int y) {
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -75,6 +76,7 @@ void SpecialInput(int key, int x, int y) {
 				cannon.clear();
 				difficulty = NORMAL;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -94,6 +96,7 @@ void SpecialInput(int key, int x, int y) {
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -282,10 +285,6 @@ void keyboardDown(unsigned char key, int x, int y) {
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
 			break;
-		//case 'S':
-		//case 's':
-		//	mode = SCORESAVE;
-			break;
 		default:
 			break;
 		}
@@ -327,6 +326,15 @@ void keyboardDown(unsigned char key, int x, int y) {
 				}
 			}
 			mode = MAINMENU1;
+			angle = level = 0;
+			moving_speed = 0.02;
+			delete_probability = 100;
+			stage_Location.clear();
+			stage_Sphere.clear();
+			shootings.clear();
+			merge.clear();
+			for (int i = -10; i < 2; i++)
+				stage_Location.push_back(i);
 			break;
 		default:
 			break;
@@ -368,6 +376,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -387,6 +396,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				cannon.clear();
 				difficulty = NORMAL;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -406,6 +416,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -531,6 +542,7 @@ void mouse(int button, int state, int x, int y) {
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -551,6 +563,7 @@ void mouse(int button, int state, int x, int y) {
 				cannon.clear();
 				difficulty = NORMAL;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -571,6 +584,7 @@ void mouse(int button, int state, int x, int y) {
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
+				item = 1;
 				MTL_num = rand() % color_num[difficulty];
 				sphere1.setMTL(materials[MTL_num], MTL_num);
 				cannon.push_back(sphere1);
@@ -597,7 +611,7 @@ void mouse(int button, int state, int x, int y) {
 		if (0 < x && x < 130 && 0 < y && y < 130 && button == 0 && state == 1 && item == 1) {
 			getclock();
 			item = 0;
-			Frame = Frame / 2;
+			moving_speed /= 2;
 		}
 		else if (manual == MOUSE && button == 0 && state == 1) {
 			sound[SHOOT].playsound();

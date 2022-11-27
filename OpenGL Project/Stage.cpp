@@ -60,8 +60,8 @@ void Stage::stage4(double pos) {
 	}
 	else if (pos < 16) {
 		stageR = 70;
-		center[0] = stageR * sin((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) + 265.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
-		center[1] = stageR * cos((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) - 211;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[0] = stageR * sin((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) + 265.5;	
+		center[1] = stageR * cos((pos * 360) / (2 * PI * stageR) - 80 * PI / 180) - 211;		
 	}
 	else if (pos < 35) {
 		stageR = 260;
@@ -92,8 +92,8 @@ void Stage::stage5(double pos) {
 	}
 	else if (pos < 10) {
 		stageR = 70;
-		center[0] = stageR * sin((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) - 293.5;	//400 * sin(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
-		center[1] = stageR * cos((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) + 61;		//400 * cos(((12 * 360) / (2 * PI * 330)) + 30 * PI / 180);
+		center[0] = stageR * sin((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) - 293.5;	
+		center[1] = stageR * cos((-(pos - 2) * 360) / (2 * PI * stageR) - 220 * PI / 180) + 61;		
 	}
 	else if (pos < 25) {
 		stageR = 220;

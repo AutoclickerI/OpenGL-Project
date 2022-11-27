@@ -109,11 +109,10 @@ void display() {
 			char S2[100];
 			sprintf(S2, "%09d", score);		
 
-			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SCORE", 3.0f, WINDOW_WIDTH * (0.3), WINDOW_HEIGHT * (0.42), 3.5);
-			if (scoredata[0] > score) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S1, 3.0f, WINDOW_WIDTH * (0.27), WINDOW_HEIGHT * (0.37), 3.5);
-			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 3.0f, WINDOW_WIDTH * (0.27), WINDOW_HEIGHT * (0.37), 3.5);
-			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "VS", 3.0f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.32), 3.5);
-			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 3.0f, WINDOW_WIDTH * (0.27), WINDOW_HEIGHT * (0.27), 3.5);
+			if (scoredata[0] > score) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S1, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
+			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SCORE", 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.36), 5.0);
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.31), 5.0);
 			break;
 
 		case CLEAR:
@@ -143,9 +142,9 @@ void display() {
 		case SCORESAVE:
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.4), 2);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking+1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3), 2);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER" , 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2), 2);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS ',' TO SAVE", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.1), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking+1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3), 2);
 			for (int i = 0; i < 3; i++) {
 				string S4;
 				S4 += currentplayer[i];

@@ -23,3 +23,33 @@ void handleCollision(Sphere& sph1, Sphere& sph2) {
 	}
 }
 
+void gameoverprocess() {
+	mode = GAMEOVER;
+	STAGE_NOW = STAGE1;
+	sound[STAGEFAILED].playsound();
+	cout << "your score:" << score << endl;
+	for (int i = 0; i < 10; i++) {
+		if (score > scoredata[i]) {
+			ranking = i;
+			scoredata.insert(scoredata.begin() + i, score);
+			switch (difficulty) {
+			case EASY:
+				difficultydata.insert(difficultydata.begin() + i, "EASY");
+				break;
+			case NORMAL:
+				difficultydata.insert(difficultydata.begin() + i, "NORMAL");
+				break;
+			case HARD:
+				difficultydata.insert(difficultydata.begin() + i, "HARD");
+				break;
+			}
+			scorechange = 1;
+			break;
+		}
+	}
+	score = 0;
+}
+
+void getclock() {
+	item_t = end_t;
+}

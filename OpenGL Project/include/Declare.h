@@ -34,6 +34,7 @@ Theme theme;
 MANUAL manual;
 clock_t start_t = clock();
 clock_t end_t;
+clock_t item_t;
 
 vector<Sphere> shootings;
 vector<Sphere> cannon;
@@ -70,11 +71,12 @@ int number;
 vector<string> playername(20);
 vector<string> difficultydata(20);
 vector<int> scoredata(20);
-vector<char> currentplayer(100);
+vector<char> currentplayer(10);
 bool scorechange = 0;
 string fullname="XXX";
 int ranking;
-
+bool item = 1;
+bool velocityrevert = 0;
 
 
 

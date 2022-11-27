@@ -113,6 +113,16 @@ void display() {
 			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
 			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SCORE", 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.36), 5.0);
 			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.31), 5.0);
+			
+			if (item == 1) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "<ITEM>", 3.0f, WINDOW_WIDTH * (-0.48), WINDOW_HEIGHT * (0.45), 5.0);
+			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "<USED>", 3.0f, WINDOW_WIDTH * (-0.48), WINDOW_HEIGHT * (0.45), 5.0);
+
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(moving_speed), 1.5f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.0), 5.0);
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(end_t), 1.5f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (-0.1), 5.0);
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(item_t), 1.5f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (-0.2), 5.0);
+
+
+
 			break;
 
 		case CLEAR:

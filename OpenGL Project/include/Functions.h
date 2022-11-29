@@ -49,7 +49,3 @@ void gameoverprocess() {
 	}
 	score = 0;
 }
-
-void getclock() {
-	item_t = end_t;
-}

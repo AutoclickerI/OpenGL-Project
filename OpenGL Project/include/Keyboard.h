@@ -312,14 +312,13 @@ void keyboardDown(unsigned char key, int x, int y) {
 				fullname[0] = currentplayer[0];
 				fullname[1] = currentplayer[1];
 				fullname[2] = currentplayer[2];
-				cout << ranking;
 				playername.insert(playername.begin() + ranking, fullname);
-				ofstream oscore("score/top10.ini");
+				ofstream oscore("score/config.ini");
 				if (oscore.is_open()) {
 					for (int i = 0; i < 10; i++) {
 						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
 					}
-					oscore << manual << " " << Frame << endl;
+					oscore << manual << " " << Frame << " " << theme << endl;
 					scorechange = 0;
 					oscore.close();
 				}
@@ -608,7 +607,8 @@ void mouse(int button, int state, int x, int y) {
 		break;
 	case MOVING:
 		if (0 < x && x < 130 && 0 < y && y < 130 && button == 0 && state == 1 && item == 1) {
-			getclock();
+			item_t = end_t;
+			velocityrevert = 0;
 			item = 0;
 			moving_speed /= 2;
 		}

@@ -66,7 +66,7 @@ int level;
 int Frame;
 int color_num[3] = { 3,5,7 };
 vector<string> ordnum{ " 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
-ifstream iscore("score/top10.ini");
+ifstream iscore("score/config.ini");
 string word;
 int number;
 vector<string> playername(20);

@@ -123,6 +123,8 @@ void initialize() {
 	sound.push_back(stageclear);
 	sound.push_back(stagefailed);
 
+	glColor3f(1.0f, 1.0f, 1.0f);
+
 	for (vector<Sound>::size_type i = 0; i < sound.size(); i++) {
 		sound[i].initsound(0);
 	}
@@ -158,5 +160,21 @@ void initialize() {
 	iscore >> number;
 	if (number != NULL)	Frame = number;
 	else Frame = 60;
+	iscore >> number;
+	switch (number) {
+	case 0:
+		theme = SNU;
+		break;
+	case 1:
+		theme = Theme1;
+		break;
+	case 2:
+		theme = Theme2;
+		break;
+	default:
+		theme = SNU;
+		break;
+		
+	}
 	iscore.close();
 }

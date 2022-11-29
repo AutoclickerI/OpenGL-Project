@@ -36,7 +36,7 @@ void idle() {
 					default:
 						break;
 					}
-					if (end_t - item_t > 3000 && velocityrevert == 0 && item == 0) {
+					if (end_t - item_t > 5000 && velocityrevert == 0 && item == 0) {
 						moving_speed *= 2;
 						velocityrevert = 1;
 					}
@@ -395,12 +395,12 @@ void idle() {
 				break;
 			case SCORESAVE:
 				if (scorechange == 1) {
-					ofstream oscore("score/top10.ini");
+					ofstream oscore("score/config.ini");
 					if (oscore.is_open()) {
 						for (int i = 0; i < 10; i++) {
 							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
 						}
-						oscore << manual << " " << Frame << endl;
+						oscore << manual << " " << Frame << " " << theme << endl;
 						oscore.close();
 					}
 				}

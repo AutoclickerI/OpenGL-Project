@@ -89,9 +89,17 @@ void initialize() {
 	mainmenu2_2.settextureID(0);
 	mainmenu2_2.initTexture();
 
-	arrow.setFilename("textures/background/snu.png");//Need fix
+	arrow.setFilename("textures/object/gray.png");
 	arrow.settextureID(0);
 	arrow.initTexture();
+
+	settings_1.setFilename("textures/state/settings_1.png");
+	settings_1.settextureID(0);
+	settings_1.initTexture();
+
+	settings_2.setFilename("textures/state/settings_2.png");
+	settings_2.settextureID(0);
+	settings_2.initTexture();
 
 	developers.setFilename("textures/state/developers.png");
 	developers.settextureID(0);
@@ -152,5 +160,3 @@ void initialize() {
 	else Frame = 60;
 	iscore.close();
 }
-
-

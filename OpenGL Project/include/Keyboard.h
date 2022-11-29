@@ -30,8 +30,7 @@ void SpecialInput(int key, int x, int y) {
 				mode = HIGHSCORE;
 				break;
 			case -240:
-				//mode = SETTING;
-				mode = SCORESAVE; //юс╫ц
+				mode = SETTING;
 				break;
 			case -320:
 				mode = DEVELOPERS;

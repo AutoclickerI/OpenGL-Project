@@ -54,6 +54,37 @@ void display() {
 			arrow.drawCircleWithTexture(30, 3);
 			glPopMatrix();
 			break;
+		case SETTING:
+			if (start_t % 1200 > 600)
+				settings_1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			else
+				settings_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			glPushMatrix();
+			glTranslatef(-580, 300, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(30, 3);
+			glPopMatrix();
+			glPushMatrix();
+			glTranslatef(-115, 50, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(20, 3);
+			glRotatef(-60, 0, 0, 1);
+			glTranslatef(0, -110, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(20, 3);
+			glRotatef(-60, 0, 0, 1);
+			glTranslatef(0, -110, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(20, 3);
+			glRotatef(-60, 0, 0, 1);
+			glTranslatef(405, 0, 0);
+			arrow.drawCircleWithTexture(20, 3);
+			glTranslatef(0, 110, 0);
+			arrow.drawCircleWithTexture(20, 3);
+			glTranslatef(0, 110, 0);
+			arrow.drawCircleWithTexture(20, 3);
+			glPopMatrix();
+			break;
 		case MOVING:
 		case BOOM:
 		case CHAIN_BOOM:
@@ -107,7 +138,7 @@ void display() {
 			char S1[100];
 			sprintf(S1, "%09d", scoredata[0]);
 			char S2[100];
-			sprintf(S2, "%09d", score);		
+			sprintf(S2, "%09lld", score);		
 
 			if (scoredata[0] > score) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S1, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
 			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);

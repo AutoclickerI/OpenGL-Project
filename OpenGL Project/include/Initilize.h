@@ -133,6 +133,8 @@ void initialize() {
 	}
 	sound[BGM].initsound(1);
 
+	iscore >> word;
+	trash = word;
 	for (int i = 0; (!iscore.eof()) && i < 10; i++) {
 		iscore >> word;
 		playername[i] = word;
@@ -143,6 +145,10 @@ void initialize() {
 		iscore >> word;
 		difficultydata[i] = word;
 	}
+
+	iscore >> number;
+	if (number != NULL)	Frame = number;
+	else Frame = 60;
 
 	iscore >> number;
 	switch (number) {
@@ -159,10 +165,6 @@ void initialize() {
 		manual = MOUSE;
 		break;
 	}
-
-	iscore >> number;
-	if (number != NULL)	Frame = number;
-	else Frame = 60;
 	iscore >> number;
 	switch (number) {
 	case 0:

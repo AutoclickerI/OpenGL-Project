@@ -116,12 +116,16 @@ void mouse(int button, int state, int x, int y) {
 			if (505 < x && x < 545) {
 				sound[BUTTON].playsound();
 				theme = static_cast<Theme>((theme + 2) % 3);
+				if (scoredata[0] != 999999999 && theme == Theme2)
+					theme = Theme1;
 				arrow_pos_3.first = -60;
 				arrow_pos_3.second = 0;
 			}
 			if (920 < x && x < 960) {
 				sound[BUTTON].playsound();
 				theme = static_cast<Theme>((theme + 1) % 3);
+				if (scoredata[0] != 999999999 && theme == Theme2)
+					theme = SNU;
 				arrow_pos_3.first = -60;
 				arrow_pos_3.second = 1;
 			}
@@ -130,6 +134,8 @@ void mouse(int button, int state, int x, int y) {
 			if (505 < x && x < 545) {
 				sound[BUTTON].playsound();
 				manual = static_cast<MANUAL>((manual + 2) % 3);
+				if (scoredata[0] != 999999999 && manual == MOUSE)
+					manual = KEYBOARD2;
 				angle = 0;
 				arrow_pos_3.first = -170;
 				arrow_pos_3.second = 0;
@@ -137,6 +143,8 @@ void mouse(int button, int state, int x, int y) {
 			if (920 < x && x < 960) {
 				sound[BUTTON].playsound();
 				manual = static_cast<MANUAL>((manual + 1) % 3);
+				if (scoredata[0] != 999999999 && manual == MOUSE)
+					manual = KEYBOARD1;
 				angle = 0;
 				arrow_pos_3.first = -170;
 				arrow_pos_3.second = 1;

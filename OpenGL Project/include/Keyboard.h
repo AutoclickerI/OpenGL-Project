@@ -142,9 +142,13 @@ void SpecialInput(int key, int x, int y) {
 				break;
 			case -60:
 				theme = static_cast<Theme>((theme + 2) % 3);
+				if (scoredata[0] != 999999999 && theme == Theme2)
+					theme = Theme1;
 				break;
 			case -170:
 				manual = static_cast<MANUAL>((manual + 2) % 3);
+				if (scoredata[0] != 999999999 && manual == MOUSE)
+					manual = KEYBOARD2;
 				angle = 0;
 				break;
 			default:
@@ -161,9 +165,13 @@ void SpecialInput(int key, int x, int y) {
 				break;
 			case -60:
 				theme = static_cast<Theme>((theme + 1) % 3);
+				if (scoredata[0] != 999999999 && theme == Theme2)
+					theme = SNU;
 				break;
 			case -170:
 				manual = static_cast<MANUAL>((manual + 1) % 3);
+				if (scoredata[0] != 999999999 && manual == MOUSE)
+					manual = KEYBOARD1;
 				angle = 0;
 				break;
 			default:

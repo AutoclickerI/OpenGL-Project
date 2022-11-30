@@ -53,12 +53,10 @@ Sphere sphere2(sphere1);
 int delete_probability;
 float angle;
 float moving_speed;// stage_sphere's moving speed
-float speed;// cannon's shoot speed
 STAGE STAGE_NOW;
 DIFFICULTY difficulty;
 unsigned long long score;
 int MTL_num, f, ccw;
-int merge_step;
 int boom_pos, boom_pos_end, boom_mtl, boom_stack, boom_pos_end_end;
 int arrow_pos, arrow_pos_2;
 pair<int, bool> arrow_pos_3;

@@ -136,8 +136,16 @@ void SpecialInput(int key, int x, int y) {
 			arrow_pos_3.second = 0;
 			switch (arrow_pos_3.first) {
 			case 50:
+				Frame = 180 - Frame;
+				moving_speed = 1.2f / Frame;
+				break;
 			case -60:
+				theme = static_cast<Theme>((theme + 2) % 3);
+				break;
 			case -170:
+				manual = static_cast<MANUAL>((manual + 2) % 3);
+				angle = 0;
+				break;
 			default:
 				break;
 			}
@@ -146,8 +154,16 @@ void SpecialInput(int key, int x, int y) {
 			arrow_pos_3.second = 1;
 			switch (arrow_pos_3.first) {
 			case 50:
+				Frame = 180 - Frame;
+				moving_speed = 1.2f / Frame;
+				break;
 			case -60:
+				theme = static_cast<Theme>((theme + 1) % 3);
+				break;
 			case -170:
+				manual = static_cast<MANUAL>((manual + 1) % 3);
+				angle = 0;
+				break;
 			default:
 				break;
 			}
@@ -282,7 +298,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 		case 'r':
 			mode = MOVING;
 			angle = level = 0;
-			moving_speed = 0.02;
+			moving_speed = 1.2f / Frame;
 			delete_probability = 100;
 			cannon.clear();
 			MTL_num = rand() % color_num[difficulty];
@@ -310,7 +326,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 		case 'q':
 			mode = MAINMENU1;
 			angle = level = 0;
-			moving_speed = 0.02;
+			moving_speed = 1.2f / Frame;
 			delete_probability = 100;
 			stage_Location.clear();
 			stage_Sphere.clear();
@@ -360,7 +376,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 			}
 			mode = MAINMENU1;
 			angle = level = 0;
-			moving_speed = 0.02;
+			moving_speed = 1.2f / Frame;
 			delete_probability = 100;
 			stage_Location.clear();
 			stage_Sphere.clear();
@@ -381,6 +397,18 @@ void keyboardUp(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
 	bool No_add = true;
 	switch (key) {
+	case 27:
+		switch (mode) {
+		case MAINMENU2:
+		case HIGHSCORE:
+		case SETTING:
+		case DEVELOPERS:
+			mode = MAINMENU1;
+			break;
+		default:
+			break;
+		}
+		break;
 	case ' ':
 		switch (mode) {
 		case MAINMENU1:
@@ -491,7 +519,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 			}
 			cannon[1].setMTL(materials[MTL_num], MTL_num);
 			(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
-			(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
+			(shootings.end() - 1)->setVelocity((600.0f/Frame) * sin(angle * PI / 180), (600.0f/Frame) * cos(angle * PI / 180), 0.0f);
 			break;
 		default:
 			break;
@@ -520,7 +548,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 			mode = MAINMENU1;
 			sound[BGM].resumesound();
 			angle = level = pause = 0;
-			moving_speed = 0.02;
+			moving_speed = 1.2f / Frame;
 			delete_probability = 100;
 			stage_Location.clear();
 			stage_Sphere.clear();
@@ -634,8 +662,9 @@ void mouse(int button, int state, int x, int y) {
 				}
 			}
 		}
-	case HIGHSCORE:
 	case SETTING:
+
+	case HIGHSCORE:
 	case DEVELOPERS:
 		if (30 < x && x < 80 && 30 < y && y < 90 && button == 0 && state == 1)
 			mode = MAINMENU1;
@@ -645,7 +674,7 @@ void mouse(int button, int state, int x, int y) {
 			item_t = end_t;
 			velocityrevert = 0;
 			item = 0;
-			moving_speed /= 2;
+			moving_speed /= 10.0f;
 		}
 		else if (manual == MOUSE && button == 0 && state == 1) {
 			sound[SHOOT].playsound();
@@ -669,7 +698,7 @@ void mouse(int button, int state, int x, int y) {
 			}
 			cannon[1].setMTL(materials[MTL_num], MTL_num);
 			(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
-			(shootings.end() - 1)->setVelocity(speed * sin(angle * PI / 180), speed * cos(angle * PI / 180), 0.0f);
+			(shootings.end() - 1)->setVelocity((600.0f/Frame) * sin(angle * PI / 180), (600.0f/Frame) * cos(angle * PI / 180), 0.0f);
 		}
 		break;
 	default:

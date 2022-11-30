@@ -9,14 +9,11 @@ void initialize() {
 	score = level = 0;
 	theme = SNU;
 	angle = 0;
-	merge_step = 10;
-	speed = 10;
 	arrow_pos = -80;
 	arrow_pos_2 = -110;
 	arrow_pos_3.first = 50; arrow_pos_3.second = 0;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
-	moving_speed = 0.02;
 	difficulty = NORMAL;
 	mode = MAINMENU1;
 
@@ -182,4 +179,5 @@ void initialize() {
 		break;
 	}
 	iscore.close();
+	moving_speed = 1.2f / Frame;
 }

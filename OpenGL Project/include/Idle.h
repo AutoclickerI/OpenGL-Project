@@ -37,7 +37,7 @@ void idle() {
 						break;
 					}
 					if (end_t - item_t > 5000 && velocityrevert == 0 && item == 0) {
-						moving_speed *= 2;
+						moving_speed *= 10;
 						velocityrevert = 1;
 					}
 					if (stage_Location[0] < 0)
@@ -159,7 +159,7 @@ void idle() {
 						boom_mtl = merge[0].first.getnum();
 						boom_pos = merge[0].second.first;
 						boom_pos_end = boom_pos;
-						stage_Location.insert(stage_Location.begin() + 1 - f + merge[0].second.first, stage_Location[merge[0].second.first] + 0.49 - 0.98 * f + 0.49 / merge_step * merge_prograss[0]);
+						stage_Location.insert(stage_Location.begin() + 1 - f + merge[0].second.first, stage_Location[merge[0].second.first] + 0.49 - 0.98 * f + 0.49 / (Frame/6) * merge_prograss[0]);
 						stage_Sphere.insert(stage_Sphere.begin() + 1 - f + merge[0].second.first, merge[0].first);
 
 						//backward pass
@@ -211,10 +211,10 @@ void idle() {
 
 
 					/* merge */
-					else if (merge_prograss[0] == merge_step + 1) {
+					else if (merge_prograss[0] == (Frame/6) + 1) {
 						merge_prograss[0] -= 1;
 						//backward pass
-						stage_Location.insert(stage_Location.begin() + 1 + merge[0].second.first - f, stage_Location[merge[0].second.first] + 0.49 - 1.96 * f + 0.49 / merge_step * merge_prograss[0]);
+						stage_Location.insert(stage_Location.begin() + 1 + merge[0].second.first - f, stage_Location[merge[0].second.first] + 0.49 - 1.96 * f + 0.49 / (Frame/6) * merge_prograss[0]);
 						stage_Sphere.insert(stage_Sphere.begin() + 1 + merge[0].second.first - f, merge[0].first);
 						boom_pos = 1 + merge[0].second.first - f;
 						merge.erase(merge.begin());
@@ -231,12 +231,12 @@ void idle() {
 					else {
 						//backward pass
 						if (f) {
-							stage_Location[merge[0].second.first] += 0.49 / merge_step;
+							stage_Location[merge[0].second.first] += 0.49 / (Frame/6);
 							if (merge[0].second.first - 1 >= 0)
-								if (stage_Location[merge[0].second.first - 1] > stage_Location[merge[0].second.first] - 0.98 - 0.98 / merge_step * merge_prograss[0])
-									stage_Location[merge[0].second.first - 1] = stage_Location[merge[0].second.first] - 0.98 - 0.98 / merge_step * merge_prograss[0];
+								if (stage_Location[merge[0].second.first - 1] > stage_Location[merge[0].second.first] - 0.98 - 0.98 / (Frame/6) * merge_prograss[0])
+									stage_Location[merge[0].second.first - 1] = stage_Location[merge[0].second.first] - 0.98 - 0.98 / (Frame/6) * merge_prograss[0];
 							if (merge[0].second.first < 0)
-								stage_Location[0] += 0.49 / merge_step;
+								stage_Location[0] += 0.49 / (Frame/6);
 							for (int j = merge[0].second.first - 1; j > 0; j--) {
 								if (j > 0 && stage_Location[j] - stage_Location[j - 1] < 0.98)
 									stage_Location[j - 1] = stage_Location[j] - 0.98;
@@ -249,14 +249,14 @@ void idle() {
 								else
 									break;
 							}
-							stage.setPos(stage_Location[merge[0].second.first] - 0.49 - 0.49 / merge_step * merge_prograss[0], STAGE_NOW);
+							stage.setPos(stage_Location[merge[0].second.first] - 0.49 - 0.49 / (Frame/6) * merge_prograss[0], STAGE_NOW);
 						}
 						//forward pass
 						else {
-							stage_Location[merge[0].second.first] -= 0.49 / merge_step;
+							stage_Location[merge[0].second.first] -= 0.49 / (Frame/6);
 							if (merge[0].second.first + 1 < (int)stage_Location.size())
-								if (stage_Location[merge[0].second.first + 1] < stage_Location[merge[0].second.first] + 0.98 + 0.98 / merge_step * merge_prograss[0])
-									stage_Location[merge[0].second.first + 1] = stage_Location[merge[0].second.first] + 0.98 + 0.98 / merge_step * merge_prograss[0];
+								if (stage_Location[merge[0].second.first + 1] < stage_Location[merge[0].second.first] + 0.98 + 0.98 / (Frame/6) * merge_prograss[0])
+									stage_Location[merge[0].second.first + 1] = stage_Location[merge[0].second.first] + 0.98 + 0.98 / (Frame/6) * merge_prograss[0];
 							for (int j = merge[0].second.first; j > 0; j--) {
 								if (j > 0 && stage_Location[j] - stage_Location[j - 1] < 0.98)
 									stage_Location[j - 1] = stage_Location[j] - 0.98;
@@ -269,10 +269,10 @@ void idle() {
 								else
 									break;
 							}
-							stage.setPos(stage_Location[merge[0].second.first] + 0.49 + 0.49 / merge_step * merge_prograss[0], STAGE_NOW);
+							stage.setPos(stage_Location[merge[0].second.first] + 0.49 + 0.49 / (Frame/6) * merge_prograss[0], STAGE_NOW);
 						}
 						xm = stage.getCenter()[0]; ym = stage.getCenter()[1];
-						merge[0].first.setCenter(xm + ccw * 30 * (merge_step - merge_prograss[0]) / merge_step * (ys2 - ys1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), ym - ccw * 30 * (merge_step - merge_prograss[0]) / merge_step * (xs2 - xs1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), 0);
+						merge[0].first.setCenter(xm + ccw * 30 * ((Frame/6) - merge_prograss[0]) / (Frame/6) * (ys2 - ys1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), ym - ccw * 30 * ((Frame/6) - merge_prograss[0]) / (Frame/6) * (xs2 - xs1) / sqrt((xs2 - xs1) * (xs2 - xs1) + (ys2 - ys1) * (ys2 - ys1)), 0);
 						merge_prograss[0] += 1;
 					}
 				}
@@ -311,7 +311,7 @@ void idle() {
 					mode = MOVING;
 				break;
 			case DRAG:
-				if (boom_stack > merge_step * 4) {
+				if (boom_stack > (Frame/6) * 4) {
 					while (boom_pos_end - boom_pos + 1) {
 						stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
 						stage_Location.erase(stage_Location.begin() + boom_pos);
@@ -328,7 +328,7 @@ void idle() {
 					}
 				}
 				else {
-					if ((2 * boom_stack - 1) / merge_step % 2)
+					if ((2 * boom_stack - 1) / (Frame/6) % 2)
 						for (int k = boom_pos; k <= boom_pos_end; k++) {
 							stage_Sphere[k].showSphere(false);
 						}
@@ -360,7 +360,7 @@ void idle() {
 					if (boom_stack) {
 						if (boom_stack == 1)
 							sound[BOOMSOUND].playsound();
-						if (boom_stack > merge_step * 4) {
+						if (boom_stack > (Frame/6) * 4) {
 							int cnt = 0;
 							while (boom_pos < (int)stage_Sphere.size() && boom_mtl == stage_Sphere[boom_pos].getnum()) {
 								stage_Sphere.erase(stage_Sphere.begin() + boom_pos);
@@ -373,7 +373,7 @@ void idle() {
 							mode = CHAIN_BOOM;
 						}
 						else {
-							if ((2 * boom_stack - 1) / merge_step % 2)
+							if ((2 * boom_stack - 1) / (Frame/6) % 2)
 								for (int k = boom_pos; k < boom_pos_end; k++) {
 									stage_Sphere[k].showSphere(false);
 								}

@@ -60,7 +60,10 @@ void display() {
 			else 
 				settings_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			glColor3f(0.0f, 0.0f, 0.0f);
-			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(Frame), 1.5f, WINDOW_WIDTH * (0.04), WINDOW_HEIGHT * (0.05), 3.0);
+			if(Frame==60)
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(Frame), 1.5f, WINDOW_WIDTH * (0.04), WINDOW_HEIGHT * (0.05), 3.0);
+			else
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(Frame), 1.5f, WINDOW_WIDTH * (0.02), WINDOW_HEIGHT * (0.05), 3.0);
 			switch (theme){
 			case 0:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SNU", 1.5f, WINDOW_WIDTH * (0.02), WINDOW_HEIGHT * (-0.1), 3.0);
@@ -76,15 +79,15 @@ void display() {
 			}
 			switch (manual) {
 			case 0:
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "KEYBOARD1", 1.5f, WINDOW_WIDTH * (-0.03), WINDOW_HEIGHT * (-0.25), 3.0);
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "KEYBOARD1", 1.5f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (-0.25), 3.0);
 				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			case 1:
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "KEYBOARD2", 1.5f, WINDOW_WIDTH * (-0.03), WINDOW_HEIGHT * (-0.25), 3.0);
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "KEYBOARD2", 1.5f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (-0.25), 3.0);
 				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			case 2:
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "MOUSE", 1.5f, WINDOW_WIDTH * (-0.01), WINDOW_HEIGHT * (-0.25), 3.0);
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "MOUSE", 1.5f, WINDOW_WIDTH * (-0.0), WINDOW_HEIGHT * (-0.25), 3.0);
 				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			default:

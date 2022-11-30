@@ -65,7 +65,7 @@ int level;
 int Frame;
 int color_num[3] = { 3,5,7 };
 vector<string> ordnum{ " 1st"," 2nd"," 3rd"," 4th"," 5th"," 6th"," 7th"," 8th"," 9th","10th" };
-ifstream iscore("score/config.ini");
+ifstream iscore("config.ini");
 string word;
 int number;
 vector<string> playername(20);
@@ -83,7 +83,7 @@ bool velocityrevert = 0;
 
 
 Sound bgm("sound/BGM.wav", 1);
-Sound shoot("sound/shoot1.wav", 0);
+Sound shoot("sound/shoot.wav", 0);
 Sound boomsound("sound/boomsound.wav", 0);
 Sound stageclear("sound/stageclear.wav", 0);
 Sound stagefailed("sound/stagefailed.wav", 0);

@@ -2,7 +2,7 @@
 #include "Declare.h"
 #include "Display.h"
 #include "Keyboard.h"
-#include "Functions.h"
+#include "Mouse.h"
 #include "Idle.h"
 
 void initialize() {

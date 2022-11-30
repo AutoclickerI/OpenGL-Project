@@ -129,8 +129,43 @@ void SpecialInput(int key, int x, int y) {
 			break;
 		}
 		break;
-	case HIGHSCORE:
 	case SETTING:
+		switch (key)
+		{
+		case GLUT_KEY_LEFT:
+			arrow_pos_3.second = 0;
+			switch (arrow_pos_3.first) {
+			case 50:
+			case -60:
+			case -170:
+			default:
+				break;
+			}
+			break;
+		case GLUT_KEY_RIGHT:
+			arrow_pos_3.second = 1;
+			switch (arrow_pos_3.first) {
+			case 50:
+			case -60:
+			case -170:
+			default:
+				break;
+			}
+			break;
+		case GLUT_KEY_UP:
+			if (arrow_pos_3.first < 50)
+				arrow_pos_3.first += 110;
+			break;
+		case GLUT_KEY_DOWN:
+			if (arrow_pos_3.first > -170)
+				arrow_pos_3.first -= 110;
+			break;
+		default:
+			break;
+		}
+		break;
+		break;
+	case HIGHSCORE:
 	case DEVELOPERS:
 		switch (key)
 		{

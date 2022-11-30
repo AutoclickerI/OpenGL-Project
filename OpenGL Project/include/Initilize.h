@@ -13,6 +13,7 @@ void initialize() {
 	speed = 10;
 	arrow_pos = -80;
 	arrow_pos_2 = -110;
+	arrow_pos_3.first = 50; arrow_pos_3.second = 0;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	moving_speed = 0.02;
@@ -93,6 +94,10 @@ void initialize() {
 	arrow.settextureID(0);
 	arrow.initTexture();
 
+	arrow_2.setFilename("textures/object/yellow.png");
+	arrow_2.settextureID(0);
+	arrow_2.initTexture();
+
 	settings_1.setFilename("textures/state/settings_1.png");
 	settings_1.settextureID(0);
 	settings_1.initTexture();
@@ -122,6 +127,7 @@ void initialize() {
 	sound.push_back(boomsound);
 	sound.push_back(stageclear);
 	sound.push_back(stagefailed);
+	sound.push_back(button);
 
 	glColor3f(1.0f, 1.0f, 1.0f);
 
@@ -174,7 +180,6 @@ void initialize() {
 	default:
 		theme = SNU;
 		break;
-		
 	}
 	iscore.close();
 }

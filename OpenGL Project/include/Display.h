@@ -115,6 +115,14 @@ void display() {
 			glTranslatef(0, 110, 0);
 			arrow.drawCircleWithTexture(20, 3);
 			glPopMatrix();
+			glPushMatrix();
+			glTranslatef(290, arrow_pos_3.first, 1);
+			if (!arrow_pos_3.second) {
+				glTranslatef(-405, 0, 0);
+				glRotatef(-60, 0, 0, 1);
+			}
+			arrow_2.drawCircleWithTexture(20, 3);
+			glPopMatrix();
 			break;
 		case MOVING:
 		case BOOM:

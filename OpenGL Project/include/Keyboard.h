@@ -182,7 +182,6 @@ void SpecialInput(int key, int x, int y) {
 			break;
 		}
 		break;
-		break;
 	case HIGHSCORE:
 	case DEVELOPERS:
 		switch (key)
@@ -368,10 +367,11 @@ void keyboardDown(unsigned char key, int x, int y) {
 				playername.insert(playername.begin() + ranking, fullname);
 				ofstream oscore("score/config.ini");
 				if (oscore.is_open()) {
+					oscore << trash<<" ";
 					for (int i = 0; i < 10; i++) {
-						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
+						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i]<<" ";
 					}
-					oscore << manual << " " << Frame << " " << theme << endl;
+					oscore << Frame << " " << manual << " " << theme << endl;
 					scorechange = 0;
 					oscore.close();
 				}
@@ -401,9 +401,21 @@ void keyboardUp(unsigned char key, int x, int y) {
 	switch (key) {
 	case 27:
 		switch (mode) {
+		case SETTING:	
+			if (1) {
+				ofstream oscore("score/config.ini");
+				if (oscore.is_open()) {
+					oscore << trash << " ";
+					for (int i = 0; i < 10; i++) {
+						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
+					}
+					oscore << Frame << " " << manual << " " << theme << endl;
+					scorechange = 0;
+					oscore.close();
+				}
+			}
 		case MAINMENU2:
 		case HIGHSCORE:
-		case SETTING:
 		case DEVELOPERS:
 			mode = MAINMENU1;
 			break;
@@ -423,8 +435,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 				mode = HIGHSCORE;
 				break;
 			case -240:
-				//mode = SETTING;
-				mode = SCORESAVE; //юс╫ц
+				mode = SETTING;
 				break;
 			case -320:
 				mode = DEVELOPERS;

@@ -142,6 +142,21 @@ void mouse(int button, int state, int x, int y) {
 				arrow_pos_3.second = 1;
 			}
 		}
+		if (30 < x && x < 80 && 30 < y && y < 90 && button == 0 && state == 1) {
+			mode = MAINMENU1;
+			if (1) {
+				ofstream oscore("score/config.ini");
+				if (oscore.is_open()) {
+					oscore << trash << " ";
+					for (int i = 0; i < 10; i++) {
+						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
+					}
+					oscore << Frame << " " << manual << " " << theme << endl;
+					scorechange = 0;
+					oscore.close();
+				}
+			}
+		}
 	case HIGHSCORE:
 	case DEVELOPERS:
 		if (30 < x && x < 80 && 30 < y && y < 90 && button == 0 && state == 1)

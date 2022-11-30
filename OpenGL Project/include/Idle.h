@@ -397,10 +397,12 @@ void idle() {
 				if (scorechange == 1) {
 					ofstream oscore("score/config.ini");
 					if (oscore.is_open()) {
+						oscore << trash << " ";
 						for (int i = 0; i < 10; i++) {
-							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << endl;
+							oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
 						}
-						oscore << manual << " " << Frame << " " << theme << endl;
+						oscore << Frame << " " << manual << " " << theme << endl;
+						scorechange = 0;
 						oscore.close();
 					}
 				}

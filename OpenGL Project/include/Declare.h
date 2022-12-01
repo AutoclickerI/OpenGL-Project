@@ -76,7 +76,7 @@ string fullname="XXX";
 int ranking;
 bool item = 1;
 bool velocityrevert = 0;
-ifstream iscore("score/config.ini");
+ifstream iscore("config.ini");
 string trash;
 
 

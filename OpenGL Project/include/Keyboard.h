@@ -373,7 +373,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 				fullname[1] = currentplayer[1];
 				fullname[2] = currentplayer[2];
 				playername.insert(playername.begin() + ranking, fullname);
-				ofstream oscore("score/config.ini");
+				ofstream oscore("config.ini");
 				if (oscore.is_open()) {
 					oscore << trash<<" ";
 					for (int i = 0; i < 10; i++) {
@@ -411,7 +411,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 		switch (mode) {
 		case SETTING:	
 			if (1) {
-				ofstream oscore("score/config.ini");
+				ofstream oscore("config.ini");
 				if (oscore.is_open()) {
 					oscore << trash << " ";
 					for (int i = 0; i < 10; i++) {

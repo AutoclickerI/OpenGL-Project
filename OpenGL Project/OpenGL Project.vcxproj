@@ -155,12 +155,12 @@
     <ClInclude Include="include\Keyboard.h" />
     <ClInclude Include="include\Light.h" />
     <ClInclude Include="include\Material.h" />
+    <ClInclude Include="include\Mouse.h" />
     <ClInclude Include="include\Sound.h" />
     <ClInclude Include="include\Sphere.h" />
     <ClInclude Include="include\Stage.h" />
     <ClInclude Include="include\Functions.h" />
     <ClInclude Include="include\Texture.h" />
-    <ClInclude Include="Mouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

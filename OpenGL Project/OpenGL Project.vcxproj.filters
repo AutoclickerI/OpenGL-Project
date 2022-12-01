@@ -74,7 +74,7 @@
     <ClInclude Include="include\Texture.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Mouse.h">
+    <ClInclude Include="include\Mouse.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

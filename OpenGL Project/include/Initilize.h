@@ -191,4 +191,5 @@ void initialize() {
 	}
 	iscore.close();
 	moving_speed = 1.2f / Frame;
+	colormode = PRIMARY;
 }

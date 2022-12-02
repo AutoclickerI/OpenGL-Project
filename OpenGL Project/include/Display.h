@@ -80,14 +80,23 @@ void display() {
 			switch (manual) {
 			case 0:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "KEYBOARD1", 1.5f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (-0.25), 3.0);
-				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			case 1:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "KEYBOARD2", 1.5f, WINDOW_WIDTH * (-0.05), WINDOW_HEIGHT * (-0.25), 3.0);
-				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			case 2:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "MOUSE", 1.5f, WINDOW_WIDTH * (-0.0), WINDOW_HEIGHT * (-0.25), 3.0);
+				break;
+			default:
+				break;
+			}
+			switch (colormode) {
+			case 0:
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRIMARY", 1.5f, WINDOW_WIDTH * (-0.025), WINDOW_HEIGHT * (-0.4), 3.0);
+				glColor3f(1.0f, 1.0f, 1.0f);
+				break;
+			case 1:
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "COLORBLIND", 1.5f, WINDOW_WIDTH * (-0.065), WINDOW_HEIGHT * (-0.4), 3.0);
 				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			default:
@@ -111,7 +120,13 @@ void display() {
 			glRotatef(60, 0, 0, 1);
 			arrow.drawCircleWithTexture(20, 3);
 			glRotatef(-60, 0, 0, 1);
+			glTranslatef(0, -110, 0);
+			glRotatef(60, 0, 0, 1);
+			arrow.drawCircleWithTexture(20, 3);
+			glRotatef(-60, 0, 0, 1);
 			glTranslatef(405, 0, 0);
+			arrow.drawCircleWithTexture(20, 3);
+			glTranslatef(0, 110, 0);
 			arrow.drawCircleWithTexture(20, 3);
 			glTranslatef(0, 110, 0);
 			arrow.drawCircleWithTexture(20, 3);

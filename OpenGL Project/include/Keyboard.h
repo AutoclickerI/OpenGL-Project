@@ -151,6 +151,27 @@ void SpecialInput(int key, int x, int y) {
 					manual = KEYBOARD2;
 				angle = 0;
 				break;
+			case -280:
+				if (!colormode) {
+					materials[0].setAmbient(0.00392156862745098, 0.45098039215686275, 0.6980392156862745, 1.0f);
+					materials[1].setAmbient(0.00784313725490196, 0.6196078431372549, 0.45098039215686275, 1.0f);
+					materials[2].setAmbient(0.984313725490196, 0.6862745098039216, 0.8941176470588236, 1.0f);
+					materials[3].setAmbient(0.9254901960784314, 0.8823529411764706, 0.2, 1.0f);
+					materials[4].setAmbient(0.5803921568627451, 0.5803921568627451, 0.5803921568627451, 1.0f);
+					materials[5].setAmbient(0.33725490196078434, 0.7058823529411765, 0.9137254901960784, 1.0f);
+					materials[6].setAmbient(0.8352941176470589, 0.3686274509803922, 0.0, 1.0f);
+				}
+				else {
+					materials[0].setAmbient(0.8f, 0.8f, 0.1f, 1.0f);
+					materials[1].setAmbient(0.1f, 0.8f, 0.8f, 1.0f);
+					materials[2].setAmbient(0.8f, 0.1f, 0.8f, 1.0f);
+					materials[3].setAmbient(0.8f, 0.8f, 0.8f, 1.0f);
+					materials[4].setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
+					materials[5].setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
+					materials[6].setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
+				}
+				colormode = static_cast<COLORMODE>((colormode + 1) % 2);
+				break;
 			default:
 				break;
 			}
@@ -174,6 +195,27 @@ void SpecialInput(int key, int x, int y) {
 					manual = KEYBOARD1;
 				angle = 0;
 				break;
+			case -280:
+				if (!colormode) {
+					materials[0].setAmbient(0.00392156862745098, 0.45098039215686275, 0.6980392156862745, 1.0f);
+					materials[1].setAmbient(0.00784313725490196, 0.6196078431372549, 0.45098039215686275, 1.0f);
+					materials[2].setAmbient(0.984313725490196, 0.6862745098039216, 0.8941176470588236, 1.0f);
+					materials[3].setAmbient(0.9254901960784314, 0.8823529411764706, 0.2, 1.0f);
+					materials[4].setAmbient(0.5803921568627451, 0.5803921568627451, 0.5803921568627451, 1.0f);
+					materials[5].setAmbient(0.33725490196078434, 0.7058823529411765, 0.9137254901960784, 1.0f);
+					materials[6].setAmbient(0.8352941176470589, 0.3686274509803922, 0.0, 1.0f);
+				}
+				else {
+					materials[0].setAmbient(0.8f, 0.8f, 0.1f, 1.0f);
+					materials[1].setAmbient(0.1f, 0.8f, 0.8f, 1.0f);
+					materials[2].setAmbient(0.8f, 0.1f, 0.8f, 1.0f);
+					materials[3].setAmbient(0.8f, 0.8f, 0.8f, 1.0f);
+					materials[4].setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
+					materials[5].setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
+					materials[6].setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
+				}
+				colormode = static_cast<COLORMODE>((colormode + 1) % 2);
+				break;
 			default:
 				break;
 			}
@@ -183,7 +225,7 @@ void SpecialInput(int key, int x, int y) {
 				arrow_pos_3.first += 110;
 			break;
 		case GLUT_KEY_DOWN:
-			if (arrow_pos_3.first > -170)
+			if (arrow_pos_3.first > -280)
 				arrow_pos_3.first -= 110;
 			break;
 		default:
@@ -334,6 +376,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 		case 'Q':
 		case 'q':
 			mode = MAINMENU1;
+			STAGE_NOW = STAGE1;
 			angle = level = 0;
 			moving_speed = 1.2f / Frame;
 			delete_probability = 100;
@@ -567,6 +610,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 	case 'Q':
 		if (pause) {
 			mode = MAINMENU1;
+			STAGE_NOW = STAGE1;
 			sound[BGM].resumesound();
 			angle = level = pause = 0;
 			moving_speed = 1.2f / Frame;

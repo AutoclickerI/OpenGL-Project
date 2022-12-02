@@ -149,6 +149,57 @@ void mouse(int button, int state, int x, int y) {
 				arrow_pos_3.first = -170;
 				arrow_pos_3.second = 1;
 			}
+
+		}
+		if (620 < y && y < 660 && button == 0 && state == 1) {
+			if (505 < x && x < 545) {
+				angle = 0;
+				arrow_pos_3.first = -280;
+				arrow_pos_3.second = 0;
+				if (!colormode) {
+					materials[0].setAmbient(0.00392156862745098, 0.45098039215686275, 0.6980392156862745, 1.0f);
+					materials[1].setAmbient(0.00784313725490196, 0.6196078431372549, 0.45098039215686275, 1.0f);
+					materials[2].setAmbient(0.984313725490196, 0.6862745098039216, 0.8941176470588236, 1.0f);
+					materials[3].setAmbient(0.9254901960784314, 0.8823529411764706, 0.2, 1.0f);
+					materials[4].setAmbient(0.5803921568627451, 0.5803921568627451, 0.5803921568627451, 1.0f);
+					materials[5].setAmbient(0.33725490196078434, 0.7058823529411765, 0.9137254901960784, 1.0f);
+					materials[6].setAmbient(0.8352941176470589, 0.3686274509803922, 0.0, 1.0f);
+				}
+				else {
+					materials[0].setAmbient(0.8f, 0.8f, 0.1f, 1.0f);
+					materials[1].setAmbient(0.1f, 0.8f, 0.8f, 1.0f);
+					materials[2].setAmbient(0.8f, 0.1f, 0.8f, 1.0f);
+					materials[3].setAmbient(0.8f, 0.8f, 0.8f, 1.0f);
+					materials[4].setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
+					materials[5].setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
+					materials[6].setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
+				}
+				colormode = static_cast<COLORMODE>((colormode + 1) % 2);
+			}
+			if (920 < x && x < 960) {
+				angle = 0;
+				arrow_pos_3.first = -280;
+				arrow_pos_3.second = 1;
+				if (!colormode) {
+					materials[0].setAmbient(0.00392156862745098, 0.45098039215686275, 0.6980392156862745, 1.0f);
+					materials[1].setAmbient(0.00784313725490196, 0.6196078431372549, 0.45098039215686275, 1.0f);
+					materials[2].setAmbient(0.984313725490196, 0.6862745098039216, 0.8941176470588236, 1.0f);
+					materials[3].setAmbient(0.9254901960784314, 0.8823529411764706, 0.2, 1.0f);
+					materials[4].setAmbient(0.5803921568627451, 0.5803921568627451, 0.5803921568627451, 1.0f);
+					materials[5].setAmbient(0.33725490196078434, 0.7058823529411765, 0.9137254901960784, 1.0f);
+					materials[6].setAmbient(0.8352941176470589, 0.3686274509803922, 0.0, 1.0f);
+				}
+				else {
+					materials[0].setAmbient(0.8f, 0.8f, 0.1f, 1.0f);
+					materials[1].setAmbient(0.1f, 0.8f, 0.8f, 1.0f);
+					materials[2].setAmbient(0.8f, 0.1f, 0.8f, 1.0f);
+					materials[3].setAmbient(0.8f, 0.8f, 0.8f, 1.0f);
+					materials[4].setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
+					materials[5].setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
+					materials[6].setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
+				}
+				colormode = static_cast<COLORMODE>((colormode + 1) % 2);
+			}
 		}
 		if (30 < x && x < 80 && 30 < y && y < 90 && button == 0 && state == 1) {
 			mode = MAINMENU1;
@@ -274,6 +325,18 @@ void mouseMove(int x, int y) {
 				arrow_pos_3.second = 1;
 			}
 		}
+		if (620 < y && y < 660) {
+			if (505 < x && x < 545) {
+				angle = 0;
+				arrow_pos_3.first = -280;
+				arrow_pos_3.second = 0;
+			}
+			if (920 < x && x < 960) {
+				angle = 0;
+				arrow_pos_3.first = -280;
+				arrow_pos_3.second = 1;
+			}
+		}
 		break;
 	default:
 		break;
@@ -344,6 +407,18 @@ void mousePassiveMove(int x, int y) {
 			if (920 < x && x < 960) {
 				angle = 0;
 				arrow_pos_3.first = -170;
+				arrow_pos_3.second = 1;
+			}
+		}
+		if (620 < y && y < 660) {
+			if (505 < x && x < 545) {
+				angle = 0;
+				arrow_pos_3.first = -280;
+				arrow_pos_3.second = 0;
+			}
+			if (920 < x && x < 960) {
+				angle = 0;
+				arrow_pos_3.first = -280;
 				arrow_pos_3.second = 1;
 			}
 		}

@@ -25,6 +25,7 @@ enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED, BUTTON };
 enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 enum MANUAL { KEYBOARD1, KEYBOARD2, MOUSE };
+enum COLORMODE { PRIMARY, COLORBLIND };
 enum DIFFICULTY { EASY, NORMAL, HARD };
 
 using namespace std;
@@ -48,6 +49,7 @@ Light light(0, 0, boundaryX / 2, GL_LIGHT0);
 Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2,
 		arrow, arrow_2, settings_1, settings_2, developers, highscore, scoresave, blackhole, whitehole;
 Stage stage;
+COLORMODE colormode;
 Sphere sphere1(30, 20, 20);
 Sphere sphere2(sphere1);
 int delete_probability;

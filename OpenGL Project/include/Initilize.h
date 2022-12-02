@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>
 #include "Declare.h"
 #include "Display.h"
 #include "Keyboard.h"

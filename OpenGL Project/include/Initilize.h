@@ -134,6 +134,8 @@ void initialize() {
 	sound.push_back(stageclear);
 	sound.push_back(stagefailed);
 	sound.push_back(button);
+	sound.push_back(itemsound);
+
 
 	glColor3f(1.0f, 1.0f, 1.0f);
 

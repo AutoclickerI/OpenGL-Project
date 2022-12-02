@@ -226,6 +226,7 @@ void mouse(int button, int state, int x, int y) {
 			item_t = end_t;
 			velocityrevert = 0;
 			item = 0;
+			sound[ITEMSOUND].playsound();
 			moving_speed /= 10.0f;
 		}
 		else if (manual == MOUSE && button == 0 && state == 1) {

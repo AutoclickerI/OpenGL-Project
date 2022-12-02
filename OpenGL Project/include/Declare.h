@@ -21,7 +21,7 @@
 
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
-enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED, BUTTON };
+enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED, BUTTON, ITEMSOUND };
 enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 enum MANUAL { KEYBOARD1, KEYBOARD2, MOUSE };
@@ -85,10 +85,10 @@ string trash;
 
 
 
-
-Sound bgm("sound/BGM.wav", 1);
+Sound bgm("sound/BGM3.mp3", 1);
 Sound shoot("sound/shoot.wav", 0);
 Sound boomsound("sound/boomsound.wav", 0);
 Sound stageclear("sound/stageclear.wav", 0);
 Sound stagefailed("sound/stagefailed.wav", 0);
 Sound button("sound/button.mp3", 0);
+Sound itemsound("sound/itemsound.mp3", 0);

@@ -193,9 +193,9 @@ void display() {
 			glDisable(GL_DEPTH_TEST);
 
 			char S1[100];
-			sprintf(S1, "%09d", scoredata[0]);
+			sprintf_s(S1, "%09d", scoredata[0]);
 			char S2[100];
-			sprintf(S2, "%09lld", score);		
+			sprintf_s(S2, "%09lld", score);		
 
 			if (scoredata[0] > score) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S1, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
 			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
@@ -216,19 +216,20 @@ void display() {
 			gameover.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			break;
 		case HIGHSCORE:
+			highscore.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			glPushMatrix();
 			glTranslatef(-580, 300, 0);
 			glRotatef(60, 0, 0, 1);
 			arrow.drawCircleWithTexture(30, 3);
 			glPopMatrix();
-			highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "HIGHSCORES", 5.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.4), 3);
+			highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "HIGHSCORES", 5.0f, WINDOW_WIDTH * (-0.11), WINDOW_HEIGHT * (0.4), 3);
 
 			for (int i = 0; i < 10; i++)
 			{
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, ordnum[i], 5.0f, WINDOW_WIDTH * (-0.45), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.25), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 				char S3[100];
-				sprintf(S3, "%09d", scoredata[i]);
+				sprintf_s(S3, "%09d", scoredata[i]);
 					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S3, 5.0f, WINDOW_WIDTH * (-0.1), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.26), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 			}

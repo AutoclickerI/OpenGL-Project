@@ -47,7 +47,9 @@ void display() {
 			glPopMatrix();
 			break;
 		case DEVELOPERS:
-			developers.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "DEVELOPERS", 7.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3), 1.5);
+			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2021-13314 KIM JI HOON", 5.0f, WINDOW_WIDTH * ((-0.35) + 0.01 * sin(start_t/300)), WINDOW_HEIGHT * ((0) + 0.01 * cos(start_t/300)), 2.5);
+			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2016-12767 LEE KANG MIN", 5.0f, WINDOW_WIDTH * ((-0.15) - 0.01 * sin(start_t/300)), WINDOW_HEIGHT * ((-0.3) - 0.01 * cos(start_t/300)), 2.5);
 			glPushMatrix();
 			glTranslatef(-580, 300, 0);
 			glRotatef(60, 0, 0, 1);
@@ -249,8 +251,26 @@ void display() {
 			break;
 		}
 	}
-	else
-		Pause.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+	else {
+		float i = fmod(0.07f * start_t, 360);
+		glPushMatrix();
+
+		if (i < 90.0 || i > 270.0) {
+			glRotatef(i, 0.0f, 1.0f, 0.0f);
+			cout << 1 << endl;
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PAUSE", 10.0f, WINDOW_WIDTH * (-0.15), WINDOW_HEIGHT * (0.3), 1.5);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "R - RESUME", 10.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.1), 1.5);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "Q - MAINMENU", 10.0f, WINDOW_WIDTH * (-0.35), WINDOW_HEIGHT * (-0.1), 1.5);
+		}
+		else {
+			glRotatef(-i + 180, 0.0f, 1.0f, 0.0f);
+			cout << 2 << endl;
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PAUSE", 10.0f, WINDOW_WIDTH * (-0.15), WINDOW_HEIGHT * (0.3), 1.5);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "R - RESUME", 10.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.1), 1.5);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "Q - MAINMENU", 10.0f, WINDOW_WIDTH * (-0.35), WINDOW_HEIGHT * (-0.1), 1.5);
+		}
+		glPopMatrix();
+	}
 	/* Implement: Draw 2D (texture, ID and name)*/
 
 	glutSwapBuffers();

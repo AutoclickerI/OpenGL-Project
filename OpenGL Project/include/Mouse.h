@@ -7,31 +7,35 @@ void mouse(int button, int state, int x, int y) {
 	bool No_add = true;
 	printf("(%d, %d, %d, %d)\n", button, state, x, y);
 	switch (mode) {
+	case PREMAINMENU:
+		if (button == 0 && state == 1)
+			mode = MAINMENU1;
+		break;
 	case MAINMENU1:
-		if (480 < x && x < 800 && 380 < y && button == 0 && state == 1) {
-			if (y < 465) {
-				arrow_pos = -80;
+		if (445 < x && x < 840 && button == 0 && state == 1) {
+			if (65 < y && y < 180) {
+				arrow_pos = 238;
 				mode = MAINMENU2;
 				score = 0;
 			}
-			else if (y < 550) {
-				arrow_pos = -160;
+			else if (225 < y && y < 340) {
+				arrow_pos = 78;
 				mode = HIGHSCORE;
 			}
-			else if (y < 635) {
-				arrow_pos = -240;
+			else if (385 < y && y < 500) {
+				arrow_pos = -82;
 				mode = SETTING;
 			}
-			else if (y < 720) {
-				arrow_pos = -320;
+			else if (545 < y && y < 660) {
+				arrow_pos = -242;
 				mode = DEVELOPERS;
 			}
 		}
 		break;
 	case MAINMENU2:
-		if (510 < x && x < 780 && 435 < y && button == 0 && state == 1) {
-			if (y < 518) {
-				arrow_pos_2 = -110;
+		if (450 < x && x < 835 && button == 0 && state == 1) {
+			if (100 < y && y < 210) {
+				arrow_pos_2 = 210;
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
@@ -51,8 +55,8 @@ void mouse(int button, int state, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 			}
-			else if (y < 601) {
-				arrow_pos_2 = -200;
+			else if (285 < y && y < 395) {
+				arrow_pos_2 = 20;
 				cannon.clear();
 				difficulty = NORMAL;
 				mode = MOVING;
@@ -72,8 +76,8 @@ void mouse(int button, int state, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 			}
-			else if (y < 685) {
-				arrow_pos_2 = -290;
+			else if (480 < y && y < 590) {
+				arrow_pos_2 = -170;
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
@@ -272,25 +276,25 @@ void mouseMove(int x, int y) {
 	}
 	switch (mode) {
 	case MAINMENU1:
-		if (480 < x && x < 800 && 380 < y) {
-			if (y < 465)
-				arrow_pos = -80;
-			else if (y < 550)
-				arrow_pos = -160;
-			else if (y < 635)
-				arrow_pos = -240;
-			else if (y < 720)
-				arrow_pos = -320;
+		if (445 < x && x < 840) {
+			if (65 < y && y < 180)
+				arrow_pos = 238;
+			else if (225 < y && y < 340)
+				arrow_pos = 78;
+			else if (385 < y && y < 500)
+				arrow_pos = -82;
+			else if (545 < y && y < 660)
+				arrow_pos = -242;
 		}
 		break;
 	case MAINMENU2:
-		if (510 < x && x < 780 && 435 < y) {
-			if (y < 518)
-				arrow_pos_2 = -110;
-			else if (y < 601)
-				arrow_pos_2 = -200;
-			else if (y < 685)
-				arrow_pos_2 = -290;
+		if (450 < x && x < 835) {
+			if (100 < y && y < 210)
+				arrow_pos_2 = 210;
+			else if (285 < y && y < 395)
+				arrow_pos_2 = 20;
+			else if (480 < y && y < 590)
+				arrow_pos_2 = -170;
 		}
 		break;
 	case SETTING:
@@ -357,25 +361,25 @@ void mousePassiveMove(int x, int y) {
 	}
 	switch (mode) {
 	case MAINMENU1:
-		if (480 < x && x < 800 && 380 < y) {
-			if (y < 465)
-				arrow_pos = -80;
-			else if (y < 550)
-				arrow_pos = -160;
-			else if (y < 635)
-				arrow_pos = -240;
-			else if (y < 720)
-				arrow_pos = -320;
+		if (445 < x && x < 840) {
+			if (65 < y && y < 180)
+				arrow_pos = 238;
+			else if (225 < y && y < 340)
+				arrow_pos = 78;
+			else if (385 < y && y < 500)
+				arrow_pos = -82;
+			else if (545 < y && y < 660)
+				arrow_pos = -242;
 		}
 		break;
 	case MAINMENU2:
-		if (510 < x && x < 780 && 435 < y) {
-			if (y < 518)
-				arrow_pos_2 = -110;
-			else if (y < 601)
-				arrow_pos_2 = -200;
-			else if (y < 685)
-				arrow_pos_2 = -290;
+		if (450 < x && x < 835) {
+			if (100 < y && y < 210)
+				arrow_pos_2 = 210;
+			else if (285 < y && y < 395)
+				arrow_pos_2 = 20;
+			else if (480 < y && y < 590)
+				arrow_pos_2 = -170;
 		}
 		break;
 	case SETTING:

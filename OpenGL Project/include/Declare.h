@@ -22,7 +22,7 @@
 const double PI = 3.141592653589793;
 enum Theme { SNU, Theme1, Theme2 };
 enum SOUND { BGM, SHOOT, BOOMSOUND, STAGECLEAR, STAGEFAILED, BUTTON, ITEMSOUND };
-enum MODE { MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
+enum MODE { PREMAINMENU, MAINMENU1, MAINMENU2, HIGHSCORE, SETTING, DEVELOPERS, GAMEMENU, MOVING, BOOM, CHAIN_BOOM, DRAG, CHAIN_DRAG, PAUSE, CLEAR, GAMEOVER, SCORESAVE };
 enum STAGE { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5 };
 enum MANUAL { KEYBOARD1, KEYBOARD2, MOUSE };
 enum COLORMODE { PRIMARY, COLORBLIND };
@@ -46,7 +46,7 @@ vector<double> stage_Location;
 vector<Material> materials;
 vector<Sound> sound;
 Light light(0, 0, boundaryX / 2, GL_LIGHT0);
-Texture background, Pause, canon, clear, gameover, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2,
+Texture background, Pause, canon, clear, gameover, premainmenu_1, premainmenu_2, mainmenu1_1, mainmenu1_2, mainmenu2_1, mainmenu2_2,
 		arrow, arrow_2, settings_1, settings_2, developers, highscore, scoresave, blackhole, whitehole;
 Stage stage;
 COLORMODE colormode;

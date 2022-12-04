@@ -4,35 +4,38 @@
 
 void SpecialInput(int key, int x, int y) {
 	switch (mode) {
+	case PREMAINMENU:
+		mode = MAINMENU1;
+		break;
 	case MAINMENU1:
 		switch (key)
 		{
 		case GLUT_KEY_UP:
 			//do something here
-			if (arrow_pos < -80)
-				arrow_pos += 80;
+			if (arrow_pos < 238)
+				arrow_pos += 160;
 			break;
 		case GLUT_KEY_DOWN:
 			//do something here
-			if (arrow_pos > -320)
-				arrow_pos -= 80;
+			if (arrow_pos > -242)
+				arrow_pos -= 160;
 			break;
 		case GLUT_KEY_LEFT:
 			//do something here
 			break;
 		case GLUT_KEY_RIGHT:
 			switch (arrow_pos) {
-			case -80:
+			case 238:
 				mode = MAINMENU2;
 				score = 0;
 				break;
-			case -160:
+			case 78:
 				mode = HIGHSCORE;
 				break;
-			case -240:
+			case -82:
 				mode = SETTING;
 				break;
-			case -320:
+			case -242:
 				mode = DEVELOPERS;
 				break;
 			default:
@@ -51,7 +54,7 @@ void SpecialInput(int key, int x, int y) {
 			break;
 		case GLUT_KEY_RIGHT:
 			switch (arrow_pos_2) {
-			case -110:
+			case 210:
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
@@ -71,7 +74,7 @@ void SpecialInput(int key, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 				break;
-			case -200:
+			case 20:
 				cannon.clear();
 				difficulty = NORMAL;
 				mode = MOVING;
@@ -91,7 +94,7 @@ void SpecialInput(int key, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 				break;
-			case -290:
+			case -170:
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;
@@ -117,13 +120,13 @@ void SpecialInput(int key, int x, int y) {
 			break;
 		case GLUT_KEY_UP:
 			//do something here
-			if (arrow_pos_2 < -110)
-				arrow_pos_2 += 90;
+			if (arrow_pos_2 < 210)
+				arrow_pos_2 += 190;
 			break;
 		case GLUT_KEY_DOWN:
 			//do something here
-			if (arrow_pos_2 > -290)
-				arrow_pos_2 -= 90;
+			if (arrow_pos_2 > -170)
+				arrow_pos_2 -= 190;
 			break;
 		default:
 			break;
@@ -449,6 +452,8 @@ void keyboardDown(unsigned char key, int x, int y) {
 void keyboardUp(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
 	bool No_add = true;
+	if(mode == PREMAINMENU)
+		mode = MAINMENU1;
 	switch (key) {
 	case 27:
 		switch (mode) {
@@ -478,17 +483,17 @@ void keyboardUp(unsigned char key, int x, int y) {
 		switch (mode) {
 		case MAINMENU1:
 			switch (arrow_pos) {
-			case -80:
+			case 238:
 				mode = MAINMENU2;
 				score = 0;
 				break;
-			case -160:
+			case 78:
 				mode = HIGHSCORE;
 				break;
-			case -240:
+			case -82:
 				mode = SETTING;
 				break;
-			case -320:
+			case -242:
 				mode = DEVELOPERS;
 				break;
 			default:
@@ -497,7 +502,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 			break;
 		case MAINMENU2:
 			switch (arrow_pos_2) {
-			case -110:
+			case 210:
 				cannon.clear();
 				difficulty = EASY;
 				mode = MOVING;
@@ -517,7 +522,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 				break;
-			case -200:
+			case 20:
 				cannon.clear();
 				difficulty = NORMAL;
 				mode = MOVING;
@@ -537,7 +542,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 					stage_Sphere.push_back(sphere_cache);
 				}
 				break;
-			case -290:
+			case -170:
 				cannon.clear();
 				difficulty = HARD;
 				mode = MOVING;

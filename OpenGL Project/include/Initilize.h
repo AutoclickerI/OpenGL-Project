@@ -9,13 +9,13 @@ void initialize() {
 	score = level = 0;
 	theme = SNU;
 	angle = 0;
-	arrow_pos = -80;
-	arrow_pos_2 = -110;
+	arrow_pos = 238;
+	arrow_pos_2 = 210;
 	arrow_pos_3.first = 50; arrow_pos_3.second = 0;
 	STAGE_NOW = STAGE1;
 	delete_probability = 100;
 	difficulty = NORMAL;
-	mode = MAINMENU1;
+	mode = PREMAINMENU;
 
 	srand((unsigned int)time(NULL));
 	light.setAmbient(0.5f, 0.5f, 0.5f, 1.0f);
@@ -79,6 +79,14 @@ void initialize() {
 	gameover.setFilename("textures/state/gameover.png");
 	gameover.settextureID(0);
 	gameover.initTexture();
+
+	premainmenu_1.setFilename("textures/state/premainmenu1_1.png");
+	premainmenu_1.settextureID(0);
+	premainmenu_1.initTexture();
+
+	premainmenu_2.setFilename("textures/state/premainmenu1_2.png");
+	premainmenu_2.settextureID(0);
+	premainmenu_2.initTexture();
 
 	mainmenu1_1.setFilename("textures/state/mainmenu1_1.png");
 	mainmenu1_1.settextureID(0);

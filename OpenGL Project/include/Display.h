@@ -21,13 +21,19 @@ void display() {
 	glLoadIdentity();
 	if (!pause) {
 		switch (mode) {
+		case PREMAINMENU:
+			if (start_t % 1200 > 600)
+				premainmenu_1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			else
+				premainmenu_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			break;
 		case MAINMENU1:
 			if (start_t % 1200 > 600)
 				mainmenu1_1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			else
 				mainmenu1_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 			glPushMatrix();
-			glTranslatef(-220, arrow_pos, 0);
+			glTranslatef(-250, arrow_pos, 0);
 			arrow.drawCircleWithTexture(30, 3);
 			glPopMatrix();
 			break;
@@ -42,7 +48,7 @@ void display() {
 			arrow.drawCircleWithTexture(30, 3);
 			glPopMatrix();
 			glPushMatrix();
-			glTranslatef(-220, arrow_pos_2, 0);
+			glTranslatef(-240, arrow_pos_2, 0);
 			arrow.drawCircleWithTexture(30, 3);
 			glPopMatrix();
 			break;

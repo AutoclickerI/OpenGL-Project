@@ -155,6 +155,11 @@ void SpecialInput(int key, int x, int y) {
 				case SPACE:
 					background.setFilename("textures/background/space.png");
 					canon.setFilename("textures/cannon/space.png");
+					break;
+				case Theme2:
+					background.setFilename("textures/background/snu.png");
+					canon.setFilename("textures/cannon/snu.png");
+					break;
 				default:
 					break;
 				}
@@ -212,6 +217,11 @@ void SpecialInput(int key, int x, int y) {
 				case SPACE:
 					background.setFilename("textures/background/space.png");
 					canon.setFilename("textures/cannon/space.png");
+					break;
+				case Theme2:
+					background.setFilename("textures/background/snu.png");
+					canon.setFilename("textures/cannon/snu.png");
+					break;
 				default:
 					break;
 				}

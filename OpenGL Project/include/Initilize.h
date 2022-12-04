@@ -206,6 +206,10 @@ void initialize() {
 	case SPACE:
 		background.setFilename("textures/background/space.png");
 		canon.setFilename("textures/cannon/space.png");
+	case Theme2:
+		background.setFilename("textures/background/snu.png");
+		canon.setFilename("textures/cannon/snu.png");
+		break;
 	default:
 		break;
 	}

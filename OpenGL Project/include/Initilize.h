@@ -195,7 +195,7 @@ void initialize() {
 		theme = SNU;
 		break;
 	case 1:
-		theme = Theme1;
+		theme = SPACE;
 		break;
 	case 2:
 		theme = Theme2;

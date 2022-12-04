@@ -146,7 +146,7 @@ void SpecialInput(int key, int x, int y) {
 			case -60:
 				theme = static_cast<Theme>((theme + 2) % 3);
 				if (scoredata[0] != 999999999 && theme == Theme2)
-					theme = Theme1;
+					theme = SPACE;
 				break;
 			case -170:
 				manual = static_cast<MANUAL>((manual + 2) % 3);
@@ -421,9 +421,9 @@ void keyboardDown(unsigned char key, int x, int y) {
 				playername.insert(playername.begin() + ranking, fullname);
 				ofstream oscore("config.ini");
 				if (oscore.is_open()) {
-					oscore << trash<<" ";
+					oscore << trash << " ";
 					for (int i = 0; i < 10; i++) {
-						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i]<<" ";
+						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
 					}
 					oscore << Frame << " " << manual << " " << theme << endl;
 					scorechange = 0;
@@ -452,12 +452,12 @@ void keyboardDown(unsigned char key, int x, int y) {
 void keyboardUp(unsigned char key, int x, int y) {
 	/* Implement: turn on/off lights */
 	bool No_add = true;
-	if(mode == PREMAINMENU)
+	if (mode == PREMAINMENU)
 		mode = MAINMENU1;
 	switch (key) {
 	case 27:
 		switch (mode) {
-		case SETTING:	
+		case SETTING:
 			if (1) {
 				ofstream oscore("config.ini");
 				if (oscore.is_open()) {
@@ -588,7 +588,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 			}
 			cannon[1].setMTL(materials[MTL_num], MTL_num);
 			(shootings.end() - 1)->setCenter(50 * sin(angle * PI / 180), 50 * cos(angle * PI / 180), 0.0f);
-			(shootings.end() - 1)->setVelocity((600.0f/Frame) * sin(angle * PI / 180), (600.0f/Frame) * cos(angle * PI / 180), 0.0f);
+			(shootings.end() - 1)->setVelocity((600.0f / Frame) * sin(angle * PI / 180), (600.0f / Frame) * cos(angle * PI / 180), 0.0f);
 			break;
 		default:
 			break;
@@ -626,7 +626,6 @@ void keyboardUp(unsigned char key, int x, int y) {
 			merge.clear();
 			for (int i = -10; i < 2; i++)
 				stage_Location.push_back(i);
-			break;
 		}
 		break;
 	case 'r':
@@ -638,13 +637,15 @@ void keyboardUp(unsigned char key, int x, int y) {
 		break;
 	case 'm':
 	case 'M':
-		if (!musicpause) {
-			sound[BGM].pausesound();
-			musicpause = 1;
-		}
-		else {
-			sound[BGM].resumesound();
-			musicpause = 0;
+		if (mode != SCORESAVE) {
+			if (!musicpause) {
+				sound[BGM].pausesound();
+				musicpause = 1;
+			}
+			else {
+				sound[BGM].resumesound();
+				musicpause = 0;
+			}
 		}
 		break;
 	default:

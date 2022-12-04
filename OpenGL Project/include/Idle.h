@@ -395,7 +395,7 @@ void idle() {
 				break;
 			case SCORESAVE:
 				if (scorechange == 1) {
-					ofstream oscore("score/config.ini");
+					ofstream oscore("config.ini");
 					if (oscore.is_open()) {
 						oscore << trash << " ";
 						for (int i = 0; i < 10; i++) {

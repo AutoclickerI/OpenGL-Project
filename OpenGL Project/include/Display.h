@@ -54,8 +54,8 @@ void display() {
 			break;
 		case DEVELOPERS:
 			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "DEVELOPERS", 7.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3), 1.5);
-			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2021-13314 KIM JI HOON", 5.0f, WINDOW_WIDTH * ((-0.35) + 0.01 * sin(start_t/300)), WINDOW_HEIGHT * ((0) + 0.01 * cos(start_t/300)), 2.5);
-			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2016-12767 LEE KANG MIN", 5.0f, WINDOW_WIDTH * ((-0.15) - 0.01 * sin(start_t/300)), WINDOW_HEIGHT * ((-0.3) - 0.01 * cos(start_t/300)), 2.5);
+			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2021-13314 KIM JI HOON", 5.0f, WINDOW_WIDTH * ((-0.35) + 0.01 * sin(start_t / 300)), WINDOW_HEIGHT * ((0) + 0.01 * cos(start_t / 300)), 2.5);
+			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2016-12767 LEE KANG MIN", 5.0f, WINDOW_WIDTH * ((-0.15) - 0.01 * sin(start_t / 300)), WINDOW_HEIGHT * ((-0.3) - 0.01 * cos(start_t / 300)), 2.5);
 			glPushMatrix();
 			glTranslatef(-580, 300, 0);
 			glRotatef(60, 0, 0, 1);
@@ -65,19 +65,16 @@ void display() {
 		case SETTING:
 			if (start_t % 1200 > 600)
 				settings_1.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
-			else 
-				settings_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
-			glColor3f(0.0f, 0.0f, 0.0f);
-			if(Frame==60)
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(Frame), 1.5f, WINDOW_WIDTH * (0.04), WINDOW_HEIGHT * (0.05), 3.0);
 			else
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(Frame), 1.5f, WINDOW_WIDTH * (0.02), WINDOW_HEIGHT * (0.05), 3.0);
-			switch (theme){
+				settings_2.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			glColor3f(1.0f, 1.0f, 1.0f);
+			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(Frame), 1.5f, WINDOW_WIDTH * (2.4 / Frame), WINDOW_HEIGHT * (0.05), 3.0);
+			switch (theme) {
 			case 0:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SNU", 1.5f, WINDOW_WIDTH * (0.02), WINDOW_HEIGHT * (-0.1), 3.0);
 				break;
 			case 1:
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "THEME1", 1.5f, WINDOW_WIDTH * (-0.01), WINDOW_HEIGHT * (-0.1), 3.0);
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SPACE", 1.5f, WINDOW_WIDTH * (-0.0), WINDOW_HEIGHT * (-0.1), 3.0);
 				break;
 			case 2:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "THEME2", 1.5f, WINDOW_WIDTH * (-0.01), WINDOW_HEIGHT * (-0.1), 3.0);
@@ -101,11 +98,9 @@ void display() {
 			switch (colormode) {
 			case 0:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRIMARY", 1.5f, WINDOW_WIDTH * (-0.025), WINDOW_HEIGHT * (-0.4), 3.0);
-				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			case 1:
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "COLORBLIND", 1.5f, WINDOW_WIDTH * (-0.065), WINDOW_HEIGHT * (-0.4), 3.0);
-				glColor3f(1.0f, 1.0f, 1.0f);
 				break;
 			default:
 				break;
@@ -203,13 +198,13 @@ void display() {
 			char S1[100];
 			sprintf_s(S1, "%09d", scoredata[0]);
 			char S2[100];
-			sprintf_s(S2, "%09lld", score);		
+			sprintf_s(S2, "%09lld", score);
 
 			if (scoredata[0] > score) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S1, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
 			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.41), 5.0);
 			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SCORE", 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.36), 5.0);
 			background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S2, 1.5f, WINDOW_WIDTH * (0.33), WINDOW_HEIGHT * (0.31), 5.0);
-			
+
 			if (item == 1) background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "<ITEM>", 3.0f, WINDOW_WIDTH * (-0.48), WINDOW_HEIGHT * (0.45), 5.0);
 			else background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "<USED>", 3.0f, WINDOW_WIDTH * (-0.48), WINDOW_HEIGHT * (0.45), 5.0);
 
@@ -238,15 +233,15 @@ void display() {
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, playername[i], 5.0f, WINDOW_WIDTH * (-0.25), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 				char S3[100];
 				sprintf_s(S3, "%09d", scoredata[i]);
-					highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S3, 5.0f, WINDOW_WIDTH * (-0.1), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
+				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S3, 5.0f, WINDOW_WIDTH * (-0.1), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 				highscore.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, difficultydata[i], 5.0f, WINDOW_WIDTH * (0.26), WINDOW_HEIGHT * (0.3 - (0.08 * i)), 3);
 			}
 			break;
 		case SCORESAVE:
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.4), 2);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking+1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER" , 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking + 1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2), 2);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS ',' TO SAVE", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.1), 2);
 			for (int i = 0; i < 3; i++) {
 				string S4;

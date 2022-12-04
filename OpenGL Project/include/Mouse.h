@@ -121,7 +121,7 @@ void mouse(int button, int state, int x, int y) {
 				sound[BUTTON].playsound();
 				theme = static_cast<Theme>((theme + 2) % 3);
 				if (scoredata[0] != 999999999 && theme == Theme2)
-					theme = Theme1;
+					theme = SPACE;
 				arrow_pos_3.first = -60;
 				arrow_pos_3.second = 0;
 			}
@@ -157,6 +157,7 @@ void mouse(int button, int state, int x, int y) {
 		}
 		if (620 < y && y < 660 && button == 0 && state == 1) {
 			if (505 < x && x < 545) {
+				sound[BUTTON].playsound();
 				angle = 0;
 				arrow_pos_3.first = -280;
 				arrow_pos_3.second = 0;
@@ -181,6 +182,7 @@ void mouse(int button, int state, int x, int y) {
 				colormode = static_cast<COLORMODE>((colormode + 1) % 2);
 			}
 			if (920 < x && x < 960) {
+				sound[BUTTON].playsound();
 				angle = 0;
 				arrow_pos_3.first = -280;
 				arrow_pos_3.second = 1;

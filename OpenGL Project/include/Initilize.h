@@ -1,4 +1,5 @@
 #pragma once
+#include <windows.h>
 #include "Declare.h"
 #include "Display.h"
 #include "Keyboard.h"
@@ -64,11 +65,11 @@ void initialize() {
 	sphere2.setCenter(0.0f, 0.0f, 0.0f);
 
 	/* Implement: initialize texture*/
-	background.setFilename("textures/background/snu.png");
+	background.setFilename("textures/background/space.png");
 	background.settextureID(0);
 	background.initTexture();
 
-	canon.setFilename("textures/cannon/snu.png");
+	canon.setFilename("textures/cannon/space.png");
 	canon.settextureID(0);
 	canon.initTexture();
 
@@ -103,6 +104,10 @@ void initialize() {
 	mainmenu2_2.setFilename("textures/state/mainmenu2_2.png");
 	mainmenu2_2.settextureID(0);
 	mainmenu2_2.initTexture();
+
+	highscore.setFilename("textures/state/highscore.png");
+	highscore.settextureID(0);
+	highscore.initTexture();
 
 	arrow.setFilename("textures/object/gray.png");
 	arrow.settextureID(0);

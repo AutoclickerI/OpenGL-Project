@@ -1,5 +1,4 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
 #include <ctime>
 #include <vector>
 #include <cstdlib>

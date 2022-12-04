@@ -172,6 +172,7 @@ void display() {
 				glDisable(GL_LINE_STIPPLE);
 			}
 			switch (theme) {
+			case SPACE:
 			case SNU:
 				canon.drawCircleWithTexture(75, 30);
 				break;

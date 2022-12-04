@@ -122,6 +122,19 @@ void mouse(int button, int state, int x, int y) {
 				theme = static_cast<Theme>((theme + 2) % 3);
 				if (scoredata[0] != 999999999 && theme == Theme2)
 					theme = SPACE;
+				switch (theme) {
+				case SNU:
+					background.setFilename("textures/background/snu.png");
+					canon.setFilename("textures/cannon/snu.png");
+					break;
+				case SPACE:
+					background.setFilename("textures/background/space.png");
+					canon.setFilename("textures/cannon/space.png");
+				default:
+					break;
+				}
+				background.initTexture();
+				canon.initTexture();
 				arrow_pos_3.first = -60;
 				arrow_pos_3.second = 0;
 			}
@@ -130,6 +143,19 @@ void mouse(int button, int state, int x, int y) {
 				theme = static_cast<Theme>((theme + 1) % 3);
 				if (scoredata[0] != 999999999 && theme == Theme2)
 					theme = SNU;
+				switch (theme) {
+				case SNU:
+					background.setFilename("textures/background/snu.png");
+					canon.setFilename("textures/cannon/snu.png");
+					break;
+				case SPACE:
+					background.setFilename("textures/background/space.png");
+					canon.setFilename("textures/cannon/space.png");
+				default:
+					break;
+				}
+				background.initTexture();
+				canon.initTexture();
 				arrow_pos_3.first = -60;
 				arrow_pos_3.second = 1;
 			}

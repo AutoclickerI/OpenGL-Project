@@ -147,6 +147,19 @@ void SpecialInput(int key, int x, int y) {
 				theme = static_cast<Theme>((theme + 2) % 3);
 				if (scoredata[0] != 999999999 && theme == Theme2)
 					theme = SPACE;
+				switch (theme) {
+				case SNU:
+					background.setFilename("textures/background/snu.png");
+					canon.setFilename("textures/cannon/snu.png");
+					break;
+				case SPACE:
+					background.setFilename("textures/background/space.png");
+					canon.setFilename("textures/cannon/space.png");
+				default:
+					break;
+				}
+				background.initTexture();
+				canon.initTexture();
 				break;
 			case -170:
 				manual = static_cast<MANUAL>((manual + 2) % 3);
@@ -191,6 +204,19 @@ void SpecialInput(int key, int x, int y) {
 				theme = static_cast<Theme>((theme + 1) % 3);
 				if (scoredata[0] != 999999999 && theme == Theme2)
 					theme = SNU;
+				switch (theme) {
+				case SNU:
+					background.setFilename("textures/background/snu.png");
+					canon.setFilename("textures/cannon/snu.png");
+					break;
+				case SPACE:
+					background.setFilename("textures/background/space.png");
+					canon.setFilename("textures/cannon/space.png");
+				default:
+					break;
+				}
+				background.initTexture();
+				canon.initTexture();
 				break;
 			case -170:
 				manual = static_cast<MANUAL>((manual + 1) % 3);
@@ -603,7 +629,6 @@ void keyboardUp(unsigned char key, int x, int y) {
 		case DRAG:
 		case CHAIN_DRAG:
 			if (!pause) {
-				sound[BGM].pausesound();
 				pause = 1;
 			}
 			break;
@@ -616,7 +641,6 @@ void keyboardUp(unsigned char key, int x, int y) {
 		if (pause) {
 			mode = MAINMENU1;
 			STAGE_NOW = STAGE1;
-			sound[BGM].resumesound();
 			angle = level = pause = 0;
 			moving_speed = 1.2f / Frame;
 			delete_probability = 100;
@@ -632,7 +656,6 @@ void keyboardUp(unsigned char key, int x, int y) {
 	case 'R':
 		if (pause) {
 			pause = 0;
-			sound[BGM].resumesound();
 		}
 		break;
 	case 'm':

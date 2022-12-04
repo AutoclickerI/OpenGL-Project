@@ -61,17 +61,9 @@ void initialize() {
 
 	sphere1.setCenter(0.0f, 50.0f, 0.0f);
 	sphere1.setVelocity(0.0f, 0.0f, 0.0f);
-
 	sphere2.setCenter(0.0f, 0.0f, 0.0f);
 
 	/* Implement: initialize texture*/
-	background.setFilename("textures/background/space.png");
-	background.settextureID(0);
-	background.initTexture();
-
-	canon.setFilename("textures/cannon/space.png");
-	canon.settextureID(0);
-	canon.initTexture();
 
 	clear.setFilename("textures/state/clear.png");
 	clear.settextureID(0);
@@ -124,11 +116,11 @@ void initialize() {
 	settings_2.setFilename("textures/state/settings_2.png");
 	settings_2.settextureID(0);
 	settings_2.initTexture();
-
+	/*
 	developers.setFilename("textures/state/developers.png");
 	developers.settextureID(0);
 	developers.initTexture();
-
+	*/
 	Pause.setFilename("textures/state/pause.png");
 	Pause.settextureID(0);
 	Pause.initTexture();
@@ -148,7 +140,6 @@ void initialize() {
 	sound.push_back(stagefailed);
 	sound.push_back(button);
 	sound.push_back(itemsound);
-
 
 	glColor3f(1.0f, 1.0f, 1.0f);
 
@@ -207,4 +198,22 @@ void initialize() {
 	iscore.close();
 	moving_speed = 1.2f / Frame;
 	colormode = PRIMARY;
+	switch (theme) {
+	case SNU:
+		background.setFilename("textures/background/snu.png");
+		canon.setFilename("textures/cannon/snu.png");
+		break;
+	case SPACE:
+		background.setFilename("textures/background/space.png");
+		canon.setFilename("textures/cannon/space.png");
+	default:
+		break;
+	}
+	
+	background.settextureID(0);
+	background.initTexture();
+
+	
+	canon.settextureID(0);
+	canon.initTexture();
 }

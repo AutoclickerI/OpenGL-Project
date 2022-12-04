@@ -252,6 +252,8 @@ void display() {
 		}
 	}
 	else {
+		Pause.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+
 		float i = fmod(0.07f * start_t, 360);
 		glPushMatrix();
 

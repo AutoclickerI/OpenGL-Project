@@ -631,6 +631,17 @@ void keyboardUp(unsigned char key, int x, int y) {
 			sound[BGM].resumesound();
 		}
 		break;
+	case 'm':
+	case 'M':
+		if (!musicpause) {
+			sound[BGM].pausesound();
+			musicpause = 1;
+		}
+		else {
+			sound[BGM].resumesound();
+			musicpause = 0;
+		}
+		break;
 	default:
 		break;
 	}

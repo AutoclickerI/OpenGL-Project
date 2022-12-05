@@ -2,6 +2,7 @@
 #include "Material.h"
 #include <cmath>
 #include <GL/glut.h>
+
 class Sphere {
 public:
 	Sphere(float r, int sl, int st);
@@ -21,6 +22,7 @@ public:
 	Material getMTL();
 	void move();
 	void draw() const;
+
 private:
 	float radius;
 	int slice;

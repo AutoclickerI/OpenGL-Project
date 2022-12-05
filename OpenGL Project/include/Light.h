@@ -1,5 +1,6 @@
 #pragma once
 #include <GL/glut.h>
+
 class Light {
 public:
 	Light(float x, int y, int z, int LID);
@@ -11,6 +12,7 @@ public:
 	void enableLight(bool bOn);
 	bool isLightOn() const;
 	void draw() const;
+
 private:
 	int lightID;
 	float pos[3];

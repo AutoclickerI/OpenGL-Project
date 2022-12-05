@@ -25,5 +25,4 @@ private:
 	char const* Filename = "snu.png";
 	const double pi = 3.141592653589793;
 	const float scaleFactor = 2.0f;
-
 };

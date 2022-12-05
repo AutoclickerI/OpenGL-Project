@@ -29,7 +29,7 @@ public:
 	bool loop;
 
 	unsigned int version;
-	void* extradriverdata; 
+	void* extradriverdata;
 
 	static FMOD_SYSTEM* g_sound_system;
 	FMOD_SOUND* m_sound;

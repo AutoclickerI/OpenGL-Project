@@ -461,10 +461,11 @@ void keyboardDown(unsigned char key, int x, int y) {
 					for (int i = 0; i < 10; i++) {
 						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
 					}
-					oscore << Frame << " " << manual << " " << theme << endl;
+					oscore << Frame << " " << manual << " " << theme << " " << colormode << endl;
 					scorechange = 0;
 					oscore.close();
 				}
+				playername.erase(playername.begin() + 10);
 			}
 			mode = MAINMENU1;
 			angle = level = 0;
@@ -501,7 +502,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 					for (int i = 0; i < 10; i++) {
 						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
 					}
-					oscore << Frame << " " << manual << " " << theme << endl;
+					oscore << Frame << " " << manual << " " << theme << " " << colormode << endl;
 					scorechange = 0;
 					oscore.close();
 				}
@@ -628,6 +629,16 @@ void keyboardUp(unsigned char key, int x, int y) {
 			break;
 		default:
 			break;
+		}
+		break;
+	case 'i':
+	case 'I':
+		if (mode == MOVING) {
+			item_t = end_t;
+			velocityrevert = 0;
+			item = 0;
+			sound[ITEMSOUND].playsound();
+			moving_speed /= 10.0f;
 		}
 		break;
 	case 'p':

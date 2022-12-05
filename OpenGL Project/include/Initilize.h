@@ -37,15 +37,7 @@ void initialize() {
 	mtl5.setAmbient(0.8f, 0.1f, 0.1f, 1.0f);
 	mtl6.setAmbient(0.1f, 0.8f, 0.1f, 1.0f);
 	mtl7.setAmbient(0.1f, 0.1f, 0.8f, 1.0f);
-	/*
-	mtl1.setAmbient(0.00392156862745098, 0.45098039215686275, 0.6980392156862745, 1.0f);
-	mtl2.setAmbient(0.00784313725490196, 0.6196078431372549, 0.45098039215686275, 1.0f);
-	mtl3.setAmbient(0.984313725490196, 0.6862745098039216, 0.8941176470588236, 1.0f);
-	mtl4.setAmbient(0.9254901960784314, 0.8823529411764706, 0.2, 1.0f);
-	mtl5.setAmbient(0.5803921568627451, 0.5803921568627451, 0.5803921568627451, 1.0f);
-	mtl6.setAmbient(0.33725490196078434, 0.7058823529411765, 0.9137254901960784, 1.0f);
-	mtl7.setAmbient(0.8352941176470589, 0.3686274509803922, 0.0, 1.0f);
-	*/
+
 	stage_color.setAmbient(1, 1, 1, 1.0f);
 	stage.setMTL(stage_color, mtl5);
 	materials.push_back(mtl1);
@@ -116,11 +108,11 @@ void initialize() {
 	settings_2.setFilename("textures/state/settings_2.png");
 	settings_2.settextureID(0);
 	settings_2.initTexture();
-	
+
 	developers.setFilename("textures/state/developers.png");
 	developers.settextureID(0);
 	developers.initTexture();
-	
+
 	scoresave.setFilename("textures/state/scoresave.png");
 	scoresave.settextureID(0);
 	scoresave.initTexture();
@@ -199,9 +191,20 @@ void initialize() {
 		theme = SNU;
 		break;
 	}
+	iscore >> number;
+	switch (number) {
+	case 0:
+		colormode = PRIMARY;
+		break;
+	case 1:
+		colormode = COLORBLIND;
+		break;
+	default:
+		colormode = PRIMARY;
+		break;
+	}
 	iscore.close();
 	moving_speed = 1.2f / Frame;
-	colormode = PRIMARY;
 	switch (theme) {
 	case SNU:
 		background.setFilename("textures/background/snu.png");
@@ -218,11 +221,10 @@ void initialize() {
 	default:
 		break;
 	}
-	
+
 	background.settextureID(0);
 	background.initTexture();
 
-	
 	canon.settextureID(0);
 	canon.initTexture();
 }

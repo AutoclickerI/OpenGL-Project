@@ -252,7 +252,7 @@ void mouse(int button, int state, int x, int y) {
 					for (int i = 0; i < 10; i++) {
 						oscore << playername[i] << " " << scoredata[i] << " " << difficultydata[i] << " ";
 					}
-					oscore << Frame << " " << manual << " " << theme << endl;
+					oscore << Frame << " " << manual << " " << theme << " " << colormode << endl;
 					scorechange = 0;
 					oscore.close();
 				}

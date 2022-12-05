@@ -28,14 +28,14 @@ void Sound::initsound(bool run) {
 
     result = system->init(32, FMOD_INIT_NORMAL, extradriverdata);
     if (loop) {
-        result = system->createSound(path, FMOD_LOOP_NORMAL, 0, &soundfile); 
+        result = system->createSound(path, FMOD_LOOP_NORMAL, 0, &soundfile);
     }
     else {
-        result = system->createSound(path, FMOD_LOOP_OFF, 0, &soundfile); 
+        result = system->createSound(path, FMOD_LOOP_OFF, 0, &soundfile);
 
     }
     if (run)
-        result = system->playSound(soundfile, 0, false, &channel); 
+        result = system->playSound(soundfile, 0, false, &channel);
 
 }
 
@@ -54,7 +54,7 @@ void Sound::pausesound() {
 }
 void Sound::resumesound() {
     result = channel->setPaused(false);
-     
+
 }
 
 

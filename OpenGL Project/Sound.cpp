@@ -22,13 +22,9 @@ Sound::Sound(const char* p, bool l) {
 
 
 void Sound::initsound(bool run) {
-    //FMOD_System_Create(&g_sound_system, 00020210);
-    //FMOD_System_Init(g_sound_system, 32, FMOD_INIT_NORMAL, extradriverdata);
-
 
     result = FMOD::System_Create(&system);
     result = system->getVersion(&version);
-    //printf("FMOD version %08x\n", version);
 
     result = system->init(32, FMOD_INIT_NORMAL, extradriverdata);
     if (loop) {
@@ -58,7 +54,7 @@ void Sound::pausesound() {
 }
 void Sound::resumesound() {
     result = channel->setPaused(false);
-
+     
 }
 
 

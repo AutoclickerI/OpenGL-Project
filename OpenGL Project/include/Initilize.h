@@ -116,11 +116,15 @@ void initialize() {
 	settings_2.setFilename("textures/state/settings_2.png");
 	settings_2.settextureID(0);
 	settings_2.initTexture();
-	/*
+	
 	developers.setFilename("textures/state/developers.png");
 	developers.settextureID(0);
 	developers.initTexture();
-	*/
+	
+	scoresave.setFilename("textures/state/scoresave.png");
+	scoresave.settextureID(0);
+	scoresave.initTexture();
+
 	Pause.setFilename("textures/state/pause.png");
 	Pause.settextureID(0);
 	Pause.initTexture();
@@ -189,7 +193,7 @@ void initialize() {
 		theme = SPACE;
 		break;
 	case 2:
-		theme = Theme2;
+		theme = CANDY;
 		break;
 	default:
 		theme = SNU;
@@ -206,9 +210,10 @@ void initialize() {
 	case SPACE:
 		background.setFilename("textures/background/space.png");
 		canon.setFilename("textures/cannon/space.png");
-	case Theme2:
-		background.setFilename("textures/background/snu.png");
-		canon.setFilename("textures/cannon/snu.png");
+		break;
+	case CANDY:
+		background.setFilename("textures/background/candy.png");
+		canon.setFilename("textures/cannon/candy.png");
 		break;
 	default:
 		break;

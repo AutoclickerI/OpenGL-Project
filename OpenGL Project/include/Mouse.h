@@ -120,7 +120,7 @@ void mouse(int button, int state, int x, int y) {
 			if (505 < x && x < 545) {
 				sound[BUTTON].playsound();
 				theme = static_cast<Theme>((theme + 2) % 3);
-				if (scoredata[0] != 999999999 && theme == Theme2)
+				if (scoredata[0] != 999999999 && theme == CANDY)
 					theme = SPACE;
 				switch (theme) {
 				case SNU:
@@ -131,9 +131,9 @@ void mouse(int button, int state, int x, int y) {
 					background.setFilename("textures/background/space.png");
 					canon.setFilename("textures/cannon/space.png");
 					break;
-				case Theme2:
-					background.setFilename("textures/background/snu.png");
-					canon.setFilename("textures/cannon/snu.png");
+				case CANDY:
+					background.setFilename("textures/background/candy.png");
+					canon.setFilename("textures/cannon/candy.png");
 					break;
 				default:
 					break;
@@ -146,7 +146,7 @@ void mouse(int button, int state, int x, int y) {
 			if (920 < x && x < 960) {
 				sound[BUTTON].playsound();
 				theme = static_cast<Theme>((theme + 1) % 3);
-				if (scoredata[0] != 999999999 && theme == Theme2)
+				if (scoredata[0] != 999999999 && theme == CANDY)
 					theme = SNU;
 				switch (theme) {
 				case SNU:
@@ -157,9 +157,9 @@ void mouse(int button, int state, int x, int y) {
 					background.setFilename("textures/background/space.png");
 					canon.setFilename("textures/cannon/space.png");
 					break;
-				case Theme2:
-					background.setFilename("textures/background/snu.png");
-					canon.setFilename("textures/cannon/snu.png");
+				case CANDY:
+					background.setFilename("textures/background/candy.png");
+					canon.setFilename("textures/cannon/candy.png");
 					break;
 				default:
 					break;

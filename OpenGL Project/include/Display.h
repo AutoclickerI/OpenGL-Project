@@ -53,7 +53,8 @@ void display() {
 			glPopMatrix();
 			break;
 		case DEVELOPERS:
-			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "DEVELOPERS", 7.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.3), 1.5);
+			developers.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "DEVELOPERS", 7.0f, WINDOW_WIDTH * (-0.2), WINDOW_HEIGHT * (0.37), 1.5);
 			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2021-13314 KIM JI HOON", 5.0f, WINDOW_WIDTH * ((-0.35) + 0.01 * sin(start_t / 300)), WINDOW_HEIGHT * ((0) + 0.01 * cos(start_t / 300)), 2.5);
 			developers.displayStrokeCharacters(GLUT_STROKE_ROMAN, "2016-12767 LEE KANG MIN", 5.0f, WINDOW_WIDTH * ((-0.15) - 0.01 * sin(start_t / 300)), WINDOW_HEIGHT * ((-0.3) - 0.01 * cos(start_t / 300)), 2.5);
 			glPushMatrix();
@@ -77,7 +78,7 @@ void display() {
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SPACE", 1.5f, WINDOW_WIDTH * (-0.0), WINDOW_HEIGHT * (-0.1), 3.0);
 				break;
 			case 2:
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "THEME2", 1.5f, WINDOW_WIDTH * (-0.01), WINDOW_HEIGHT * (-0.1), 3.0);
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "CANDY", 1.5f, WINDOW_WIDTH * (-0.01), WINDOW_HEIGHT * (-0.1), 3.0);
 				break;
 			default:
 				break;
@@ -239,15 +240,16 @@ void display() {
 			}
 			break;
 		case SCORESAVE:
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.4), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking + 1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.3), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2), 2);
-			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS ',' TO SAVE", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.1), 2);
+			scoresave.drawSquareWithTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "INPUT YOUR NAME", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.3), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "YOUR RANK IS", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.2), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, to_string(ranking + 1), 5.0f, WINDOW_WIDTH * (0.25), WINDOW_HEIGHT * (0.2), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS '.' TO RE-ENTER", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.1), 2);
+			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PRESS ',' TO SAVE", 5.0f, WINDOW_WIDTH * (-0.4), WINDOW_HEIGHT * (0.0), 2);
 			for (int i = 0; i < 3; i++) {
 				string S4;
 				S4 += currentplayer[i];
-				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S4, 5.0f, WINDOW_WIDTH * (-0.1 + 0.07 * i), WINDOW_HEIGHT * (-0.2), 2);
+				scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, S4, 5.0f, WINDOW_WIDTH * (0.07 * i), WINDOW_HEIGHT * (-0.2), 1.5);
 			}
 			break;
 		default:

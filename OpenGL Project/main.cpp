@@ -2,8 +2,8 @@
 
 int main(int argc, char** argv) {
 	// hide Window Console
-	//HWND hConsole = GetConsoleWindow();
-	//ShowWindow(hConsole, SW_HIDE);
+	HWND hConsole = GetConsoleWindow();
+	ShowWindow(hConsole, SW_HIDE);
 	// init GLUT and create Window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);

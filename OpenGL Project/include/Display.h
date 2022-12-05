@@ -78,7 +78,7 @@ void display() {
 				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "SPACE", 1.5f, WINDOW_WIDTH * (-0.0), WINDOW_HEIGHT * (-0.1), 3.0);
 				break;
 			case 2:
-				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "CANDY", 1.5f, WINDOW_WIDTH * (-0.01), WINDOW_HEIGHT * (-0.1), 3.0);
+				background.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "CANDY", 1.5f, WINDOW_WIDTH * (-0.0), WINDOW_HEIGHT * (-0.1), 3.0);
 				break;
 			default:
 				break;
@@ -264,14 +264,12 @@ void display() {
 
 		if (i < 90.0 || i > 270.0) {
 			glRotatef(i, 0.0f, 1.0f, 0.0f);
-			cout << 1 << endl;
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PAUSE", 10.0f, WINDOW_WIDTH * (-0.15), WINDOW_HEIGHT * (0.3), 1.5);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "R - RESUME", 10.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.1), 1.5);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "Q - MAINMENU", 10.0f, WINDOW_WIDTH * (-0.35), WINDOW_HEIGHT * (-0.1), 1.5);
 		}
 		else {
 			glRotatef(-i + 180, 0.0f, 1.0f, 0.0f);
-			cout << 2 << endl;
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "PAUSE", 10.0f, WINDOW_WIDTH * (-0.15), WINDOW_HEIGHT * (0.3), 1.5);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "R - RESUME", 10.0f, WINDOW_WIDTH * (-0.3), WINDOW_HEIGHT * (0.1), 1.5);
 			scoresave.displayStrokeCharacters(GLUT_STROKE_MONO_ROMAN, "Q - MAINMENU", 10.0f, WINDOW_WIDTH * (-0.35), WINDOW_HEIGHT * (-0.1), 1.5);

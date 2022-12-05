@@ -85,7 +85,7 @@ string trash;
 
 
 
-Sound bgm("sound/BGM3.mp3", 1);
+Sound bgm("sound/BGM.mp3", 1);
 Sound shoot("sound/shoot.wav", 0);
 Sound boomsound("sound/boomsound.wav", 0);
 Sound stageclear("sound/stageclear.wav", 0);

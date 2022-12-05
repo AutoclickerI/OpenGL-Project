@@ -27,7 +27,6 @@ void gameoverprocess() {
 	mode = GAMEOVER;
 	STAGE_NOW = STAGE1;
 	sound[STAGEFAILED].playsound();
-	cout << "your score:" << score << endl;
 	for (int i = 0; i < 10; i++) {
 		if (score > scoredata[i]) {
 			ranking = i;

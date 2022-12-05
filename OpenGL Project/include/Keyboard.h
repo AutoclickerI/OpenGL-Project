@@ -450,7 +450,7 @@ void keyboardDown(unsigned char key, int x, int y) {
 			}
 			break;
 		case ',':
-			if (scorechange == 1) {
+			if (1) {
 				fullname[0] = currentplayer[0];
 				fullname[1] = currentplayer[1];
 				fullname[2] = currentplayer[2];

@@ -4,6 +4,7 @@ int main(int argc, char** argv) {
 	// hide Window Console
 	HWND hConsole = GetConsoleWindow();
 	ShowWindow(hConsole, SW_HIDE);
+
 	// init GLUT and create Window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
@@ -11,6 +12,7 @@ int main(int argc, char** argv) {
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	glutCreateWindow("PUZZ LOOP");
 	initialize();
+
 	// register callbacks
 	glutDisplayFunc(display);
 	glutReshapeFunc(Reshape);

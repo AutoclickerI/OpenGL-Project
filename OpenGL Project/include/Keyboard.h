@@ -633,7 +633,7 @@ void keyboardUp(unsigned char key, int x, int y) {
 		break;
 	case 'i':
 	case 'I':
-		if (mode == MOVING) {
+		if (mode == MOVING && item == 1) {
 			item_t = end_t;
 			velocityrevert = 0;
 			item = 0;

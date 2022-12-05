@@ -3,7 +3,6 @@
 #include "Initilize.h"
 
 void idle() {
-
 	/* Implement: update spheres and handle collision at boundary*/
 	end_t = clock();
 	if (end_t - start_t > 1000 / Frame) {

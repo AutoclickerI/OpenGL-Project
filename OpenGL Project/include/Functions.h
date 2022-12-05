@@ -2,14 +2,12 @@
 #include "Declare.h"
 
 bool isCollisionDetected(const Sphere& sph1, const Sphere& sph2) {
-
 	/* Implement: collision detection */
 	return sph1.getRadius() + sph2.getRadius() > sph1.getdistance(sph2);
 }
 
 void handleCollision(Sphere& sph1, Sphere& sph2) {
 	if (isCollisionDetected(sph1, sph2)) {
-
 		/* Implement: collision handling */
 		double c1x, c2x, c1y, c2y, v1x, v2x, v1y, v2y, r1, r2;
 		c1x = sph1.getCenter()[0]; c1y = sph1.getCenter()[1];

@@ -81,10 +81,6 @@ bool velocityrevert = 0;
 ifstream iscore("config.ini");
 string trash;
 
-
-
-
-
 Sound bgm("sound/BGM.mp3", 1);
 Sound shoot("sound/shoot.wav", 0);
 Sound boomsound("sound/boomsound.wav", 0);

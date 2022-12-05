@@ -11,7 +11,7 @@ void Material::setEmission(float r, float g, float b, float a) {
 	emission[1] = g;
 	emission[2] = b;
 	emission[3] = a;
-};
+}
 void Material::setAmbient(float r, float g, float b, float a) {
 	ambient[0] = r;
 	ambient[1] = g;

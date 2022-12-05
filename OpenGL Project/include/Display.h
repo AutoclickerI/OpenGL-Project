@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include <iomanip>
 #include <stdio.h>
+
 void displayCharacters(void* font, string str, float x, float y) {
 	glRasterPos2f(x, y);
 	for (int i = 0; i < (int)str.size(); i++)

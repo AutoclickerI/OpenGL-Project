@@ -178,7 +178,7 @@ void display() {
 				canon.drawCircleWithTexture(75, 30);
 				break;
 			default:
-				canon.drawSquareWithTexture(150, 150);
+				canon.drawCircleWithTexture(75, 8);
 				break;
 			}
 			for (vector<Sphere>::size_type i = 0; i < cannon.size(); i++)
